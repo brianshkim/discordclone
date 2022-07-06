@@ -14,7 +14,7 @@ COPY . .
 COPY /react-app/build/* app/static/
 
 # Copy the built react app (it's built for us) from the
-# /react-app/build/ directory into your flasks app/static director
+# /react-app/build/ directory into your flasks app/static directo
 
 # Run the next two python install commands with PIP
 RUN pip install -r requirements.txt
