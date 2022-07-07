@@ -47,32 +47,13 @@ def user_servers_create(id):
     db.session.commit()
     return {"newserver": newserver.to_dict()}
 
-@user_routes.route('/<int:id>/servers/', methods=['delete'])
-@login_required
-def user_delete_server(id):
-    req=request.get_json()
-    user= User.query.get(id)
-    for server in user.get_admin_server():
-        if server.id == int(req):
-            serverUser = Server.query.get(server.id)
-            serverUser.delete()
-            serverUser.commit()
-
-    return None
 
 
 
-@user_routes.route('/int:id>/servers/<int:serverid>', methods=['post'])
-@login_required
-def user_edit_server(id, serverid):
-    req=request.get_json()
-    user= User.query.get(id)
-    for server in user.get_admin_server():
-        if server.id == serverid:
-            serverUser = Server.query.get(server.id)
-            serverUser.name = req
-            serverUser.commit()
-            return serverUser
+
+
+
+
 
 
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import { useParams } from 'react-router-dom';
-import { get_servers, create_server, update_server } from '../store/servers';
+import { get_servers, create_server, update_server, delete_server } from '../store/servers';
 
 
 const Home =() =>{
@@ -25,8 +25,12 @@ const Home =() =>{
 
     const onEdit = (e) =>{
         e.preventDefault()
-        dispatch(update_server(user.id, name))
+        dispatch(update_server(1, editName))
 
+    }
+
+    const deleteserver = (e) => {
+        dispatch(delete_server(20))
     }
 
 
@@ -58,6 +62,8 @@ const Home =() =>{
             <button type="submit">Submit Change</button>
 
         </form>
+
+        <button onClick={deleteserver}>Delete</button>
     </div>
     </div>
 

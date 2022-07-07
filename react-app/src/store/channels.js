@@ -1,27 +1,27 @@
-const LOAD_SERVERS = 'servers/GET_SERVERS'
-const CREATE_SERVER = 'servers/CREATE_SERVER'
-const UPDATE_SERVER = 'servers/UPDATE_SERVER'
-const DELETE_SERVER = 'servers/DELETE_SERVER'
+const LOAD_SERVERS = 'servers/GET_CHANNELS'
+const CREATE_CHANNEL = 'servers/CREATE_CHANNEL'
+const UPDATE_CHANNEL = 'servers/UPDATE_CHANNEL'
+const DELETE_CHANNEL = 'servers/DELETE_CHANNEL'
 
 
-const getservers = (servers) => ({
-    type: LOAD_SERVERS,
-    servers
+const getchannels = (channels) => ({
+    type: LOAD_CHANNELS,
+    channels
 });
 
-const createserver = (server) => ({
-    type: CREATE_SERVER,
-    server
+const createchannel = (channel) => ({
+    type: CREATE_CHANNEL,
+    channel
 })
 
-const editserver = (server) => ({
-    type: UPDATE_SERVER,
-    server
+const editchannel = (channel) => ({
+    type: UPDATE_CHANNEL,
+    channel
 })
 
-const deleteserver = (server) => ({
-    type: DELETE_SERVER,
-    server
+const deletechannel = (channel) => ({
+    type: DELETE_CHANNEL,
+    channel
 
 })
 

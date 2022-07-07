@@ -10,6 +10,25 @@ def servers():
     servers = Server.query.all()
     return servers.get_users()
 
+@server_routes.route('/<int:id>', methods=['post'])
+@login_required
+def user_edit_server(id):
+    req=request.get_json()
+    serverUser = Server.query.get(id)
+    serverUser.name = req
+    db.session.commit()
+
+    return serverUser.to_dict()
+
+
+@server_routes.route('/<int:id>', methods=['delete'])
+@login_required
+def user_delete_server(id):
+
+    query_server = Server.query.filter_by(id=id)
+    query_server.delete()
+    db.session.commit()
+    return jsonify(id)
 
 @server_routes.route('/<int:id>/channels')
 @login_required
