@@ -27,15 +27,15 @@ const deletechannel = (channel) => ({
 
 
 
-export const get_servers = (id) => async (dispatch) => {
-    const response = await fetch(`/api/users/${id}/servers`);
+export const get_channels = (id) => async (dispatch) => {
+    const response = await fetch(`/api/servers/${id}/channels`);
     const data = await response.json()
-    dispatch(getservers(data.servers));
+    dispatch(getchannels(data.channels));
 
 }
 
-export const create_server = (id, name) => async (dispatch) => {
-    const response = await fetch(`/api/users/${id}/servers`, {
+export const create_channel = (id, name) => async (dispatch) => {
+    const response = await fetch(`/api/servers/${id}/channels`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ export const create_server = (id, name) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(createserver(data.newserver))
+        dispatch(createchannel(data.newchannel))
         return null;
     } else if (response.status < 500) {
         const data = await response.json();
@@ -58,8 +58,8 @@ export const create_server = (id, name) => async (dispatch) => {
 
 }
 
-export const update_server = (id, name) => async (dispatch) => {
-    const response = await fetch(`/api/servers/${id}`, {
+export const update_channel = (id, name) => async (dispatch) => {
+    const response = await fetch(`/api/channels/${id}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -70,14 +70,14 @@ export const update_server = (id, name) => async (dispatch) => {
     const data = await response.json()
     console.log(data)
 
-    dispatch(editserver(data));
+    dispatch(editchannel(data));
 
 
 };
 
 
-export const delete_server = (serverId) => async (dispatch) => {
-    const response = await fetch(`/api/servers/${serverId}`, {
+export const delete_channel = (channelId) => async (dispatch) => {
+    const response = await fetch(`/api/channels/${channelId}`, {
         method: 'delete',
         headers: {
             'Content-Type': 'application/json'
@@ -87,7 +87,7 @@ export const delete_server = (serverId) => async (dispatch) => {
 
     const data = await response.json()
 
-    dispatch(deleteserver(Number(data)));
+    dispatch(deletechannel(Number(data)));
 }
 
 
@@ -137,35 +137,35 @@ export const delete_server = (serverId) => async (dispatch) => {
 export default function reducer(state = [], action) {
     switch (action.type) {
         case LOAD_SERVERS:
-            let serverlist = []
-            action.servers.forEach(server => {
-                serverlist.push(server)
+            let channellist = []
+            action.channels.forEach(channel => {
+                channellist.push(channel)
             })
-            serverlist.sort((a, b)=>{
+            channellist.sort((a, b)=>{
                 return a.id - b.id
             })
-            return {...state, list: serverlist}
+            return {...state, list: channellist}
         case CREATE_SERVER:
 
-            state.list.push(action.server)
+            state.list.push(action.channel)
             return {...state}
         case UPDATE_SERVER:
-            let newstate = state.list.map((server)=>{
-                if( server.id === action.server.id){
-                    server.name = action.server.name
+            let newstate = state.list.map((channel)=>{
+                if( channel.id === action.channel.id){
+                    channel.name = action.channel.name
                 }
-                return server
+                return channel
 
             })
 
             return newstate
         case DELETE_SERVER:
-            console.log(action.server)
-            console.log(state.servers)
+            console.log(action.channel)
+            console.log(state.channels)
 
 
-            return state.list.filter(server=>(
-                server.id != action.server
+            return state.list.filter(channel=>(
+                channel.id != action.channel
 
             ))
 

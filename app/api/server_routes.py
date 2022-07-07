@@ -34,7 +34,7 @@ def user_delete_server(id):
 @login_required
 def channels(id):
     servers = Server.query.get(id)
-    return servers.get_channels()
+    return {"channels":servers.get_channels()}
 
 
 
@@ -48,8 +48,9 @@ def channels_edit(id, channelid):
         if channel.id == channelid:
             channel.name = req
             db.session.commit()
+            return channel
 
-    return channelid
+
 
 
 
