@@ -1,37 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import { useParams } from 'react-router-dom';
-import { get_servers, create_server, update_server, delete_server} from '../store/servers';
+
 import { get_channels, create_channel, update_channel, delete_channel } from '../store/channels';
 
-const Home =() =>{
+const Channels =() =>{
     const dispatch = useDispatch()
     const user = useSelector(state=>state.session.user)
     const [name, setName] = useState('')
     const [editName, setEditName] = useState('')
 
-    const servers = useSelector(state=>state.servers)
+    const servers = useSelector(state=>state.servers.list)
+
 
     useEffect (()=>{
-        dispatch(get_servers(user.id))
-        dispatch(get_channels)
+
+        dispatch(get_channels(1))
 
     }, [])
 
     const onsubmit = (e) =>{
         e.preventDefault()
-        dispatch(create_server(user.id, name))
+        dispatch(create_channel(1, name))
+
 
     }
 
     const onEdit = (e) =>{
         e.preventDefault()
-        dispatch(update_server(1, editName))
+
 
     }
 
     const deleteserver = (e) => {
-        dispatch(delete_server(20))
+
     }
 
 
@@ -76,4 +78,4 @@ const Home =() =>{
 
 }
 
-export default Home
+export default Channels

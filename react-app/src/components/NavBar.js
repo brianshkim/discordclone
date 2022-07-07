@@ -1,14 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
+import Channels from './channel';
 
 const NavBar = () => {
   return (
     <nav>
       <ul>
         <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            Home
+          <NavLink to='/channels' exact={true} activeClassName='active'>
+            <Channels />
           </NavLink>
         </li>
         <li>

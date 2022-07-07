@@ -25,6 +25,3 @@ class Server(db.Model):
 
     def get_users(self):
         return [user.to_dict() for user in self.users]
-
-    def get_channels(self):
-        return [channel.to_dict() for channel in self.channels]

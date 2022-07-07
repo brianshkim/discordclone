@@ -1,4 +1,4 @@
-const LOAD_SERVERS = 'servers/GET_CHANNELS'
+const LOAD_CHANNELS = 'servers/GET_CHANNELS'
 const CREATE_CHANNEL = 'servers/CREATE_CHANNEL'
 const UPDATE_CHANNEL = 'servers/UPDATE_CHANNEL'
 const DELETE_CHANNEL = 'servers/DELETE_CHANNEL'
@@ -136,7 +136,7 @@ export const delete_channel = (channelId) => async (dispatch) => {
 
 export default function reducer(state = [], action) {
     switch (action.type) {
-        case LOAD_SERVERS:
+        case LOAD_CHANNELS:
             let channellist = []
             action.channels.forEach(channel => {
                 channellist.push(channel)
@@ -145,11 +145,11 @@ export default function reducer(state = [], action) {
                 return a.id - b.id
             })
             return {...state, list: channellist}
-        case CREATE_SERVER:
+        case CREATE_CHANNEL:
 
             state.list.push(action.channel)
             return {...state}
-        case UPDATE_SERVER:
+        case UPDATE_CHANNEL:
             let newstate = state.list.map((channel)=>{
                 if( channel.id === action.channel.id){
                     channel.name = action.channel.name
@@ -159,7 +159,7 @@ export default function reducer(state = [], action) {
             })
 
             return newstate
-        case DELETE_SERVER:
+        case DELETE_CHANNEL:
             console.log(action.channel)
             console.log(state.channels)
 

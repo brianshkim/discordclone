@@ -34,7 +34,9 @@ def user_delete_server(id):
 @login_required
 def channels(id):
     servers = Server.query.get(id)
-    return {"channels":servers.get_channels()}
+    serverchannels = servers.to_dict()
+    print(serverchannels['channels'])
+    return {"channels": serverchannels['channels']}
 
 
 
@@ -44,7 +46,7 @@ def channels(id):
 def channels_edit(id, channelid):
     req = request.get_json()
     servers = Server.query.get(id)
-    for channel in servers.get_channels():
+    for channel in servers.channels:
         if channel.id == channelid:
             channel.name = req
             db.session.commit()
@@ -63,7 +65,7 @@ def delete_channel(id, channelid):
     for channel in servers.get_channels():
         if channel.id == channelid:
             foundchannel = Channel.query.get(channel.id)
-            foundchannel.delete
+            foundchannel.delete()
             db.session.commit()
 
     return channelid
