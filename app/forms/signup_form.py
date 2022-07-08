@@ -60,7 +60,7 @@ def password_check(form, field):
     elif not re.search("[~!@#$%^&*]", password):
         raise ValidationError("Password is too weak or common to use")
 
-
+#asdf
 
 
 
