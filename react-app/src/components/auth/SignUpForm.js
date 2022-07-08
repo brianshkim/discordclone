@@ -39,7 +39,7 @@ const SignUpForm = () => {
 
     }
     setErrors(newdata)
-    console.log(errors.email)
+    console.log(errors)
 
   };
 
@@ -113,7 +113,7 @@ const SignUpForm = () => {
 
         <div className="SignupInputcontainer">
           <div className="signupInput">
-            <h5 className="signuptitle">Email {Object.keys(errors).length > 0 && " - " && <span className="errors"> - {errors.email}</span>}</h5>
+            <h5 className="signuptitle">Email {errors.email && " - " && <span className="errors"> - {errors.email}</span>}</h5>
             <input
               className="signuptext"
               type='text'
@@ -123,7 +123,7 @@ const SignUpForm = () => {
             ></input>
           </div>
           <div className="signupInput">
-            <h5 className="signuptitle">Username {Object.keys(errors).length > 0  && " - " && <span className="errors"> - {errors.username}</span>}</h5>
+            <h5 className="signuptitle">Username {errors.username  && " - " && <span className="errors"> - {errors.username}</span>}</h5>
             <input
               className="signuptext"
               type='text'
@@ -135,7 +135,7 @@ const SignUpForm = () => {
 
 
           <div className="signupInput">
-            <h5 className="signuptitle">Password {Object.keys(errors).length > 0  && " - " && <span className="errors"> - {errors.password}</span>}</h5>
+            <h5 className="signuptitle">Password {errors.password  && " - " && <span className="errors"> - {errors.password}</span>}</h5>
             <input
               className="signuptext"
               type='password'
@@ -146,7 +146,7 @@ const SignUpForm = () => {
           </div>
 
           <div className="signupInput">
-            <h5 className="signuptitle">Birthday {Object.keys(errors).length > 0  && " - " && <span className="errors"> - {errors.birthday}</span>}</h5>
+            <h5 className="signuptitle">Birthday {errors.birthday && " - " && <span className="errors"> - {errors.birthday}</span>}</h5>
             <input
               className="signuptext birthdaytext"
               type='date'
