@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 8f609d696184
+Revision ID: 619bbb505fa2
 Revises: 
-Create Date: 2022-07-06 10:10:09.613735
+Create Date: 2022-07-08 09:00:09.709942
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '8f609d696184'
+revision = '619bbb505fa2'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -23,9 +23,17 @@ def upgrade():
     sa.Column('username', sa.String(length=40), nullable=False),
     sa.Column('email', sa.String(length=255), nullable=False),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
+    sa.Column('birthday', sa.Date(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
+    )
+    op.create_table('friendlist',
+    sa.Column('userId', sa.Integer(), nullable=False),
+    sa.Column('friendId', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['friendId'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('userId', 'friendId')
     )
     op.create_table('servers',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -39,7 +47,9 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=False),
     sa.Column('serverId', sa.Integer(), nullable=True),
+    sa.Column('userId', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['serverId'], ['servers.id'], ondelete='CASCADE'),
+    sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('serverlists',
@@ -54,6 +64,7 @@ def upgrade():
     sa.Column('content', sa.String(), nullable=False),
     sa.Column('channelId', sa.Integer(), nullable=True),
     sa.Column('userId', sa.Integer(), nullable=True),
+    sa.Column('createdate', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['channelId'], ['channels.id'], ),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id'),
@@ -68,5 +79,6 @@ def downgrade():
     op.drop_table('serverlists')
     op.drop_table('channels')
     op.drop_table('servers')
+    op.drop_table('friendlist')
     op.drop_table('users')
     # ### end Alembic commands ###

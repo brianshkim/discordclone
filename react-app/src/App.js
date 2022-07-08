@@ -32,7 +32,7 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route path={['/login', '/register']} exact={true}>
+        <Route path={['/login', '/register']}>
           <LoginForm />
         </Route>
         <ProtectedRoute path='/users' exact={true} >

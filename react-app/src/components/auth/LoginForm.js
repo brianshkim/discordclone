@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, useParams } from 'react-router-dom';
 import { login } from '../../store/session';
@@ -6,7 +6,7 @@ import SignUpForm from './SignUpForm';
 import "./loginpage.css"
 
 const LoginForm = () => {
-  const currentPath = window.location.pathname
+  const [currentPath,setcurrentPath] = useState(window.location.pathname)
 
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
@@ -23,6 +23,8 @@ const LoginForm = () => {
 
     }
   };
+
+
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
@@ -77,7 +79,7 @@ const LoginForm = () => {
             <button className="submitloginbutton" type='submit'>Login</button>
             <div className="signuplink">
               <div className="NeedAccount">Need an account?</div>
-              <a className="registerbutton" href="/sign-up"> Register</a>
+              <a className="registerbutton" href="/register"> Register</a>
             </div>
           </div>
         </div>
