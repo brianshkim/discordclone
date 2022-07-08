@@ -21,19 +21,21 @@ const Channels =() =>{
 
     const onsubmit = (e) =>{
         e.preventDefault()
-        dispatch(create_channel(1, name))
+        e.stopPropagation()
+        dispatch(create_channel(user.id, 2, name))
 
 
     }
 
     const onEdit = (e) =>{
         e.preventDefault()
+        dispatch(update_channel(2, name))
 
 
     }
 
     const deleteserver = (e) => {
-
+        dispatch(delete_channel(2))
     }
 
 
@@ -42,7 +44,7 @@ const Channels =() =>{
     return(
     <div>
         <div>
-            Create Server
+            Create Channel
             <form
 
             onSubmit={onsubmit}>
@@ -54,7 +56,7 @@ const Channels =() =>{
             </form>
         </div>
         <div>
-        Edit Server
+        Edit Channel
 
         <form
 

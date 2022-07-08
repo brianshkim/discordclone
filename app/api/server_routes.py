@@ -10,10 +10,11 @@ def servers():
     servers = Server.query.all()
     return servers.get_users()
 
+
 @server_routes.route('/<int:id>', methods=['post'])
 @login_required
 def user_edit_server(id):
-    req=request.get_json()
+    req = request.get_json()
     serverUser = Server.query.get(id)
     serverUser.name = req
     db.session.commit()
@@ -30,6 +31,7 @@ def user_delete_server(id):
     db.session.commit()
     return jsonify(id)
 
+
 @server_routes.route('/<int:id>/channels')
 @login_required
 def channels(id):
@@ -39,33 +41,34 @@ def channels(id):
     return {"channels": serverchannels['channels']}
 
 
-
-
-@server_routes.route('/<int:id>/channels/<int:channelid>', methods=['post'])
+@server_routes.route('/channels/create', methods=['post'])
 @login_required
-def channels_edit(id, channelid):
+def create_channels():
     req = request.get_json()
-    servers = Server.query.get(id)
-    for channel in servers.channels:
-        if channel.id == channelid:
-            channel.name = req
-            db.session.commit()
-            return channel
+    newChannel = Channel(
+        name=req['name'],
+        userId=req['userid'],
+        serverId=req['serverid']
+
+    )
+    db.session.add(newChannel)
+    db.session.commit()
+    return newChannel.to_dict()
 
 
-
-
-
-
-@server_routes.route('/<int:id>/channels/<int:channelid>', methods=['delete'])
+@server_routes.route('/channels/<int:channelid>', methods=['post'])
 @login_required
-def delete_channel(id, channelid):
+def channels_edit(channelid):
     req = request.get_json()
-    servers = Server.query.get(id)
-    for channel in servers.get_channels():
-        if channel.id == channelid:
-            foundchannel = Channel.query.get(channel.id)
-            foundchannel.delete()
-            db.session.commit()
+    channel = Channel.query.get(channelid)
+    channel.name = req
+    return channel.to_dict()
 
-    return channelid
+
+@server_routes.route('/channels/<int:channelid>', methods=['delete'])
+@login_required
+def delete_channel(channelid):
+    foundchannel = Channel.query.filter_by(id=channelid)
+    foundchannel.delete()
+    db.session.commit()
+    return jsonify(channelid)

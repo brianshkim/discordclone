@@ -9,7 +9,7 @@ const NavBar = () => {
       <ul>
         <li>
           <NavLink to='/channels' exact={true} activeClassName='active'>
-            <Channels />
+            Home
           </NavLink>
         </li>
         <li>

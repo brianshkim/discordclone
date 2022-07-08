@@ -10,6 +10,8 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import Chat from './components/chat';
 import Home from './components/home';
+import Channels from './components/channel';
+import SplashPage from './components/SplashPage/splashpage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -42,15 +44,18 @@ function App() {
         <ProtectedRoute path='/home' exact={true} >
           <Home />
         </ProtectedRoute>
+        <ProtectedRoute path='/channels' exact={true} >
+          <Channels />
+        </ProtectedRoute>
         <ProtectedRoute path='/chat' exact={true}>
           <Chat />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
+        <Route path='/' exact={true} >
+          <SplashPage />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

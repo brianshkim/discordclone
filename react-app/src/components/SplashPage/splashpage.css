@@ -1,0 +1,151 @@
+.splashContainer{
+    height: 103vh;
+}
+.firstsection{
+    background-image: url("splashpage1.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 100%;
+
+    margin: auto;
+    height: 100%;
+
+
+
+}
+.logoanchor{
+    width: 5vw;
+}
+.navbarlinks{
+    display: flex;
+    justify-content: space-evenly;
+    width: 40%;
+    height: auto;
+
+
+
+}
+
+.loginbutton{
+    height: 40%;
+}
+.navbarlinks > a{
+    color: white;
+    margin-top: 6%;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: "Whitney","Helvetica Neue","Helvetica","Arial",sans-serif;
+    line-height: 140%;
+    text-decoration: none;
+    text-rendering: optimizeLegibility
+}
+
+
+.navBar{
+    margin: auto;
+    width: 80%;
+    height: 4%;
+
+}
+.navigation{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    height: 10%;
+
+}
+
+.loginclick{
+    font-family: "Whitney","Helvetica Neue","Helvetica","Arial",sans-serif;
+
+    border: 0;
+    box-sizing: border-box;
+    margin-top: 1.5rem;
+    height: 38px;
+    width: 63.76px;
+    background: white;
+    padding: 7px 16px;
+    border-radius: 40px;
+    font-size: 14px;
+    text-align: center;
+    box-shadow: 0px;
+    white-space: nowrap;
+    line-height: 24px;
+    font-weight: 500;
+    align-items: center;
+    outline: 0;
+
+}
+
+.secondhalf{
+    margin: 10% 20% 30% 25%;
+
+    height:  40%;
+    width: 760px;
+}
+
+.secondhalf-first{
+    color: white;
+    font-weight: 800;
+    text-align:center;
+    font-size: 56px;
+    font-family:"Ginto Nord","Whitney","Helvetica Neue","Helvetica","Arial",sans-serif;
+
+
+}
+
+.secondhalf-second{
+    color:white;
+    display:block;
+    text-align:center;
+    font-size: clamp(16px,2vw,20px);
+    font-family: "Whitney","Helvetica Neue","Helvetica","Arial",sans-serif;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    line-height: 2;
+
+
+}
+
+
+.downloadfor{
+    color: #23272a;
+    height: 56px;
+    margin: 24px 24px 0px 0px;
+    border-radius: 28px;
+    border: none;
+    width: 294.66px;
+    padding: 16px 32px;
+    line-height: 24px;
+    cursor:pointer;
+    font-weight: 500;
+    font-size: 20px;
+    font-family: "Ginto Nord","Whitney","Helvetica Neue","Helvetica","Arial",sans-serif;
+
+}
+
+.secondhalf-third{
+    display: flex;
+    justify-content: center;
+    font-family: "Ginto Nord","Whitney","Helvetica Neue","Helvetica","Arial",sans-serif;
+
+}
+
+.openin{
+    background-color: #23272a;
+    color: white;
+    height: 56px;
+    margin: 24px 24px 0px 0px;
+    border-radius: 28px;
+    border: none;
+    width: 315.31px;
+    padding: 16px 32px;
+    line-height: 24px;
+    cursor:pointer;
+    font-weight: 500;
+    font-size: 20px;
+    font-family: "Ginto Nord","Whitney","Helvetica Neue","Helvetica","Arial",sans-serif;
+
+}

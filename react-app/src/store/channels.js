@@ -34,18 +34,24 @@ export const get_channels = (id) => async (dispatch) => {
 
 }
 
-export const create_channel = (id, name) => async (dispatch) => {
-    const response = await fetch(`/api/servers/${id}/channels`, {
+export const create_channel = (userid, serverid, name) => async (dispatch) => {
+    console.log("11112")
+    const response = await fetch(`/api/servers/channels/create`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(name)
+        body: JSON.stringify({
+            'userid': userid,
+            "serverid": serverid,
+            "name": name,
+
+        })
     });
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(createchannel(data.newchannel))
+        dispatch(createchannel(data))
         return null;
     } else if (response.status < 500) {
         const data = await response.json();
@@ -58,8 +64,8 @@ export const create_channel = (id, name) => async (dispatch) => {
 
 }
 
-export const update_channel = (id, name) => async (dispatch) => {
-    const response = await fetch(`/api/channels/${id}`, {
+export const update_channel = (channelid, name) => async (dispatch) => {
+    const response = await fetch(`/api/servers/channels/${channelid}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -77,7 +83,7 @@ export const update_channel = (id, name) => async (dispatch) => {
 
 
 export const delete_channel = (channelId) => async (dispatch) => {
-    const response = await fetch(`/api/channels/${channelId}`, {
+    const response = await fetch(`/api/servers/channels/${channelId}`, {
         method: 'delete',
         headers: {
             'Content-Type': 'application/json'

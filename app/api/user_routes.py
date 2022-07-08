@@ -46,29 +46,3 @@ def user_servers_create(id):
     db.session.add(newserver)
     db.session.commit()
     return {"newserver": newserver.to_dict()}
-
-
-
-
-
-
-
-
-
-
-
-
-@user_routes.route('/<int:id>/servers/<int:serverid>/channels', methods=['post'])
-@login_required
-def channels(id, serverid):
-    req=request.get_json()
-    newChannel = Channel(
-        name=req,
-        userId=id,
-        serverId=serverid
-
-    )
-    db.session.add(newChannel)
-    db.session.commit()
-
-    return newChannel

@@ -33,12 +33,10 @@ const LoginForm = () => {
   return (
     <form onSubmit={onLogin}>
       <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
+
       </div>
       <div>
-        <label htmlFor='email'>Email</label>
+        <label htmlFor='email'>Email {errors.length >0 && "- Login or password is invalid "}</label>
         <input
           name='email'
           type='text'
@@ -48,7 +46,7 @@ const LoginForm = () => {
         />
       </div>
       <div>
-        <label htmlFor='password'>Password</label>
+        <label htmlFor='password'>Password{errors.length >0 &&  "- Login or password is invalid'"}</label>
         <input
           name='password'
           type='password'
