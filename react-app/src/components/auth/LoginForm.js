@@ -43,7 +43,7 @@ const LoginForm = (props) => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/channels' />;
   }
 
   return (
