@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import './signuppage.css'
 
 const SignUpForm = () => {
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,7 +13,7 @@ const SignUpForm = () => {
   const [month, setMonth] = useState('1')
   const [day, setDay] = useState(1)
   const [year, setYear] = useState(1940)
-  const [birthday, setBirthday] = useState('1940-1-1')
+  const [birthday, setBirthday] = useState('')
 
   const user = useSelector(state => state.session.user);
   const months = [{ 1: "January" }, { 2: "February" }, { 3: "March" }, { 4: "April" }, { 5: "May" }, { 6: "June" }, { 7: "July" }, { 8: "August" }, { 9: "September" }, { 10: "October" }, { 11: "November" }, { 12: "December" }]
@@ -27,12 +27,20 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    setBirthday(`${year}-${month}-${day} `)
+
 
     const data = await dispatch(signUp(username, email, password, birthday));
+    let newdata = {}
     if (data) {
-      setErrors(data)
+
+      data.forEach((error)=>{
+      let errorarray = error.split(" : ")
+      newdata[errorarray[0]] = errorarray[1]})
+
     }
+    setErrors(newdata)
+    console.log(errors.email)
+
   };
 
   const updateUsername = (e) => {
@@ -49,6 +57,10 @@ const SignUpForm = () => {
 
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
+  };
+
+  const updateBirthday = (e) => {
+    setBirthday(e.target.value);
   };
 
   for (let i = 2019; i >= 1870; i--) {
@@ -92,38 +104,68 @@ const SignUpForm = () => {
 
   return (
 
-      <form
+    <form
       className="SignupForm"
       onSubmit={onSignUp}>
-       <div className="SignupContainer">
-        <div>
-          <label>User Name</label>
-          <input
-            type='text'
-            name='username'
-            onChange={updateUsername}
-            value={username}
-          ></input>
-        </div>
-        <div>
-          <label>Email</label>
-          <input
-            type='text'
-            name='email'
-            onChange={updateEmail}
-            value={email}
-          ></input>
-        </div>
-        <div>
-          <label>Password</label>
-          <input
-            type='password'
-            name='password'
-            onChange={updatePassword}
-            value={password}
-          ></input>
-        </div>
-        {/* <div>
+      <div className="SignupContainer">
+
+        <h3 className="Signup-login">Create an account</h3>
+
+        <div className="SignupInputcontainer">
+          <div className="signupInput">
+            <h5 className="signuptitle">Email {Object.keys(errors).length > 0 && " - " && <span className="errors"> - {errors.email}</span>}</h5>
+            <input
+              className="signuptext"
+              type='text'
+              name='email'
+              onChange={updateEmail}
+              value={email}
+            ></input>
+          </div>
+          <div className="signupInput">
+            <h5 className="signuptitle">Username {Object.keys(errors).length > 0  && " - " && <span className="errors"> - {errors.username}</span>}</h5>
+            <input
+              className="signuptext"
+              type='text'
+              name='username'
+              onChange={updateUsername}
+              value={username}
+            ></input>
+          </div>
+
+
+          <div className="signupInput">
+            <h5 className="signuptitle">Password {Object.keys(errors).length > 0  && " - " && <span className="errors"> - {errors.password}</span>}</h5>
+            <input
+              className="signuptext"
+              type='password'
+              name='password'
+              onChange={updatePassword}
+              value={password}
+            ></input>
+          </div>
+
+          <div className="signupInput">
+            <h5 className="signuptitle">Birthday {Object.keys(errors).length > 0  && " - " && <span className="errors"> - {errors.birthday}</span>}</h5>
+            <input
+              className="signuptext birthdaytext"
+              type='date'
+
+              onChange={updateBirthday}
+              value={birthday}
+            ></input>
+          </div>
+          <div className="privatepolicy">
+            "By Clicking Sign Up, you agree to Ioniq's Terms of Service and Privacy Policy."
+          </div>
+          <br></br>
+          <button className="submitloginbutton" type='submit'>Sign Up</button>
+          <br></br>
+          <NavLink to='/login' exact={true} id="loginregister" activeClassName='active'>
+            Already have an account?
+          </NavLink>
+          {/* <div>
+
         <label>Repeat Password</label>
         <input
           type='password'
@@ -133,32 +175,35 @@ const SignUpForm = () => {
           required={true}
         ></input>
         </div>*/}
-        <div>
-          <label>Date of Birth</label>
-          <select id="months"
-            onChange={onselectMonth}>
-            {months.map((month) => (
-              <option key={Object.keys(month)[0]} value={Object.keys(month)[0]}>{month[Object.keys(month)[0]]}</option>
-            ))}
-          </select>
-          <select id="days"
-            onChange={onselectDay}>
-            {days.map((day) => (
-              <option key={day} value={day}>{day} </option>
-            ))}
-          </select>
+          {/*<div>
+            <h5 className="signuptitle"> Date of Birth</h5>
+            <select id="months"
+              onChange={onselectMonth}>
+              {months.map((month) => (
+                <option key={Object.keys(month)[0]} value={Object.keys(month)[0]}>{month[Object.keys(month)[0]]}</option>
+              ))}
+            </select>
+            <select id="days"
+              onChange={onselectDay}>
+              {days.map((day) => (
+                <option key={day} value={day}>{day} </option>
+              ))}
+            </select>
 
-          <select id="year"
-            onChange={onselectYear}>
-            {years.map((year) => (
-              <option key={year} value={year}>{year}</option>
-            ))}
-          </select>
-        </div>
+            <select id="year"
+              onChange={onselectYear}>
+              {years.map((year) => (
+                <option key={year} value={year}>{year}</option>
+              ))}
+            </select>
+          </div>
 
-        <button type='submit'>Sign Up</button>
+          <button type='submit'>Sign Up</button>
+        </div>*/}
         </div>
-      </form>
+      </div>
+
+    </form>
 
   );
 };
