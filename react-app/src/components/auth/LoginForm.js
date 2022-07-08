@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, useParams } from 'react-router-dom';
 import { login } from '../../store/session';
+import SignUpForm from './SignUpForm';
 import "./loginpage.css"
 
 const LoginForm = () => {
+  const currentPath = window.location.pathname
+
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -35,7 +38,7 @@ const LoginForm = () => {
 
   return (
     <div className="LoginContainer">
-      <form
+      {currentPath === "/login" && <form
         className="LoginForm"
         onSubmit={onLogin}>
         <div className="login-container">
@@ -60,7 +63,7 @@ const LoginForm = () => {
             <div className="PasswordInput">
               <h5 className="passwordtitle" htmlFor='password'>Password{errors.length > 0 && " - " && <span className="errors"> - {errors[1].split(': ')[1]}</span>}</h5>
               <input
-              className="Passwordtext"
+                className="Passwordtext"
                 name='password'
                 type='password'
 
@@ -75,10 +78,15 @@ const LoginForm = () => {
             <div className="signuplink">
               <div className="NeedAccount">Need an account?</div>
               <a className="registerbutton" href="/sign-up"> Register</a>
-              </div>
+            </div>
           </div>
         </div>
       </form>
+      }
+      {currentPath==="/register" &&
+      <SignUpForm />
+
+      }
     </div>
   );
 };

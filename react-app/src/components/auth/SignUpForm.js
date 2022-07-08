@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import './signuppage.css'
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -34,96 +35,95 @@ const SignUpForm = () => {
     }
   };
 
-const updateUsername = (e) => {
-  setUsername(e.target.value);
-};
+  const updateUsername = (e) => {
+    setUsername(e.target.value);
+  };
 
-const updateEmail = (e) => {
-  setEmail(e.target.value);
-};
+  const updateEmail = (e) => {
+    setEmail(e.target.value);
+  };
 
-const updatePassword = (e) => {
-  setPassword(e.target.value);
-};
+  const updatePassword = (e) => {
+    setPassword(e.target.value);
+  };
 
-const updateRepeatPassword = (e) => {
-  setRepeatPassword(e.target.value);
-};
+  const updateRepeatPassword = (e) => {
+    setRepeatPassword(e.target.value);
+  };
 
-for (let i = currentyear.getFullYear(); i >= 1940; i--) {
-  years.push(i)
-}
+  for (let i = 2019; i >= 1870; i--) {
+    years.push(i)
+  }
 
-for (let i = 1; i <= 31; i++) {
-  days.push(i)
-}
+  for (let i = 1; i <= 31; i++) {
+    days.push(i)
+  }
 
-const onselectMonth = async (e) => {
-  let index = e.target.selectedIndex;
-  console.log(index)
-  var optionElement = e.target.childNodes[index].value
-  setMonth(optionElement)
+  const onselectMonth = async (e) => {
+    let index = e.target.selectedIndex;
+    console.log(index)
+    var optionElement = e.target.childNodes[index].value
+    setMonth(optionElement)
 
-}
+  }
 
-const onselectDay = async (e) => {
+  const onselectDay = async (e) => {
 
-  let index = e.target.selectedIndex;
-  console.log(index)
-  var optionElement = e.target.childNodes[index].innerHTML
-  setDay(optionElement)
+    let index = e.target.selectedIndex;
+    console.log(index)
+    var optionElement = e.target.childNodes[index].innerHTML
+    setDay(optionElement)
 
-}
+  }
 
-const onselectYear = async (e) => {
+  const onselectYear = async (e) => {
 
-  let index = e.target.selectedIndex;
-  console.log(index)
-  var optionElement = e.target.childNodes[index].innerHTML
-  setYear(optionElement)
+    let index = e.target.selectedIndex;
+    console.log(index)
+    var optionElement = e.target.childNodes[index].innerHTML
+    setYear(optionElement)
 
-}
+  }
 
 
-if (user) {
-  return <Redirect to='/' />;
-}
+  if (user) {
+    return <Redirect to='/' />;
+  }
 
-return (
-  <form onSubmit={onSignUp}>
-    <div>
-      {errors.map((error, ind) => (
-        <div key={ind}>{error}</div>
-      ))}
-    </div>
-    <div>
-      <label>User Name</label>
-      <input
-        type='text'
-        name='username'
-        onChange={updateUsername}
-        value={username}
-      ></input>
-    </div>
-    <div>
-      <label>Email</label>
-      <input
-        type='text'
-        name='email'
-        onChange={updateEmail}
-        value={email}
-      ></input>
-    </div>
-    <div>
-      <label>Password</label>
-      <input
-        type='password'
-        name='password'
-        onChange={updatePassword}
-        value={password}
-      ></input>
-    </div>
-    {/* <div>
+  return (
+
+      <form
+      className="SignupForm"
+      onSubmit={onSignUp}>
+       <div className="SignupContainer">
+        <div>
+          <label>User Name</label>
+          <input
+            type='text'
+            name='username'
+            onChange={updateUsername}
+            value={username}
+          ></input>
+        </div>
+        <div>
+          <label>Email</label>
+          <input
+            type='text'
+            name='email'
+            onChange={updateEmail}
+            value={email}
+          ></input>
+        </div>
+        <div>
+          <label>Password</label>
+          <input
+            type='password'
+            name='password'
+            onChange={updatePassword}
+            value={password}
+          ></input>
+        </div>
+        {/* <div>
         <label>Repeat Password</label>
         <input
           type='password'
@@ -133,32 +133,34 @@ return (
           required={true}
         ></input>
         </div>*/}
-    <div>
-      <label>Date of Birth</label>
-      <select id="months"
-        onChange={onselectMonth}>
-        {months.map((month) => (
-          <option key={Object.keys(month)[0]} value={Object.keys(month)[0]}>{month[Object.keys(month)[0]]}</option>
-        ))}
-      </select>
-      <select id="days"
-        onChange={onselectDay}>
-        {days.map((day) => (
-          <option key={day} value={day}>{day} </option>
-        ))}
-      </select>
+        <div>
+          <label>Date of Birth</label>
+          <select id="months"
+            onChange={onselectMonth}>
+            {months.map((month) => (
+              <option key={Object.keys(month)[0]} value={Object.keys(month)[0]}>{month[Object.keys(month)[0]]}</option>
+            ))}
+          </select>
+          <select id="days"
+            onChange={onselectDay}>
+            {days.map((day) => (
+              <option key={day} value={day}>{day} </option>
+            ))}
+          </select>
 
-      <select id="year"
-        onChange={onselectYear}>
-        {years.map((year) => (
-          <option key={year} value={year}>{year}</option>
-        ))}
-      </select>
-    </div>
+          <select id="year"
+            onChange={onselectYear}>
+            {years.map((year) => (
+              <option key={year} value={year}>{year}</option>
+            ))}
+          </select>
+        </div>
 
-    <button type='submit'>Sign Up</button>
-  </form>
-);
+        <button type='submit'>Sign Up</button>
+        </div>
+      </form>
+
+  );
 };
 
 export default SignUpForm;
