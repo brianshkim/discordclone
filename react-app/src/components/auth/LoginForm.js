@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect, useParams } from 'react-router-dom';
+import { Redirect, useParams, useLocation } from 'react-router-dom';
 import { login } from '../../store/session';
 import SignUpForm from './SignUpForm';
 import "./loginpage.css"
 
-const LoginForm = () => {
-  const [currentPath,setcurrentPath] = useState(window.location.pathname)
+const LoginForm = (props) => {
+
+  const location = useLocation()
+  console.log(location.pathname)
+  const [currentPath,setCurrentPath] = useState(window.location.pathname)
 
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
@@ -14,6 +17,9 @@ const LoginForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  useEffect(()=>{
+    setCurrentPath(window.location.pathname)
+  }, [currentPath])
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -40,7 +46,7 @@ const LoginForm = () => {
 
   return (
     <div className="LoginContainer">
-      {currentPath === "/login" && <form
+      {location.pathname === "/login" && <form
         className="LoginForm"
         onSubmit={onLogin}>
         <div className="login-container">
@@ -85,7 +91,7 @@ const LoginForm = () => {
         </div>
       </form>
       }
-      {currentPath==="/register" &&
+      {location.pathname==="/register" &&
       <SignUpForm />
 
       }
