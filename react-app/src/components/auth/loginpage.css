@@ -1,0 +1,164 @@
+.LoginContainer{
+    display: flex;
+    justify-content: center;
+
+    height: 103vh;
+    background-image: url("loginbg.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 100%;
+
+
+
+}
+
+.LoginForm{
+    align-self: center;
+    padding: 32px;
+    height: 340.67px;
+    width: 414px;
+    background-color: #36393F;
+
+
+}
+
+
+.header-login{
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 25px;
+    font-family: "ABC Ginto Normal","Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height:30px;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    text-align: center;
+    width: 100%;
+    color: white;
+    margin: 0px 0px 8px;
+
+
+}
+
+.secondheader-login{
+    color: #B9BBBE;
+    text-align: center;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    font-family: Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    height: 20px;
+
+
+}
+
+.LoginInputContainer{
+    margin: 20px 0px 0px;
+
+}
+
+.Logininput{
+    height: 64px;
+    padding: 0px 0px 20px;
+    box-sizing: border-box;
+    margin: 0px 0px 20px;
+
+
+}
+
+.emailtitle{
+    margin: 0px 0px 8px;
+    font-family: "ABC Ginto Normal","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    line-height:16px;
+    font-weight:550;
+    text-transform: uppercase;
+    color: #B9BBBE
+
+}
+
+.passwordtitle{
+    margin: 0px 0px 8px;
+    font-family: "ABC Ginto Normal","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    line-height:16px;
+    font-weight:550;
+    text-transform: uppercase;
+    color: #B9BBBE
+
+}
+
+.Logintext{
+    padding: 10px;
+    width: 392px;
+    height: 16px;
+    background-color: #202225;
+    border: none;
+    border-radius: 3px;
+
+}
+
+.PasswordInput{
+    margin: 0px 0px 8px;
+    font-family: "ABC Ginto Normal","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    line-height:16px;
+    font-weight:550;
+    text-transform: uppercase;
+    color: #B9BBBE;
+    box-sizing: border-box;
+    border-radius: 3px;
+
+
+}
+
+.Passwordtext{
+    padding: 10px;
+    width: 392px;
+    height: 16px;
+    background-color: #202225;
+    border: none;
+    border-radius: 3px;
+
+}
+
+
+.submitloginbutton{
+    cursor: pointer;
+    width: 100%;
+    background-color: #5865F2;
+    margin: 0px 0px 8px;
+    height: 44px;
+    border: none;
+    color: white;
+    line-height: 24px;
+    font-size: 16px;
+    font-family: Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.signuplink{
+    display: flex;
+    flex-direction: row;
+}
+
+.NeedAccount{
+    font-size: 14px;
+    color: #72767D;
+    font-family: Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.registerbutton{
+    margin-left: 4px;
+    font-size: 14px;
+    color: #00AFF4;
+    font-family: Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.errors{
+    color: #F3868B;
+    font-size: 12px;
+    font-style: italic;
+    text-transform: none;
+}

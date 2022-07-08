@@ -3,4 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 
 
 
-const ServerNavigation = )
+const ServerNavigation = ()=>{
+
+}
