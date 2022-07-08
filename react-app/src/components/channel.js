@@ -22,7 +22,7 @@ const Channels =() =>{
     const onsubmit = (e) =>{
         e.preventDefault()
         e.stopPropagation()
-        dispatch(create_channel(user.id, 2, name))
+        dispatch(create_channel(user.id, 1, name))
 
 
     }

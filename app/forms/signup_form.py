@@ -45,8 +45,9 @@ def age_check(form, field):
     print("Asdfo3oup43u5oi34u5iou5poi", birthday)
     today = date.today()
     difference = today-birthday
-    print("ASDFJAKFJAKLJFKLJF", int(difference.days/365))
-    if int(difference.days/365) < 13:
+    print("asdfasdlfjasfjaklfj", difference)
+    print("ASDFJAKFJAKLJFKLJF", difference.days/365)
+    if difference.days/365 < 13.00:
         raise ValidationError("You must be at least 13 years old to use Ioniq")
 
 
@@ -69,4 +70,4 @@ class SignUpForm(FlaskForm):
         'username', validators=[DataRequired(), username_exists])
     email = StringField('email', validators=[DataRequired(), Email(), user_exists])
     password = StringField('password', validators=[DataRequired(), password_check])
-    birthday = DateField('birthday', validators=[DataRequired(), Email(), age_check])
+    birthday = DateField('birthday', validators=[DataRequired(), age_check])

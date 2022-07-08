@@ -7,8 +7,8 @@ socketio = SocketIO()
 
 if os.environ.get("FLASK_ENV") == "production":
     origins = [
-        "http://actual-app-url.herokuapp.com",
-        "https://actual-app-url.herokuapp.com"
+        "http://ioniq-app.herokuapp.com",
+        "https://ioniq-app.herokuapp.com"
     ]
 else:
     origins = "*"
