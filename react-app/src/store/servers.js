@@ -133,8 +133,8 @@ export const delete_server = (serverId) => async (dispatch) => {
 //}
 
 
-
-export default function reducer(state = [], action) {
+let initialState = {};
+export default function reducer(state = initialState, action) {
     switch (action.type) {
         case LOAD_SERVERS:
             let serverlist = []

@@ -138,9 +138,10 @@ export const delete_channel = (channelId) => async (dispatch) => {
 //  }
 //}
 
+let initialState = {};
 
 
-export default function reducer(state = [], action) {
+export default function reducer(state = initialState, action) {
     switch (action.type) {
         case LOAD_CHANNELS:
             let channellist = []

@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
+import {useHistory} from 'react-router-dom'
 import './splashpage.css'
 
 const SplashPage = () => {
+    const history = useHistory()
+
+    const loginonclick = () =>{
+        history.push('/login')
+    }
 
 
     return (
@@ -20,7 +26,7 @@ const SplashPage = () => {
                             <a href="/">Careers</a>
 
                         </div>
-                        <div className="loginbutton"><button className="loginclick">Login</button></div>
+                        <div className="loginbutton"><button onClick={loginonclick} className="loginclick">Login</button></div>
                     </nav>
                 </div>
                 <div className="secondhalf">
