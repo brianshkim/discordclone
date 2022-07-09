@@ -4,6 +4,7 @@ import { get_servers } from '../../store/servers';
 import { get_channels } from '../../store/channels';
 import useRightClickMenu from './rightclickmenu/ServerDropDown';
 import Menu from './rightclickmenu/menu';
+import CreateServerModal from './createservermodal';
 import './dashboard.css'
 
 const ServerNav = () => {
@@ -22,12 +23,18 @@ const ServerNav = () => {
 
     const stopmenu = (e)=>{
         e.preventDefault()
-        setShowMenu(true);
+
     }
 
     const handleClick = () => {
-        showMenu && setShowMenu(false)
+        setShowMenu(false)
       }
+
+      useEffect(() => {
+        dispatch(get_servers(user.id))
+
+
+    }, [])
 
 
     useEffect(()=>{
@@ -36,32 +43,18 @@ const ServerNav = () => {
         document.addEventListener('contextmenu', stopmenu )
         return () => {
             document.addEventListener("click", handleClick);
-
             document.removeEventListener("contextmenu", stopmenu);
           };
     })
 
 
-    useEffect(() => {
-        dispatch(get_servers(user.id))
 
 
-    }, [])
 
-
-    const rightonclick = (e, serverid) => (
-
-       document.getElementById(`${serverid}`).onmousedown = function(e){
-
-        if (e.which===3) {
-            setShowMenu(true)
-
-        }
+    const rightonclick = (e, serverid) => {
+        e.preventDefault()
+        setShowMenu(true)
        }
-
-    )
-
-
 
 
     return (
@@ -69,21 +62,15 @@ const ServerNav = () => {
         <div className="servernavcontainer">
             <div className="serverslist">
             {servers && servers.list && servers.list.map((Server) => (
-                <button id={Server.id} className="serverbuttons" onClick={(e)=>rightonclick(e, Server.id)}>{showMenu && <Menu showMenu={showMenu}/>}sfafsadf </button>
+                <button id={Server.id} className="serverbuttons" onContextMenu={(e)=>rightonclick(e, Server.id)} >{showMenu && <Menu showMenu={showMenu}/>}sfafsadf </button>
 
             ))}
             </div>
             <div className="addserversbutton">
-                <button className="addserver"><i class="fa-solid fa-plus fa-2x"></i></button>
+                <CreateServerModal />
+
 
             </div>
-
-
-
-
-
-
-
 
         </div>
 

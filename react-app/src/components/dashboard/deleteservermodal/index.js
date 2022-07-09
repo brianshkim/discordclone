@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Modal } from '../../../context/Modal'
-import CreateServerForm from './createserverform';
+import DeleteServerForm from './createserverform';
 
 
-function CreateServerModal() {
+function DeleteServerModal() {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -12,11 +12,11 @@ function CreateServerModal() {
 
       {showModal &&
         (<Modal onClose={() => setShowModal(false)}>
-          <CreateServerForm closeModal={() => setShowModal(false)} />
+          <DeleteServerForm closeModal={() => setShowModal(false)} />
         </Modal>
         )}
     </>
   );
 }
 
-export default CreateServerModal;
+export default DeleteServerModal;

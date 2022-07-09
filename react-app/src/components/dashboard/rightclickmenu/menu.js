@@ -24,9 +24,9 @@ const Menu = ({x , y, showMenu}) =>{
 
     return(
         <div style={style()}>
-            <div style={style.div}>Button 1</div>
-            <div style={{...style.div, ...style.margin}}>Button 2</div>
-            <div style={style.div}>Button 3</div>
+            <div style={style.div}>Delete Server</div>
+            <div style={{...style.div, ...style.margin}}>Edit Server</div>
+            <div style={style.div}>Create Channel</div>
 
         </div>
 

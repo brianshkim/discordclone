@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { create_server } from "../../../store/servers";
+import { delete_server } from "../../../store/servers";
 
 
 
-const CreateServerForm = ({closeModal}) => {
+const CreateServerForm = ({closeModal, serverid}) => {
     const dispatch = useDispatch()
     const user= useSelector(state => state.session.user)
     const [name, setName] = useState("")
@@ -12,13 +12,10 @@ const CreateServerForm = ({closeModal}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(create_server(user.id, name))
+        dispatch(create_server(serverid))
         closeModal()
 
     };
-
-
-
 
 
     return (
@@ -26,14 +23,14 @@ const CreateServerForm = ({closeModal}) => {
             <form
                 onSubmit={handleSubmit}
             >
-                <label>Create a Server</label>
+                <label>Delete Server</label>
                 <input
                 type="text"
                 value={name}
                 onChange={(e)=>setName(e.target.value)}>
                 </input>
 
-                <button id="submitcreate" type="submit" >Create</button>
+                <button id="submitcreate" type="submit" >Delete</button>
             </form>
 
         </div>
