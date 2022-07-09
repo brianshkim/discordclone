@@ -49,3 +49,18 @@ body{
     background-color: #36393F
 
 }
+
+.serverslist{
+    height: 90%;
+}
+.addserversbutton{
+    height: 10%;
+}
+.addserver{
+    margin-top: 20px;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    background-color:  #2F3136;
+    border: none;
+}

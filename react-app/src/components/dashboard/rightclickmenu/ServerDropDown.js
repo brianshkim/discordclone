@@ -1,10 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState, useEffect, useCallback } from 'react';
 
 
-const ServerDropDown = () =>{
+const useRightClickMenu = () => {
+    const [x, setX] = useState(0);
+    const [y, setY] = useState(0);
+    const [showMenu, setShowMenu] = useState(false);
 
-    return (
 
-    )
-}
+    const handleContextMenu = (e) => {
+        e.preventDefault();
+        console.log(e.pageX)
+
+        setX(e.PageX);
+        setY(e.PageY);
+        setShowMenu(true);
+      }
+
+
+
+    const handleClick = () => {
+      showMenu && setShowMenu(false)
+    }
+
+    useEffect(() => {
+      document.addEventListener("click", handleClick);
+      document.addEventListener("contextmenu", handleContextMenu);
+      return () => {
+        document.addEventListener("click", handleClick);
+        document.removeEventListener("contextmenu", handleContextMenu);
+      };
+    });
+
+    return { x, y, showMenu };
+  };
+
+  export default useRightClickMenu
