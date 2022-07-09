@@ -25,7 +25,7 @@ const Menu = ({x , y, showMenu}) =>{
     return(
         <div style={style()}>
             <div style={style.div}>Button 1</div>
-            <div style={{...style.div, ...style.margin}}>=>Button 2</div>
+            <div style={{...style.div, ...style.margin}}>Button 2</div>
             <div style={style.div}>Button 3</div>
 
         </div>

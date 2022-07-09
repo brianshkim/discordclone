@@ -11,7 +11,9 @@ const ServerNav = () => {
     const user = useSelector(state => state.session.user)
     const [name, setName] = useState('')
     const [editName, setEditName] = useState('')
-    const [anchorPoint, setAnchorPoint] = useState({ x: 0, y: 0 })
+    const [x, setX] = useState(0);
+    const [y, setY] = useState(0);
+
     const [show, setShow] = useState(false)
     const [showMenu, setShowMenu] = useState(false)
 
@@ -20,13 +22,23 @@ const ServerNav = () => {
 
     const stopmenu = (e)=>{
         e.preventDefault()
+        setShowMenu(true);
     }
+
+    const handleClick = () => {
+        showMenu && setShowMenu(false)
+      }
 
 
     useEffect(()=>{
 
-        document.addEventListener("click", ()=>setShowMenu(false))
+        document.addEventListener("click", handleClick);
         document.addEventListener('contextmenu', stopmenu )
+        return () => {
+            document.addEventListener("click", handleClick);
+
+            document.removeEventListener("contextmenu", stopmenu);
+          };
     })
 
 
@@ -37,15 +49,17 @@ const ServerNav = () => {
     }, [])
 
 
-    const rightonclick = (e, serverid) => {
-        e.preventDefault()
-       document.getElementById(`${serverid}`).onmousedown = function(e){
-        e.preventDefault()
-        setShowMenu(true)
+    const rightonclick = (e, serverid) => (
 
+       document.getElementById(`${serverid}`).onmousedown = function(e){
+
+        if (e.which===3) {
+            setShowMenu(true)
+
+        }
        }
 
-    }
+    )
 
 
 
