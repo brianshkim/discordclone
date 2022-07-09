@@ -6,7 +6,7 @@ class Message(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(), nullable=False, unique=True)
-    channelId = db.Column(db.Integer, db.ForeignKey("channels.id"))
+    channelId = db.Column(db.Integer, db.ForeignKey("channels.id", ondelete="CASCADE"))
     userId = db.Column(db.Integer, db.ForeignKey("users.id"))
     createdate = db.Column(db.DateTime)
 
@@ -18,5 +18,5 @@ class Message(db.Model):
         'userId': self.userId
         }
 
-    channels = db.relationship("Channel", back_populates="messages")
+    channels = db.relationship("Channel", back_populates="messages", cascade="all,delete")
     users = db.relationship("User", back_populates="messages")

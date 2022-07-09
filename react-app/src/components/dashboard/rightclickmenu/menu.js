@@ -1,7 +1,9 @@
+import DeleteServerModal from "../deleteservermodal"
+import EditServerModal from "../editservermodal"
 
 
-const Menu = ({x , y, showMenu}) =>{
-
+const Menu = ({x , y,  serverid, display}) =>{
+console.log(serverid)
     const style = () =>{
         return {
             height: 200,
@@ -15,7 +17,7 @@ const Menu = ({x , y, showMenu}) =>{
             top: y,
             left: x,
             position: 'absolute',
-            display: showMenu ? 'flex':"none",
+            display,
         }
 
 
@@ -24,8 +26,8 @@ const Menu = ({x , y, showMenu}) =>{
 
     return(
         <div style={style()}>
-            <div style={style.div}>Delete Server</div>
-            <div style={{...style.div, ...style.margin}}>Edit Server</div>
+            <div><DeleteServerModal serverid={serverid}/></div>
+            <div style={{...style.div, ...style.margin}}><EditServerModal serverid={serverid}/></div>
             <div style={style.div}>Create Channel</div>
 
         </div>

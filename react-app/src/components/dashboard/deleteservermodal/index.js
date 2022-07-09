@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { Modal } from '../../../context/Modal'
-import DeleteServerForm from './createserverform';
+import DeleteServerForm from './deleteserverform';
 
 
-function DeleteServerModal() {
+function DeleteServerModal({serverid}) {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-    <button className="addserver" onClick={() => setShowModal(true)}><i class="fa-solid fa-plus fa-2x"></i></button>
+    <button className="deleteserver" onClick={() => setShowModal(true)}>Delete Server</button>
 
       {showModal &&
         (<Modal onClose={() => setShowModal(false)}>
-          <DeleteServerForm closeModal={() => setShowModal(false)} />
+          <DeleteServerForm serverid={serverid} closeModal={() => setShowModal(false)} />
         </Modal>
         )}
     </>

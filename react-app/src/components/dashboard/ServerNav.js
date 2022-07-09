@@ -14,6 +14,8 @@ const ServerNav = () => {
     const [editName, setEditName] = useState('')
     const [x, setX] = useState(0);
     const [y, setY] = useState(0);
+    const [serverId, setserverId] = useState(null)
+    const [display, setDisplay] = useState("none")
 
     const [show, setShow] = useState(false)
     const [showMenu, setShowMenu] = useState(false)
@@ -27,7 +29,7 @@ const ServerNav = () => {
     }
 
     const handleClick = () => {
-        setShowMenu(false)
+        setDisplay("none")
       }
 
       useEffect(() => {
@@ -52,19 +54,30 @@ const ServerNav = () => {
 
 
     const rightonclick = (e, serverid) => {
+        e.stopPropagation()
         e.preventDefault()
-        setShowMenu(true)
-       }
+        setserverId(serverid)
+        setDisplay("flex")
+        setX(e.pageX)
+        setY(e.pageY)
+
+
+    }
 
 
     return (
 
         <div className="servernavcontainer">
             <div className="serverslist">
+                <ul>
             {servers && servers.list && servers.list.map((Server) => (
-                <button id={Server.id} className="serverbuttons" onContextMenu={(e)=>rightonclick(e, Server.id)} >{showMenu && <Menu showMenu={showMenu}/>}sfafsadf </button>
+
+
+                <li key={Server.id}><button id={Server.id} className="serverbuttons" onContextMenu={(e)=>rightonclick(e, Server.id)} > {serverId===Server.id && <Menu x={x} y={y} serverid={Server.id} display={display}/>}{Server.name} </button></li>
 
             ))}
+            <button>asfsf</button>
+            </ul>
             </div>
             <div className="addserversbutton">
                 <CreateServerModal />
