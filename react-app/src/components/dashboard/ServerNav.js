@@ -60,7 +60,7 @@ const ServerNav = () => {
             ))}
             </div>
             <div className="addserversbutton">
-                <button className="addserver"><i class="fa-solid fa-plus fa-2x" style="--fa-primary-color: limegreen;"></i></button>
+                <button className="addserver"><i class="fa-solid fa-plus fa-2x"></i></button>
 
             </div>
 
