@@ -28,6 +28,10 @@ body{
     background-color: #2F3136;
 
 }
+.friendslistlist{
+    color:black;
+}
+
 .CMContainer{
     flex-grow: 1;
     background-color: #36393F;

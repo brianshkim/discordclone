@@ -61,6 +61,7 @@ def channels_edit(channelid):
     req = request.get_json()
     channel = Channel.query.get(channelid)
     channel.name = req
+    db.session.commit()
     return channel.to_dict()
 
 
