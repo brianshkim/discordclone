@@ -38,9 +38,6 @@ const Channels =() =>{
         dispatch(delete_channel(2))
     }
 
-
-
-
     return(
     <div>
         <div>

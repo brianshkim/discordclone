@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom';
 import { get_servers } from '../../store/servers';
 import { get_channels } from '../../store/channels';
 import useRightClickMenu from './rightclickmenu/ServerDropDown';
@@ -9,8 +10,10 @@ import './dashboard.css'
 import JoinServerModal from './joinservermodal';
 
 const ServerNav = () => {
+    const history = useHistory()
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
+    const allservers = useSelector(state=>state.servers.list)
     const [name, setName] = useState('')
     const [editName, setEditName] = useState('')
     const [x, setX] = useState(0);
@@ -48,8 +51,13 @@ const ServerNav = () => {
         };
     })
 
+    const gotoserver =(e, serverid)=>{
+        e.preventDefault()
+        let filtered = allservers.filter(server=>server.id==serverid)
+        history.push(`/channels/${serverid}/${filtered[0].id}`)
 
 
+    }
 
 
     const rightonclick = (e, serverid) => {
@@ -72,7 +80,10 @@ const ServerNav = () => {
                     {servers && servers.list && servers.list.map((Server) => (
 
 
-                        <li key={Server.id}><button id={Server.id} className="serverbuttons" onContextMenu={(e) => rightonclick(e, Server.id)} > {serverId === Server.id && <Menu x={x} y={y} serverid={Server.id} display={display} />}{Server.name} </button></li>
+                        <li key={Server.id}><button id={Server.id}
+                        onClick={(e)=>gotoserver(e, Server.id)}
+                        className="serverbuttons"
+                        onContextMenu={(e) => rightonclick(e, Server.id)} > {serverId === Server.id && <Menu x={x} y={y} serverid={Server.id} display={display} />}{Server.name} </button></li>
 
                     ))}
                     <button>asfsf</button>

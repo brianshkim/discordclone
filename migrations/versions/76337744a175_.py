@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 302cfc13c2ae
+Revision ID: 76337744a175
 Revises: 
-Create Date: 2022-07-08 09:07:13.621777
+Create Date: 2022-07-09 22:04:23.595777
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '302cfc13c2ae'
+revision = '76337744a175'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -55,8 +55,8 @@ def upgrade():
     op.create_table('serverlists',
     sa.Column('userId', sa.Integer(), nullable=False),
     sa.Column('serverId', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['serverId'], ['servers.id'], ),
-    sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['serverId'], ['servers.id'], ondelete='CASCADE'),
+    sa.ForeignKeyConstraint(['userId'], ['users.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('userId', 'serverId')
     )
     op.create_table('messages',
@@ -65,7 +65,7 @@ def upgrade():
     sa.Column('channelId', sa.Integer(), nullable=True),
     sa.Column('userId', sa.Integer(), nullable=True),
     sa.Column('createdate', sa.DateTime(), nullable=True),
-    sa.ForeignKeyConstraint(['channelId'], ['channels.id'], ),
+    sa.ForeignKeyConstraint(['channelId'], ['channels.id'], ondelete='CASCADE'),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('content')

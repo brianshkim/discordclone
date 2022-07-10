@@ -43,12 +43,13 @@ function App() {
         <ProtectedRoute path='/home' exact={true} >
           <Home />
         </ProtectedRoute>
-        <ProtectedRoute path='/channels' exact={true} >
+        <ProtectedRoute path={['/channels', '/channels/:serverid/:channelid']} exact={true} >
           <Dashboard />
         </ProtectedRoute>
         <ProtectedRoute path='/chat' exact={true}>
           <Chat />
         </ProtectedRoute>
+
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
