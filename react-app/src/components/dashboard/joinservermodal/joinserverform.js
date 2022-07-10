@@ -7,6 +7,7 @@ import { get_servers } from "../../../store/servers";
 const JoinServerForm = ({ closeModal, serverid }) => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
+    console.log(useSelector(state=>state.allservers.list))
     const servers = useSelector(state => state.allservers.list).filter(Server => Server.adminId !== user.id)
 
 
