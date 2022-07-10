@@ -23,10 +23,6 @@ const FriendsList = () => {
         setDisplay("none")
     }
 
-    console.log(servers)
-
-
-
 
     useEffect(() => {
 
@@ -59,7 +55,7 @@ const FriendsList = () => {
             <ul>
                 {!!channels && channels.length > 0 &&
                     channels.map(channel =>
-                        <li onContextMenu={(e) => rightonclick(e, channel.id)} contex><Link to={`/channels/${channel.serverId}/${channel.id}`} >{channel.name}<Menu x={x} y={y} channelid={channel.id} display={display} />{channel.name}</Link></li>)}
+                        <li onContextMenu={(e) => rightonclick(e, channel.id)} contex><Link to={`/channels/${channel.serverId}/${channel.id}`} >{channel.name}<Menu x={x} y={y} channelid={channel.id} display={display} /></Link></li>)}
             </ul>
 
         </div>

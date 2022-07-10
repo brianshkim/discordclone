@@ -27,8 +27,8 @@ const deletechannel = (channel) => ({
 
 
 
-export const get_channels = (id) => async (dispatch) => {
-    const response = await fetch(`/api/servers/${id}/channels`);
+export const get_channels = (serverid) => async (dispatch) => {
+    const response = await fetch(`/api/servers/${serverid}/channels`);
     const data = await response.json()
     dispatch(getchannels(data.channels));
 

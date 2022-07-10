@@ -1,6 +1,4 @@
-import DeleteServerModal from "../deleteservermodal"
-import EditServerModal from "../editservermodal"
-import CreateChannelModal from "../createchannel"
+import EditChannelModal from './editchannelmodal'
 
 
 const Menu = ({x , y,  channelid, display}) =>{
@@ -27,7 +25,7 @@ console.log(channelid)
 
     return(
         <div style={style()}>
-            <div>Edit Channel</div>
+            <div><EditChannelModal channelid={channelid}/></div>
             <div style={{...style.div, ...style.margin}}>Delete Channel</div>
             <div style={style.div}></div>
 
