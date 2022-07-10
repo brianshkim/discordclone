@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom';
+import { useHistory, Route, Redirect } from 'react-router-dom';
 import { get_servers } from '../../store/servers';
 import { get_channels } from '../../store/channels';
 import Menu from './rightclickmenu/menu';
 import CreateServerModal from './createservermodal';
 import './dashboard.css'
 import JoinServerModal from './joinservermodal';
+import FriendsList from './friendslist';
 
 const ServerNav = () => {
     const history = useHistory()
@@ -47,7 +48,7 @@ const ServerNav = () => {
 
         let filtered = allservers.filter(server=>server.id==serverid)
         dispatch(get_channels(serverid))
-        history.push(`/channels/${serverid}/${filtered[0].id}`)
+        history.push(`/channels/${serverid}/${filtered[0].id}?`)
 
 
     }
@@ -66,6 +67,7 @@ const ServerNav = () => {
 
 
     return (
+
 
         <div className="servernavcontainer">
             <div className="serverslist">
@@ -93,6 +95,7 @@ const ServerNav = () => {
 
 
         </div>
+
 
     )
 }

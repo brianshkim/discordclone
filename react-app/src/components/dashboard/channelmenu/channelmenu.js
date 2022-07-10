@@ -1,4 +1,5 @@
 import EditChannelModal from './editchannelmodal'
+import DeleteChannelModal from './deletechannelmodal'
 
 
 const Menu = ({x , y,  channelid, display}) =>{
@@ -26,7 +27,7 @@ console.log(channelid)
     return(
         <div style={style()}>
             <div><EditChannelModal channelid={channelid}/></div>
-            <div style={{...style.div, ...style.margin}}>Delete Channel</div>
+            <div style={{...style.div, ...style.margin}}><DeleteChannelModal channelid={channelid}/></div>
             <div style={style.div}></div>
 
         </div>

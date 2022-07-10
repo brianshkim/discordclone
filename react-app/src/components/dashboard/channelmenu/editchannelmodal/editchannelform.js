@@ -6,9 +6,9 @@ import { update_channel, get_channels } from "../../../../store/channels"
 
 const EditChannelForm = ({ closeModal, channelid }) => {
     const dispatch = useDispatch()
+    console.log(channelid)
     const user = useSelector(state => state.session.user)
     const channel = useSelector(state => state.channels.list).filter(channel => channel.id == channelid)
-    console.log(channelid)
     const [name, setName] = useState(`${channel[0].name}`)
 
 

@@ -14,7 +14,7 @@ const Home =() =>{
 
     useEffect (()=>{
         dispatch(get_servers(user.id))
-        dispatch(get_channels)
+
 
     }, [])
 

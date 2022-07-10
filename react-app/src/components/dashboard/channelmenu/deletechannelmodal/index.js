@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
-import { Modal } from '../../../context/Modal'
-import DeleteServerForm from './deleteserverform';
+import { Modal } from '../../../../context/Modal'
+import DeleteChannelForm from './deletechannelform';
 
 
-function DeleteServerModal({serverid}) {
+function DeleteChannelModal({channelid}) {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-    <button className="deleteserver" onClick={() => setShowModal(true)}>Delete Server</button>
+    <button className="deletechannel" onClick={() => setShowModal(true)}>Delete Channel</button>
 
       {showModal &&
         (<Modal onClose={() => setShowModal(false)}>
-          <DeleteServerForm serverid={serverid} closeModal={() => setShowModal(false)} />
+          <DeleteChannelForm channelid={channelid} closeModal={() => setShowModal(false)} />
         </Modal>
         )}
     </>
   );
 }
 
-export default DeleteServerModal;
+export default DeleteChannelModal;

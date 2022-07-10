@@ -13,6 +13,7 @@ import Home from './components/home';
 import Channels from './components/channel';
 import SplashPage from './components/SplashPage/splashpage';
 import Dashboard from './components/dashboard/dashboard';
+import FriendsList from './components/dashboard/friendslist';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -31,7 +32,7 @@ function App() {
 
   return (
     <BrowserRouter>
-    <NavBar />
+      <NavBar />
 
       <Switch>
         <Route path={['/login', '/register' ]} exact={true}>
@@ -43,9 +44,12 @@ function App() {
         <ProtectedRoute path='/home' exact={true} >
           <Home />
         </ProtectedRoute>
-        <ProtectedRoute path={['/channels', '/channels/:serverid/:channelid']} exact={true} >
+        <ProtectedRoute path={['/channels', '/channels/:serverid/:channelid']} exact={true}>
           <Dashboard />
+
+
         </ProtectedRoute>
+
         <ProtectedRoute path='/chat' exact={true}>
           <Chat />
         </ProtectedRoute>

@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Switch, useParams, Link } from 'react-router-dom';
+import { Switch, useParams, NavLink, useLocation, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import './dashboard.css'
 import Menu from './channelmenu/channelmenu'
+import { get_channels } from '../../store/channels';
 
 const FriendsList = () => {
+    const location = useLocation()
+    const dispatch = useDispatch()
     const { serverid } = useParams()
-    const servers = useSelector(state => state?.servers?.list)
-    const channels = useSelector(state => state?.channels?.list)
+    const {channelid} = useParams()
+    const servers = useSelector(state => state.servers.list)
+    const channels = useSelector(state => state.channels.list)
+    console.log(serverid, channelid)
 
     const [x, setX] = useState(0);
     const [y, setY] = useState(0);
@@ -22,6 +27,10 @@ const FriendsList = () => {
     const handleClick = () => {
         setDisplay("none")
     }
+    useEffect(()=>{
+        dispatch(get_channels(serverid))
+
+    }, [])
 
 
     useEffect(() => {
@@ -51,14 +60,19 @@ const FriendsList = () => {
 
 
     return (
+        <>
+
+
         <div className="friendslistcontainer">
             <ul>
                 {!!channels && channels.length > 0 &&
                     channels.map(channel =>
-                        <li onContextMenu={(e) => rightonclick(e, channel.id)} contex><Link to={`/channels/${channel.serverId}/${channel.id}`} >{channel.name}<Menu x={x} y={y} channelid={channel.id} display={display} /></Link></li>)}
+                        <div  onContextMenu={(e) => rightonclick(e, channel.id)} ><NavLink className="friendslistlist" to={`/channels/${channel.serverId}/${channel.id}`} >{channel.name}{channelId ==channel.id && <Menu x={x} y={y} channelid={channel.id} display={display} />}</NavLink></div>)}
             </ul>
 
         </div>
+
+      </>
     )
 }
 
