@@ -6,6 +6,7 @@ import useRightClickMenu from './rightclickmenu/ServerDropDown';
 import Menu from './rightclickmenu/menu';
 import CreateServerModal from './createservermodal';
 import './dashboard.css'
+import JoinServerModal from './joinservermodal';
 
 const ServerNav = () => {
     const dispatch = useDispatch()
@@ -23,30 +24,28 @@ const ServerNav = () => {
 
     const servers = useSelector(state => state?.servers)
 
-    const stopmenu = (e)=>{
+    const stopmenu = (e) => {
         e.preventDefault()
 
     }
 
     const handleClick = () => {
         setDisplay("none")
-      }
+    }
 
-      useEffect(() => {
-        dispatch(get_servers(user.id))
-
-
-    }, [])
+    console.log(servers)
 
 
-    useEffect(()=>{
+
+
+    useEffect(() => {
 
         document.addEventListener("click", handleClick);
-        document.addEventListener('contextmenu', stopmenu )
+        document.addEventListener('contextmenu', stopmenu)
         return () => {
             document.addEventListener("click", handleClick);
             document.removeEventListener("contextmenu", stopmenu);
-          };
+        };
     })
 
 
@@ -70,20 +69,24 @@ const ServerNav = () => {
         <div className="servernavcontainer">
             <div className="serverslist">
                 <ul>
-            {servers && servers.list && servers.list.map((Server) => (
+                    {servers && servers.list && servers.list.map((Server) => (
 
 
-                <li key={Server.id}><button id={Server.id} className="serverbuttons" onContextMenu={(e)=>rightonclick(e, Server.id)} > {serverId===Server.id && <Menu x={x} y={y} serverid={Server.id} display={display}/>}{Server.name} </button></li>
+                        <li key={Server.id}><button id={Server.id} className="serverbuttons" onContextMenu={(e) => rightonclick(e, Server.id)} > {serverId === Server.id && <Menu x={x} y={y} serverid={Server.id} display={display} />}{Server.name} </button></li>
 
-            ))}
-            <button>asfsf</button>
-            </ul>
+                    ))}
+                    <button>asfsf</button>
+                </ul>
+            </div>
+
+            <div className="joinserverbutton">
+                <JoinServerModal />
+
             </div>
             <div className="addserversbutton">
                 <CreateServerModal />
-
-
             </div>
+
 
         </div>
 

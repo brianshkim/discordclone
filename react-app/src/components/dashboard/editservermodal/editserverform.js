@@ -22,8 +22,6 @@ const EditServerForm = ({closeModal, serverid}) => {
 
 
 
-
-
     return (
         <div className="servercreatecontainer">
             <form

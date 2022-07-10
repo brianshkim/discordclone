@@ -5,10 +5,9 @@ server_routes = Blueprint('servers', __name__)
 
 
 @server_routes.route('/')
-@login_required
 def servers():
     servers = Server.query.all()
-    return servers.get_users()
+    return {"allservers": [server.to_dict() for server in servers]}
 
 
 @server_routes.route('/<int:id>', methods=['post'])
