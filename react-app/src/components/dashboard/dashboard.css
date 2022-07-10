@@ -51,10 +51,10 @@ body{
 }
 
 .serverslist{
-    height: 90%;
+    height: 80%;
 }
 .addserversbutton{
-    height: 10%;
+    height: 20%;
 }
 .addserver{
     margin-top: 20px;

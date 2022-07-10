@@ -160,9 +160,6 @@ export default function reducer(state = initialState, action) {
 
             return newstate
         case DELETE_SERVER:
-            console.log(action.server)
-            console.log(state.servers)
-
 
             return state.list.filter(server=>(
                 server.id != action.server

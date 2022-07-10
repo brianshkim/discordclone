@@ -1,36 +1,33 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { delete_server } from "../../../store/servers";
+import { get_servers, delete_server } from "../../../store/servers";
 
 
 
-const CreateServerForm = ({closeModal, serverid}) => {
+const DeleteServerForm = ({closeModal, serverid}) => {
     const dispatch = useDispatch()
     const user= useSelector(state => state.session.user)
-    const [name, setName] = useState("")
+    console.log(serverid)
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(create_server(serverid))
+        e.stopPropagation()
+        await dispatch(delete_server(serverid)).then(()=>dispatch(get_servers(user.id)))
         closeModal()
 
     };
 
 
     return (
-        <div className="servercreatecontainer">
+        <div className="deletecontainer">
             <form
                 onSubmit={handleSubmit}
             >
                 <label>Delete Server</label>
-                <input
-                type="text"
-                value={name}
-                onChange={(e)=>setName(e.target.value)}>
-                </input>
 
-                <button id="submitcreate" type="submit" >Delete</button>
+
+                <button id="delete-server" type="submit" >Delete</button>
             </form>
 
         </div>
@@ -40,4 +37,4 @@ const CreateServerForm = ({closeModal, serverid}) => {
 
 };
 
-export default CreateServerForm
+export default DeleteServerForm
