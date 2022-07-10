@@ -12,6 +12,7 @@ const DeleteServerForm = ({closeModal, serverid}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log("hello")
         e.stopPropagation()
         await dispatch(delete_server(serverid)).then(()=>dispatch(get_servers(user.id)))
         closeModal()
@@ -22,12 +23,12 @@ const DeleteServerForm = ({closeModal, serverid}) => {
     return (
         <div className="deletecontainer">
             <form
-                onSubmit={handleSubmit}
+
             >
                 <label>Delete Server</label>
 
 
-                <button id="delete-server" type="submit" >Delete</button>
+                <button id="delete-server" onClick={(e=>handleSubmit(e))} type="submit" >Delete</button>
             </form>
 
         </div>

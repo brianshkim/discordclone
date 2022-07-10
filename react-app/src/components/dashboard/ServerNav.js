@@ -53,8 +53,9 @@ const ServerNav = () => {
 
     const gotoserver =(e, serverid)=>{
         e.preventDefault()
-        e.stopPropagation()
+
         let filtered = allservers.filter(server=>server.id==serverid)
+        dispatch(get_channels(serverid))
         history.push(`/channels/${serverid}/${filtered[0].id}`)
 
 

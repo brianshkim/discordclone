@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { create_channel } from "../../../store/channels";
+import { create_channel, get_channels } from "../../../store/channels";
+import {useHistory} from 'react-router-dom'
 
 const CreateChannelForm = ({serverid, closeModal}) => {
     const dispatch = useDispatch()
+    const history = useHistory()
     const user= useSelector(state => state.session.user)
     const [name, setName] = useState("")
 
@@ -11,7 +13,8 @@ const CreateChannelForm = ({serverid, closeModal}) => {
         e.preventDefault();
         console.log("hello")
 
-        dispatch(create_channel(user.id,serverid,name))
+        await dispatch(create_channel(user.id,serverid,name)).then(()=>(dispatch(get_channels(serverid))))
+
         closeModal()
 
     };
@@ -19,7 +22,7 @@ const CreateChannelForm = ({serverid, closeModal}) => {
     return (
         <div className="channelcreatecontainer">
             <form
-                onSubmit={handleSubmit}
+
             >
                 <label>Create a Channel</label>
                 <input
@@ -28,7 +31,7 @@ const CreateChannelForm = ({serverid, closeModal}) => {
                 onChange={(e)=>setName(e.target.value)}>
                 </input>
 
-                <button id="submitcreatechannel" type="submit" >Create</button>
+                <button id="submitcreatechannel" onClick={(e)=>{handleSubmit(e)}} type="submit" >Create</button>
             </form>
 
         </div>
