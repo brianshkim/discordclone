@@ -8,7 +8,7 @@ const JoinServerForm = ({ closeModal, serverid }) => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
     console.log(useSelector(state=>state.allservers.list))
-    const servers = useSelector(state => state.allservers.list).filter(Server => Server.adminId !== user.id)
+    const servers = useSelector(state => state?.allservers?.list).filter(Server => Server.adminId !== user.id)
 
 
 
