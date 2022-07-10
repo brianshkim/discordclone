@@ -53,6 +53,7 @@ const ServerNav = () => {
 
     const gotoserver =(e, serverid)=>{
         e.preventDefault()
+        e.stopPropagation()
         let filtered = allservers.filter(server=>server.id==serverid)
         history.push(`/channels/${serverid}/${filtered[0].id}`)
 
@@ -86,7 +87,7 @@ const ServerNav = () => {
                         onContextMenu={(e) => rightonclick(e, Server.id)} > {serverId === Server.id && <Menu x={x} y={y} serverid={Server.id} display={display} />}{Server.name} </button></li>
 
                     ))}
-                    <button>asfsf</button>
+
                 </ul>
             </div>
 
