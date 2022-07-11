@@ -7,9 +7,12 @@ let socket;
 const Chat = () => {
     const [chatInput, setChatInput] = useState("");
     const [messages, setMessages] = useState([]);
+    const [userWelcome, setuserWelcome] = useState("")
     const user = useSelector(state => state.session.user)
     const {serverid, channelid} = useParams()
     console.log(serverid, channelid)
+
+    console.log(messages)
 
 
     useEffect(()=>{
@@ -20,12 +23,17 @@ const Chat = () => {
         // open socket connection
         // create websocket
         socket = io();
+        socket.on("welcome", (msg)=>{
+
+            setuserWelcome("Welcome to the chat "+msg)
+        })
         socket.emit('join', { channelId: channelid, username: user.username })
 
         socket.on("chat", (chat) => {
             setMessages(messages => [...messages, chat])
         })
         // when component unmounts, disconnect
+
         return (() => {
             socket.disconnect()
             setMessages("")
@@ -45,9 +53,10 @@ const Chat = () => {
 
     return (user && (
         <div>
+            <div>{!!userWelcome && userWelcome}</div>
             <div>
                 {!!messages && messages.map((message, ind) => (
-                    <div key={ind}>{`${message.user}: ${message.msg}`}</div>
+                    !!message.user && <div key={ind}>{ `${message.user}: ${message.msg}`}</div>
                 ))}
             </div>
             <form onSubmit={sendChat}>

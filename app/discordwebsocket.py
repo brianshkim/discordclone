@@ -31,7 +31,8 @@ def joinroom(data):
     join_room(room)
     print("ASDFKAJKFLJSAKLFJASDKLFJSAD", room)
     print ("ASJJRJRKJWKLRJWKER", username)
-    print(rooms)
 
 
-    emit(username + ' has entered the room.', room=room)
+
+
+    emit("welcome", f"{username}", room=room)

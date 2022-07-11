@@ -74,14 +74,14 @@ const ServerNav = () => {
 
         <div className="servernavcontainer">
             <div className="serverslist">
-                <ul>
+                <ul className="serverslistchild">
                     {servers && servers.list && servers.list.map((Server) => (
 
 
                         <li key={Server.id}><button id={Server.id}
                         onClick={(e)=>gotoserver(e, Server.id)}
                         className="serverbuttons"
-                        onContextMenu={(e) => rightonclick(e, Server.id)} > {serverId === Server.id && <Menu x={x} y={y} serverid={Server.id} display={display} />}{Server.name} </button></li>
+                        onContextMenu={(e) => rightonclick(e, Server.id)} > {serverId === Server.id && <Menu x={x} y={y} serverid={Server.id} display={display} />}{Server.name[0].toUpperCase()} </button></li>
 
                     ))}
 
