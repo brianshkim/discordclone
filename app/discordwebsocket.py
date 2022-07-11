@@ -1,4 +1,4 @@
-from flask_socketio import SocketIO, emit, join_room, leave_room, send
+from flask_socketio import SocketIO, emit, join_room, leave_room, send, rooms
 import os
 
 # create your SocketIO instance
@@ -18,7 +18,9 @@ socketio = SocketIO(cors_allowed_origins=origins)
 # handle chat messages
 @socketio.on("chat")
 def handle_chat(data):
-    emit("chat", data, broadcast=True)
+    print("123123j1231j", data)
+    room = data['channelId']
+    emit("chat", data, room=room)
 
 @socketio.on('join')
 def joinroom(data):
@@ -28,5 +30,8 @@ def joinroom(data):
 
     join_room(room)
     print("ASDFKAJKFLJSAKLFJASDKLFJSAD", room)
+    print ("ASJJRJRKJWKLRJWKER", username)
+    print(rooms)
+
 
     emit(username + ' has entered the room.', room=room)
