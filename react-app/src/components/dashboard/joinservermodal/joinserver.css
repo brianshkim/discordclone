@@ -1,0 +1,22 @@
+.joinserver{
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    background-color: #2F3136;
+    border-style: none;
+    cursor:pointer;
+}
+
+.joinserver:hover{
+    background-color: hsl(235,calc(var(--saturation-factor, 1)*85.6%),64.7%);
+    border-radius: 35%;
+    transition: 0.15s ease-out
+
+
+}
+
+.joinserver:focus{
+    background-color: hsl(235,calc(var(--saturation-factor, 1)*85.6%),64.7%);
+    border-radius: 35%;
+    transition: 0.15s ease-out
+}

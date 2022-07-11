@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from '../../../context/Modal'
 import JoinServerForm from './joinserverform';
+import './joinserver.css'
 
 
 function JoinServerModal() {
@@ -8,7 +9,7 @@ function JoinServerModal() {
 
   return (
     <>
-    <button className="editserver" onClick={() => setShowModal(true)}>Join Server</button>
+    <button className="joinserver" onClick={() => setShowModal(true)}><i class="fa-solid fa-compass fa-2x"></i></button>
 
       {showModal &&
         (<Modal onClose={() => setShowModal(false)}>
