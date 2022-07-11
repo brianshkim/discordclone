@@ -25,11 +25,16 @@ const LoginForm = (props) => {
     e.preventDefault();
 
     const data = await dispatch(login(email, password));
-    console.log(data)
+    let newdata = {}
     if (data) {
-      setErrors(data);
+
+      data.forEach((error)=>{
+      let errorarray = error.split(" : ")
+      newdata[errorarray[0]] = errorarray[1]})
 
     }
+    setErrors(newdata)
+    console.log(errors)
   };
 
 
@@ -59,7 +64,7 @@ const LoginForm = (props) => {
           </div>
           <div className="LoginInputContainer">
             <div className="Logininput">
-              <h5 className="emailtitle" htmlFor='email'>Email {errors.length > 0 && " - " && <span className="errors"> - {errors[0].split(': ')[1]}</span>}</h5>
+              <h5 className="emailtitle" htmlFor='email'>Email {errors.email && " - " && <span className="errors"> - {errors.email}</span>}</h5>
               <input
                 className="Logintext"
                 name='email'
@@ -71,7 +76,7 @@ const LoginForm = (props) => {
               </input>
             </div>
             <div className="PasswordInput">
-              <h5 className="passwordtitle" htmlFor='password'>Password{errors.length > 0 && " - " && <span className="errors"> - {errors[1].split(': ')[1]}</span>}</h5>
+              <h5 className="passwordtitle" htmlFor='password'>Password{errors.password && " - " && <span className="errors"> - {errors.password}</span>}</h5>
               <input
                 className="Passwordtext"
                 name='password'
