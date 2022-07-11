@@ -1,16 +1,21 @@
 import EditChannelModal from './editchannelmodal'
 import DeleteChannelModal from './deletechannelmodal'
+import { useSelector } from 'react-redux'
 
 
-const Menu = ({x , y,  channelid, display}) =>{
-console.log(channelid)
+const Menu = ({x , y,  channelid, serverid, display}) =>{
+const user = useSelector(state=>state.session.user)
+const server = useSelector(state=>state.servers.list).filter(server=>server.id==serverid)
+
+
+
     const style = () =>{
         return {
             height: 200,
             width: 150,
-            borderRadius: 10,
-            backgroundColor: "#FF5C58",
-            color: '#FCD2D1',
+            borderRadius: 3,
+            backgroundColor: "#18191c",
+            color: '#B9BBBE',
             display: 'flex',
             flexDirection: 'column',
             padding: 10,
@@ -26,8 +31,8 @@ console.log(channelid)
 
     return(
         <div style={style()}>
-            <div><EditChannelModal channelid={channelid}/></div>
-            <div style={{...style.div, ...style.margin}}><DeleteChannelModal channelid={channelid}/></div>
+            <div><EditChannelModal channelid={channelid} serverid={serverid}/></div>
+            <div style={{...style.div, ...style.margin}}><DeleteChannelModal channelid={channelid} serverid={serverid}/></div>
             <div style={style.div}></div>
 
         </div>

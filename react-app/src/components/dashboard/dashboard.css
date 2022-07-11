@@ -6,6 +6,7 @@ body{
     width: 100%;
     height: 103vh;
     display: flex;
+    flex: 1 1 auto;
     margin: 0px;
 
 
@@ -43,7 +44,35 @@ body{
 
 }
 .friendslistlist{
-    color:black;
+    color:#96989d;
+    font-size: 16px;
+    font-family: Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif
+}
+.friendslistheader{
+    color:white;
+
+    height: 24px;
+    padding: 12px 16px;
+    width: 85%;
+    border-bottom: 1px solid black;
+    text-align: left;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    font-family: Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif;
+
+}
+.listofchannels{
+    width:100%;
+
+}
+
+.channellist{
+    display:block;
+    height: 34px;
+    width: 100%;
+
 }
 
 .CMContainer{
@@ -51,6 +80,7 @@ body{
     background-color: #36393F;
     margin-top: 48px;
     display: flex;
+    outline: none;
 }
 
 .THContainer{
@@ -62,9 +92,10 @@ body{
     right: 0%;
 
     height: 48px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px black solid;
     width: calc(100% - 325px);
-    background-color: #36393F
+    background-color: #36393F;
+    position: absolute
 
 }
 
