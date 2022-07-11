@@ -24,7 +24,7 @@ const CreateServerForm = ({closeModal}) => {
     return (
         <div className="servercreatecontainer">
             <form
-                onSubmit={handleSubmit}
+
             >
                 <label>Create a Server</label>
                 <input
@@ -33,7 +33,7 @@ const CreateServerForm = ({closeModal}) => {
                 onChange={(e)=>setName(e.target.value)}>
                 </input>
 
-                <button id="submitcreate" type="submit" >Create</button>
+                <button id="submitcreate" onClick={(e)=>handleSubmit(e)}type="submit" >Create</button>
             </form>
 
         </div>
