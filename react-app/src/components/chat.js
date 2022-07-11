@@ -28,6 +28,7 @@ const Chat = () => {
         // when component unmounts, disconnect
         return (() => {
             socket.disconnect()
+            setMessages("")
         })
     }, [channelid, user.username])
 
@@ -37,7 +38,7 @@ const Chat = () => {
 
     const sendChat = (e) => {
         e.preventDefault()
-        socket.emit("chat", { user: user.username, msg: chatInput});
+        socket.emit("chat", { user: user.username, msg: chatInput, channelId:channelid});
 
         setChatInput("")
     }
@@ -45,7 +46,7 @@ const Chat = () => {
     return (user && (
         <div>
             <div>
-                {messages.map((message, ind) => (
+                {!!messages && messages.map((message, ind) => (
                     <div key={ind}>{`${message.user}: ${message.msg}`}</div>
                 ))}
             </div>
