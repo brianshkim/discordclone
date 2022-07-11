@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { create_server } from "../../../store/servers";
+import './createserver.css'
 
 
 
@@ -23,17 +24,22 @@ const CreateServerForm = ({closeModal}) => {
 
     return (
         <div className="servercreatecontainer">
+            <div className="servercreateheader">Customize your server</div>
+
             <form
 
             >
-                <label>Create a Server</label>
+                <h4 className="serverformcreate">Server Name</h4>
                 <input
+                className="createserverinput"
                 type="text"
                 value={name}
                 onChange={(e)=>setName(e.target.value)}>
                 </input>
+                <br></br>
+                <br></br>
 
-                <button id="submitcreate" onClick={(e)=>handleSubmit(e)}type="submit" >Create</button>
+                <div className="createserverbut"> <button id="submitcreate" onClick={(e)=>handleSubmit(e)}type="submit" >Create</button></div>
             </form>
 
         </div>
