@@ -4,7 +4,8 @@ from app.models import User, Message, Channel, db, Server
 server_routes = Blueprint('servers', __name__)
 
 
-@server_routes.route('/')
+@server_routes.route('/servers')
+@login_required
 def servers():
     servers = Server.query.all()
     return {"allservers": [server.to_dict() for server in servers]}

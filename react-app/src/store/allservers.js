@@ -11,7 +11,7 @@ const loadservers = (servers) => ({
 
 
 export const load_servers = (id) => async (dispatch) => {
-    const response = await fetch(`/api/servers`);
+    const response = await fetch(`/api/servers/servers`);
     const data = await response.json()
     console.log(data)
     dispatch(loadservers(data.allservers));
