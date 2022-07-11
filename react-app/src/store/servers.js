@@ -27,6 +27,8 @@ const deleteserver = (server) => ({
 
 
 
+
+
 export const get_servers = (id) => async (dispatch) => {
     const response = await fetch(`/api/users/${id}/servers`);
     const data = await response.json()
@@ -165,6 +167,7 @@ export default function reducer(state = initialState, action) {
                 server.id != action.server
 
             ))
+
 
         default:
             return state;

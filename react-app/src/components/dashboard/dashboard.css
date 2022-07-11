@@ -19,19 +19,15 @@ body{
     flex-direction: column;
     align-items: center;
     background-color: #202225;
-    overflow: hidden;
-
 
     min-height: 0;
 
-
-
 }
 
-.serverslistchild{
-    overflow-y: scroll hidden;
-
+.servernavcontainer::-webkit-scrollbar {
+    display: none;
 }
+
 
 
 .friendslistcontainer{
@@ -123,6 +119,11 @@ body{
 
 }
 .addserver:focus{
+    background-color: #37ff77;
+    border-radius: 35%;
+    transition: 0.15s ease-out
+}
+.addserver:active{
     background-color: #37ff77;
     border-radius: 35%;
     transition: 0.15s ease-out

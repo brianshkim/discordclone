@@ -25,8 +25,10 @@ const ServerNav = () => {
 
     }
 
-    const handleClick = () => {
+    const handleClick = (e) => {
+        e.preventDefault()
         setDisplay("none")
+
     }
 
     console.log(servers)
@@ -39,13 +41,16 @@ const ServerNav = () => {
         document.addEventListener("click", handleClick);
         document.addEventListener('contextmenu', stopmenu)
         return () => {
-            document.addEventListener("click", handleClick);
+
             document.removeEventListener("contextmenu", stopmenu);
+            document.addEventListener("click", handleClick);
         };
     })
 
     const gotoserver =(e, serverid)=>{
         e.preventDefault()
+        let button = document.getElementById(`button-${serverid}`)
+        button.focus()
 
         let filtered = allservers.filter(server=>server.id==serverid)
         dispatch(get_channels(serverid))
@@ -53,10 +58,7 @@ const ServerNav = () => {
         if (filtered && filtered.length > 0 && filtered[0].channels && filtered[0].channels.length>0) history.push(`/channels/${serverid}/${filtered[0].channels[0].id}`)
         else history.push(`/channels/${serverid}`)
 
-
-
     }
-
 
     const rightonclick = (e, serverid) => {
         e.stopPropagation()
@@ -69,7 +71,6 @@ const ServerNav = () => {
 
     }
 
-
     return (
 
 
@@ -79,7 +80,7 @@ const ServerNav = () => {
                     {servers && servers.list && servers.list.map((Server) => (
 
 
-                        <li key={Server.id}><button id={Server.id}
+                        <li key={Server.id}><button id={`button-${Server.id}`}
                         onClick={(e)=>gotoserver(e, Server.id)}
                         className="serverbuttons"
                         onContextMenu={(e) => rightonclick(e, Server.id)} > {serverId === Server.id && <Menu x={x} y={y} serverid={Server.id} display={display} />}{Server.name[0].toUpperCase()} </button></li>
