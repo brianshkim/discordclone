@@ -1,0 +1,21 @@
+.deleteserver{
+    width: 90%;
+    background-color: #18191c;
+    border: none;
+    color: #B9BBBE;
+    text-align: justify;
+    cursor: pointer;
+    margin-top: -2px;
+
+    height: 30px;
+    left: -30%;
+    margin-left: -20px;
+
+
+
+}
+
+.deleteserver:hover{
+    background-color: #738ADB;
+    color:white;
+}

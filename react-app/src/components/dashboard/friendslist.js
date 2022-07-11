@@ -47,10 +47,10 @@ const FriendsList = () => {
         document.addEventListener("click", handleClick);
         document.addEventListener('contextmenu', stopmenu)
         return () => {
-            document.addEventListener("click", handleClick);
+            document.removeEventListener("click", handleClick);
             document.removeEventListener("contextmenu", stopmenu);
         };
-    })
+    }, [])
 
 
     const rightonclick = (e, channelid) => {

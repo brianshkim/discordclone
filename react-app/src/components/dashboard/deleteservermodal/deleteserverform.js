@@ -27,7 +27,6 @@ const DeleteServerForm = ({closeModal, serverid}) => {
             >
                 <label>Delete Server</label>
 
-
                 <button id="delete-server" onClick={(e=>handleSubmit(e))} type="submit" >Delete</button>
             </form>
 

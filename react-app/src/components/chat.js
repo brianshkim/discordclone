@@ -64,7 +64,7 @@ const Chat = () => {
                     value={chatInput}
                     onChange={updateChatInput}
                 />
-                <button type="submit">Send</button>
+                <button type="submit" onClick={(e)=>sendChat(e)}>Send</button>
             </form>
         </div>
     )

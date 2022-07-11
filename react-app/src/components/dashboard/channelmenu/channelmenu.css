@@ -1,0 +1,29 @@
+.channelitem {
+    width: 100%;
+    margin: 2px 0px;
+    height: 25px;
+    padding: 6px 8px;
+}
+
+.channelitemseparator {
+    width: 100%;
+    border-bottom: 1px solid rgba(79, 84, 92, 0.48);
+}
+
+.channelbutton {
+
+    width: 90%;
+    height:100%;
+    background-color: #18191c;
+    border: none;
+    color: #B9BBBE;
+    text-align: justify;
+    cursor: pointer;
+    font-size: 14px;
+
+}
+
+.channelbutton:hover{
+    background-color: #738ADB;
+    color:white;
+}

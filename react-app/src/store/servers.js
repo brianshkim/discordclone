@@ -2,6 +2,7 @@ const LOAD_SERVERS = 'servers/GET_SERVERS'
 const CREATE_SERVER = 'servers/CREATE_SERVER'
 const UPDATE_SERVER = 'servers/UPDATE_SERVER'
 const DELETE_SERVER = 'servers/DELETE_SERVER'
+const UNLOAD_SERVER = 'servers/UNLOAD_SERVER'
 
 
 const getservers = (servers) => ({
@@ -25,9 +26,13 @@ const deleteserver = (server) => ({
 
 })
 
+const unloadserver = ()=>({
+    type: UNLOAD_SERVER
+})
 
-
-
+export const unload_server = () => async(dispatch)=>{
+    dispatch(unloadserver())
+}
 
 export const get_servers = (id) => async (dispatch) => {
     const response = await fetch(`/api/users/${id}/servers`);
@@ -167,6 +172,8 @@ export default function reducer(state = initialState, action) {
                 server.id != action.server
 
             ))
+        case UNLOAD_SERVER:
+            return initialState
 
 
         default:

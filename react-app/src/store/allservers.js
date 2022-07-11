@@ -1,5 +1,6 @@
 const LOAD_ALL_SERVERS = 'allservers/GET_ALL_SERVERS'
 const JOIN_SERVER = 'allservers/JOIN_SERVER'
+const UNLOAD_ALL_SERVERS = 'allservers/UNLOAD_ALL_SERVERS'
 
 
 const loadservers = (servers) => ({
@@ -7,8 +8,14 @@ const loadservers = (servers) => ({
     servers
 });
 
+const unloadallservers = () => ({
+    type: UNLOAD_ALL_SERVERS
+})
 
 
+export const unload_allservers = () => async(dispatch)=>{
+    dispatch(unloadallservers())
+}
 
 export const load_servers = (id) => async (dispatch) => {
     const response = await fetch(`/api/servers/servers`);
@@ -31,6 +38,8 @@ export default function reducer(state = initialState, action) {
                 return a.id - b.id
             })
             return {...state, list: serverlist}
+        case UNLOAD_ALL_SERVERS:
+            return initialState;
 
 
         default:

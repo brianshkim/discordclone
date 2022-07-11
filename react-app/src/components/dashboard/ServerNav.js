@@ -43,24 +43,24 @@ const ServerNav = () => {
         return () => {
 
             document.removeEventListener("contextmenu", stopmenu);
-            document.addEventListener("click", handleClick);
+            document.removeEventListener("click", handleClick);
         };
-    })
+    }, [])
 
-    const gotoserver =(e, serverid)=>{
+    const gotoserver = async(e, serverid)=>{
         e.preventDefault()
         let button = document.getElementById(`button-${serverid}`)
-        button.focus()
+
 
         let filtered = allservers.filter(server=>server.id==serverid)
-        dispatch(get_channels(serverid))
+        await dispatch(get_channels(serverid))
         console.log(filtered)
         if (filtered && filtered.length > 0 && filtered[0].channels && filtered[0].channels.length>0) history.push(`/channels/${serverid}/${filtered[0].channels[0].id}`)
         else history.push(`/channels/${serverid}`)
 
     }
 
-    const rightonclick = (e, serverid) => {
+    const rightonclick = async(e, serverid) => {
         e.stopPropagation()
         e.preventDefault()
         setserverId(serverid)

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from '../../../../context/Modal'
 import EditChannelForm from './editchannelform';
+import '../channelmenu.css'
 
 
 function EditChannelModal({channelid}) {
@@ -8,7 +9,7 @@ function EditChannelModal({channelid}) {
 
   return (
     <>
-    <button className="editchannel" onClick={() => setShowModal(true)}>Edit Channel</button>
+    <button className="channelbutton" onClick={() => setShowModal(true)}>Edit Channel</button>
 
       {showModal &&
         (<Modal onClose={() => setShowModal(false)}>

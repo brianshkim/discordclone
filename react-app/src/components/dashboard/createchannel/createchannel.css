@@ -1,0 +1,42 @@
+.channelcreatecontainer{
+    height: 190px;
+    width: 240px;
+    background-color: #36393f;;
+}
+
+.createchannelheader{
+    height: 32px;
+    padding: 16px;
+    font-family: "ABC Ginto Normal","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 13.5px;
+    color: white;
+}
+
+.createinputtitle{
+    color: #DCDDDE;
+    font-family: "ABC Ginto Normal","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    margin-top: 0px;
+    margin-left: 17px;
+    margin-bottom: 8px;
+}
+
+.createchannelinput{
+    margin-left: 15px;
+    padding: 10px 10px 10px 28px;
+    background-color: #202225;
+    border: none;
+}
+
+.createchannelbutton{
+    width: 90%;
+    display: flex;
+    margin-top: -10px;
+    justify-content: flex-end;
+
+}
+
+.submitcreatechannel{
+
+    margin-right: 10px;
+}

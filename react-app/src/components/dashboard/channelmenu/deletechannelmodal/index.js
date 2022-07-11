@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from '../../../../context/Modal'
 import DeleteChannelForm from './deletechannelform';
+import '../channelmenu.css'
 
 
 function DeleteChannelModal({channelid}) {
@@ -8,7 +9,7 @@ function DeleteChannelModal({channelid}) {
 
   return (
     <>
-    <button className="deletechannel" onClick={() => setShowModal(true)}>Delete Channel</button>
+    <button className="channelbutton" onClick={() => setShowModal(true)}>Delete Channel</button>
 
       {showModal &&
         (<Modal onClose={() => setShowModal(false)}>
