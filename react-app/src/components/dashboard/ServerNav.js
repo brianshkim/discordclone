@@ -81,7 +81,7 @@ const ServerNav = () => {
                         <li key={Server.id}><button id={Server.id}
                         onClick={(e)=>gotoserver(e, Server.id)}
                         className="serverbuttons"
-                        onContextMenu={(e) => rightonclick(e, Server.id)} > {serverId === Server.id && <Menu x={x} y={y} serverid={Server.id} display={display} />}{Server.name} </button></li>
+                        onContextMenu={(e) => rightonclick(e, Server.id)} > {serverId === Server.id && <Menu x={x} y={y} serverid={Server.id} display={display} />}{Server.name[0]} </button></li>
 
                     ))}
 
