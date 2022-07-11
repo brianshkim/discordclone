@@ -66,8 +66,6 @@ const FriendsList = () => {
     }
 
 
-
-
     return (
 
 
