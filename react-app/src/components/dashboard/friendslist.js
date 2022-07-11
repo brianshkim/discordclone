@@ -5,16 +5,20 @@ import { useDispatch, useSelector } from 'react-redux'
 import './dashboard.css'
 import Menu from './channelmenu/channelmenu'
 import { get_channels } from '../../store/channels';
+import { get_servers } from '../../store/servers';
 
 const FriendsList = () => {
     const location = useLocation()
     const dispatch = useDispatch()
     const { serverid } = useParams()
     const {channelid} = useParams()
-    const servers = useSelector(state => state.servers.list)
+
+    const user = useSelector(state=>state.session.user)
+    const servers = useSelector(state => state?.servers)
+
     const channels = useSelector(state => state.channels.list)
     let server = []
-    if (servers) server = servers.filter(server=>server.id==serverid)
+    if (servers && servers.list && servers.list.length>0) server=servers.list.filter(server=>server.id==serverid)
     console.log(server)
 
 
@@ -32,6 +36,7 @@ const FriendsList = () => {
         setDisplay("none")
     }
     useEffect(()=>{
+        dispatch(()=>get_servers(user.id))
         dispatch(get_channels(serverid))
 
     }, [])
@@ -42,10 +47,10 @@ const FriendsList = () => {
         document.addEventListener("click", handleClick);
         document.addEventListener('contextmenu', stopmenu)
         return () => {
-            document.addEventListener("click", handleClick);
+            document.removeEventListener("click", handleClick);
             document.removeEventListener("contextmenu", stopmenu);
         };
-    })
+    }, [])
 
 
     const rightonclick = (e, channelid) => {
@@ -67,7 +72,7 @@ const FriendsList = () => {
 
 
         <div className="friendslistcontainer">
-            <div className="friendslistheader">{!!servers && server[0].name}</div>
+            <div className="friendslistheader">{!!servers && !!servers.list && servers.list.length > 0 && server.length>0 && server[0].name}</div>
 
             <br></br>
             <ul className="listofchannels">

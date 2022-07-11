@@ -32,7 +32,7 @@ const EditChannelForm = ({ closeModal, channelid}) => {
                     onChange={(e) => setName(e.target.value)}>
                 </input>
 
-                <button id="submiteditchannel" onClick={(e) => { handleSubmit(e) }} type="submit" >Edit</button>
+               <div><button id="submiteditchannel" onClick={(e) => { handleSubmit(e) }} type="submit" >Edit</button></div>
             </form>
 
         </div>

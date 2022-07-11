@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from '../../../context/Modal'
 import EditServerForm from './editserverform';
+import "../deleteservermodal/deleteserver.css"
 
 
 function EditServerModal({serverid}) {
@@ -8,7 +9,7 @@ function EditServerModal({serverid}) {
 
   return (
     <>
-    <button className="editserver" onClick={() => setShowModal(true)}>Edit Server</button>
+    <button className="deleteserver" onClick={() => setShowModal(true)}>Edit Server</button>
 
       {showModal &&
         (<Modal onClose={() => setShowModal(false)}>

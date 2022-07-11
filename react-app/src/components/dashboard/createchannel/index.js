@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from '../../../context/Modal'
 import CreateChannelForm from './createchannelform';
+import "../deleteservermodal/deleteserver.css"
 
 
 function CreateChannelModal({serverid}) {
@@ -8,7 +9,7 @@ function CreateChannelModal({serverid}) {
 
   return (
     <>
-    <button className="createchannelbutton" onClick={() => setShowModal(true)}>Create Channel</button>
+    <button className="deleteserver" onClick={() => setShowModal(true)}>Create Channel</button>
 
       {showModal &&
         (<Modal onClose={() => setShowModal(false)}>

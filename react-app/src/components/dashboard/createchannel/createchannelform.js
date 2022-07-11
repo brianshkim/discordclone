@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { create_channel, get_channels } from "../../../store/channels";
 import {useHistory} from 'react-router-dom'
+import './createchannel.css'
 
 const CreateChannelForm = ({serverid, closeModal}) => {
     const dispatch = useDispatch()
@@ -24,14 +25,20 @@ const CreateChannelForm = ({serverid, closeModal}) => {
             <form
 
             >
-                <label>Create a Channel</label>
+                <div className="createchannelheader"><h2 className="createchanneltitle">Create a Channel</h2></div>
+
+                <div className="createchannelinputtitle"><h5 className="createinputtitle">CHANNEL NAME</h5></div>
                 <input
+                className="createchannelinput"
                 type="text"
                 value={name}
                 onChange={(e)=>setName(e.target.value)}>
                 </input>
+                <br></br>
+                <br></br>
+                <br></br>
 
-                <button id="submitcreatechannel" onClick={(e)=>{handleSubmit(e)}} type="submit" >Create</button>
+                <div className="createchannelbutton"><button id="submitcreatechannel" onClick={(e)=>{handleSubmit(e)}} type="submit" >Create</button></div>
             </form>
 
         </div>

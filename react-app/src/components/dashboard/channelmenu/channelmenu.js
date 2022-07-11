@@ -1,6 +1,7 @@
 import EditChannelModal from './editchannelmodal'
 import DeleteChannelModal from './deletechannelmodal'
 import { useSelector } from 'react-redux'
+import './channelmenu.css'
 
 
 const Menu = ({x , y,  channelid, serverid, display}) =>{
@@ -11,16 +12,15 @@ const server = useSelector(state=>state.servers.list).filter(server=>server.id==
 
     const style = () =>{
         return {
-            height: 200,
+            height: 150,
             width: 150,
             borderRadius: 3,
             backgroundColor: "#18191c",
             color: '#B9BBBE',
             display: 'flex',
             flexDirection: 'column',
-            padding: 10,
             top: y,
-            left: x,
+            left: x+80,
             position: 'absolute',
             display,
         }
@@ -30,11 +30,12 @@ const server = useSelector(state=>state.servers.list).filter(server=>server.id==
 
 
     return(
-        <div style={style()}>
-            <div><EditChannelModal channelid={channelid} serverid={serverid}/></div>
-            <div style={{...style.div, ...style.margin}}><DeleteChannelModal channelid={channelid} serverid={serverid}/></div>
-            <div style={style.div}></div>
-
+        <div className="channelmenu"style={style()}>
+            <div className='channelitem'><EditChannelModal channelid={channelid} serverid={serverid}/></div>
+            <div className='channelitemseparator'></div>
+            <div className='channelitem' ><DeleteChannelModal channelid={channelid} serverid={serverid}/></div>
+            <div className='channelitemseparator'></div>
+            <div className='channelitem' ></div>
         </div>
 
 
@@ -42,19 +43,6 @@ const server = useSelector(state=>state.servers.list).filter(server=>server.id==
 
 }
 
-const style = {
-    div: {
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "#FE8F8F",
-        color: "#FFEDD3",
-        fontWeight: "bold",
-        cursor: "point"
-    },
-    margin:{
-        margin: "10px, 0px"
-    }
-}
+
 
 export default Menu

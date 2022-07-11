@@ -2,6 +2,10 @@ const LOAD_CHANNELS = 'servers/GET_CHANNELS'
 const CREATE_CHANNEL = 'servers/CREATE_CHANNEL'
 const UPDATE_CHANNEL = 'servers/UPDATE_CHANNEL'
 const DELETE_CHANNEL = 'servers/DELETE_CHANNEL'
+const UNLOAD_CHANNELS = 'servers/UNLOAD_CHANNELS'
+const unloadchannels = ()=>({
+    type: UNLOAD_CHANNELS
+})
 
 
 const getchannels = (channels) => ({
@@ -24,6 +28,10 @@ const deletechannel = (channel) => ({
     channel
 
 })
+
+export const unload_channels = () => async(dispatch)=>{
+    dispatch(unloadchannels())
+}
 
 
 
@@ -176,7 +184,8 @@ export default function reducer(state = initialState, action) {
                 channel.id != action.channel
 
             ))
-
+        case UNLOAD_CHANNELS:
+            return {}
         default:
             return state;
     }
