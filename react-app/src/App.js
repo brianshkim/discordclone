@@ -44,7 +44,7 @@ function App() {
         <ProtectedRoute path='/home' exact={true} >
           <Home />
         </ProtectedRoute>
-        <ProtectedRoute path={['/channels', '/channels/:serverid/:channelid']} exact={true}>
+        <ProtectedRoute path={['/channels', '/channels/:serverid' , '/channels/:serverid/:channelid']} exact={true}>
           <Dashboard />
 
 

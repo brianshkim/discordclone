@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
+import {useParams} from "react-router-dom"
+import { useSelector, useDispatch } from "react-redux";
+
 import './dashboard.css'
+import Chat from '../chat';
 
 const ChannelMessages = () =>{
+    const {serverid, channelid} = useParams()
     return(
     <div className = "CMContainer">
+        {!!serverid && !!channelid && <Chat />}
 
 
     </div>
