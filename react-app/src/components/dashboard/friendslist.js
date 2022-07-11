@@ -13,7 +13,10 @@ const FriendsList = () => {
     const {channelid} = useParams()
     const servers = useSelector(state => state.servers.list)
     const channels = useSelector(state => state.channels.list)
-    console.log(serverid, channelid)
+    let server = []
+    if (servers) server = servers.filter(server=>server.id==serverid)
+    console.log(server)
+
 
     const [x, setX] = useState(0);
     const [y, setY] = useState(0);
@@ -21,6 +24,7 @@ const FriendsList = () => {
     const [display, setDisplay] = useState("none")
     const stopmenu = (e) => {
         e.preventDefault()
+        setDisplay("none")
 
     }
 
@@ -60,19 +64,22 @@ const FriendsList = () => {
 
 
     return (
-        <>
 
 
         <div className="friendslistcontainer">
-            <ul>
+            <div className="friendslistheader">{!!servers && server[0].name}</div>
+
+            <br></br>
+            <ul className="listofchannels">
                 {!!channels && channels.length > 0 &&
                     channels.map(channel =>
-                        <div  onContextMenu={(e) => rightonclick(e, channel.id)} ><NavLink className="friendslistlist" to={`/channels/${channel.serverId}/${channel.id}`} >{channel.name}{channelId ==channel.id && <Menu x={x} y={y} channelid={channel.id} display={display} />}</NavLink></div>)}
+                        <div className="channellist" onContextMenu={(e) => rightonclick(e, channel.id)} ><NavLink className="friendslistlist" to={`/channels/${channel.serverId}/${channel.id}`} ><i class="fa-solid fa-hashtag fa-lg"/> {channel.name}{channelId ==channel.id && <Menu x={x} y={y} channelid={channel.id} serverid={serverid} display={display} />}</NavLink></div>)}
             </ul>
+
 
         </div>
 
-      </>
+
     )
 }
 

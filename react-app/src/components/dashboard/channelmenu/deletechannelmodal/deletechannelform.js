@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { delete_channel, get_channels } from "../../../../store/channels"
 
@@ -9,10 +8,8 @@ const DeleteChannelForm = ({closeModal, channelid}) => {
     const user= useSelector(state => state.session.user)
     const channel = useSelector(state => state.channels.list).filter(channel => channel.id == channelid)
 
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("hello")
         e.stopPropagation()
         await dispatch(delete_channel(channelid)).then(()=>dispatch(get_channels(channel[0].serverId)))
         closeModal()
