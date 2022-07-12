@@ -61,7 +61,7 @@
     cursor: pointer;
     border: 0;
     box-sizing: border-box;
-    margin-top: 1.2rem;
+    margin-top: 2.5vh;
     height: 38px;
     width: 63.76px;
     background: white;
@@ -149,4 +149,8 @@
     font-size: 20px;
     font-family: "Ginto Nord","Whitney","Helvetica Neue","Helvetica","Arial",sans-serif;
 
+}
+
+.logoanchor{
+    margin-top: 2.5vh;
 }
