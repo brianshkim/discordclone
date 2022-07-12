@@ -26,8 +26,8 @@ def user_edit_server(id):
 @login_required
 def user_delete_server(id):
 
-    query_server = Server.query.get(id)
-    db.session.delete(query_server)
+    query_server = Server.query.filter_by(id=id)
+    query_server.delete()
     db.session.commit()
     return jsonify(id)
 
