@@ -39,7 +39,8 @@ const ServerNav = () => {
     useEffect(() => {
 
         document.addEventListener("click", handleClick);
-        document.addEventListener('contextmenu', stopmenu)
+        document.addEventListener("contextmenu", stopmenu)
+
         return () => {
 
             document.removeEventListener("contextmenu", stopmenu);
@@ -67,6 +68,7 @@ const ServerNav = () => {
         setDisplay("flex")
         setX(e.pageX)
         setY(e.pageY)
+
 
 
     }

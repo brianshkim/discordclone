@@ -32,12 +32,9 @@ const SplashPage = () => {
                     <nav className="navigation">
                         <a className="logoanchor"></a>
                         <div className="navbarlinks">
-                            <a className href="/">Download</a>
-                            <a href="/">Nitro</a>
-                            <a href="/">Safety</a>
-                            <a href="/">Support</a>
-                            <a href="/">Blog</a>
-                            <a href="/">Careers</a>
+                            <a href="https://discord.com">Download the Real Discord</a>
+                            <a href="https://github.com/brianshkim/discordclone">Github</a>
+                            <a href="https://www.linkedin.com/in/brian-kim-2217ba125/">Linkedin</a>
 
                         </div>
                         <div className="loginbutton"><button onClick={loginonclick} className="loginclick">Login</button></div>

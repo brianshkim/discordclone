@@ -19,8 +19,7 @@ const user = useSelector(state=>state.session.user)
             color: '#B9BBBE',
             display: 'flex',
             flexDirection: 'column',
-            top: y,
-            left: x+80,
+
             position: 'absolute',
             display,
         }
