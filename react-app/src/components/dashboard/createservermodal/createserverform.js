@@ -39,7 +39,7 @@ const CreateServerForm = ({closeModal}) => {
                 <br></br>
                 <br></br>
 
-                <div className="createserverbut"> <button id="submitcreate" onClick={(e)=>handleSubmit(e)}type="submit" >Create</button></div>
+                <div className="createserverbut"> <button id="submitcreate" onClick={(e)=>handleSubmit(e)}type="submit" disabled={name.length <= 0} >Create</button></div>
             </form>
 
         </div>
