@@ -42,9 +42,8 @@ const SplashPage = () => {
                     <br>
                     </br>
                     <div className="secondhalf-third">
-                        <span><button className="downloadfor">Download for Windows</button></span>
 
-                        <span><button className="openin" >Open Ioniq in your Browser</button></span>
+                        <span><a href="/login"><button className="openin" >Open Ioniq in your Browser</button></a></span>
 
                     </div>
                 </div>

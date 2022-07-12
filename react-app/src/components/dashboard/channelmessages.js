@@ -9,7 +9,7 @@ const ChannelMessages = () =>{
     const {serverid, channelid} = useParams()
     return(
     <div className = "CMContainer">
-        <Chat />
+        {!!serverid && !!channelid && <Chat />}
 
 
 

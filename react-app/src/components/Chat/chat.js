@@ -1,31 +1,33 @@
 import React, { useState, useEffect } from "react";
-import {useParams} from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { useSelector } from "react-redux";
 import { io } from 'socket.io-client';
+import './chat.css'
 let socket;
+
 
 const Chat = () => {
     const [chatInput, setChatInput] = useState("");
     const [messages, setMessages] = useState([]);
     const [userWelcome, setuserWelcome] = useState("")
     const user = useSelector(state => state.session.user)
-    const {serverid, channelid} = useParams()
+    const { serverid, channelid } = useParams()
     console.log(serverid, channelid)
 
     console.log(messages)
 
 
-    useEffect(()=>{
+    useEffect(() => {
         localStorage.setItem(serverid, channelid)
-      },[channelid, serverid])
+    }, [channelid, serverid])
 
     useEffect(() => {
         // open socket connection
         // create websocket
         socket = io();
-        socket.on("welcome", (msg)=>{
+        socket.on("welcome", (msg) => {
 
-            setuserWelcome("Welcome to the chat "+msg)
+            setuserWelcome("Welcome to the chat " + msg)
         })
         socket.emit('join', { channelId: channelid, username: user.username })
 
@@ -46,27 +48,35 @@ const Chat = () => {
 
     const sendChat = (e) => {
         e.preventDefault()
-        socket.emit("chat", { user: user.username, msg: chatInput, channelId:channelid});
+        socket.emit("chat", { user: user.username, msg: chatInput, channelId: channelid });
 
         setChatInput("")
     }
 
     return (user && (
-        <div>
-            <div>{!!userWelcome && userWelcome}</div>
-            <div className="messagebox">
-                {!!messages && messages.map((message, ind) => (
-                    !!message.user && <div key={ind}>{ `${message.user}: ${message.msg}`}</div>
-                ))}
+        <div className="chatcontainer">
+            <div className="messagecontainer">
+
+                    <div className="messagebox">
+                    {!!userWelcome && userWelcome}
+                        {!!messages && messages.map((message, ind) => (
+                            !!message.user &&<> <div key={ind}>{`${message.user} : ${message.msg}`}</div><div className="messageseparator"></div><br></br></>
+
+                        ))}
+                    </div>
+
             </div>
-            <form onSubmit={sendChat}>
+            <form className="chatbox" onSubmit={sendChat}>
                 <input
+                className="chatboxinput"
                     value={chatInput}
                     onChange={updateChatInput}
+                    placeholder="Send your message here"
                 />
-                <button type="submit" onClick={(e)=>sendChat(e)}>Send</button>
+                <button className="submitchat" type="submit" onClick={(e) => sendChat(e)}>Send</button>
             </form>
         </div>
+
     )
     )
 };

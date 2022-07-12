@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Switch, useParams, NavLink, useLocation, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import './dashboard.css'
-import Menu from './channelmenu/channelmenu'
+import ChannelMenu from './channelmenu/channelmenu'
 import { get_channels } from '../../store/channels';
 import { get_servers } from '../../store/servers';
 
@@ -76,7 +76,7 @@ const FriendsList = () => {
             <ul className="listofchannels">
                 {!!channels && channels.length > 0 &&
                     channels.map(channel =>
-                        <div className="channellist" onContextMenu={(e) => rightonclick(e, channel.id)} ><NavLink className="friendslistlist" to={`/channels/${channel.serverId}/${channel.id}`} ><i class="fa-solid fa-hashtag fa-lg"/> {channel.name}{channelId ==channel.id && <Menu x={x} y={y} channelid={channel.id} serverid={serverid} display={display} />}</NavLink></div>)}
+                        <div className="channellist" onContextMenu={(e) => rightonclick(e, channel.id)} ><NavLink className="friendslistlist" to={`/channels/${channel.serverId}/${channel.id}`} ><i class="fa-solid fa-hashtag fa-lg"/> {channel.name}{channelId ==channel.id && <ChannelMenu x={x} y={y} channelid={channel.id} serverid={serverid} display={display} />}</NavLink></div>)}
             </ul>
 
 

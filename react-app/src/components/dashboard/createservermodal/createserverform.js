@@ -9,6 +9,7 @@ const CreateServerForm = ({closeModal}) => {
     const dispatch = useDispatch()
     const user= useSelector(state => state.session.user)
     const [name, setName] = useState("")
+    const [error, setError] = useState("")
 
 
     const handleSubmit = async (e) => {
@@ -18,7 +19,15 @@ const CreateServerForm = ({closeModal}) => {
 
     };
 
+    useEffect(()=>{
+        let str = ""
+        if (name.length < 1){
+            str="Name should be one or more characters."
+        }
+        setError(str)
 
+
+    }, [name])
 
 
 
@@ -39,7 +48,11 @@ const CreateServerForm = ({closeModal}) => {
                 <br></br>
                 <br></br>
 
+
                 <div className="createserverbut"> <button id="submitcreate" onClick={(e)=>handleSubmit(e)}type="submit" disabled={name.length <= 0} >Create</button></div>
+                <br></br>
+                <div className="deleteerror">{error.length > 0 && error}</div>
+                <br></br>
             </form>
 
         </div>

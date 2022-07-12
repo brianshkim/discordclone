@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import './channelmenu.css'
 
 
-const Menu = ({x , y,  channelid, serverid, display}) =>{
+const ChannelMenu = ({x , y,  channelid, serverid, display}) =>{
 const user = useSelector(state=>state.session.user)
 
 
@@ -45,4 +45,4 @@ const user = useSelector(state=>state.session.user)
 
 
 
-export default Menu
+export default ChannelMenu
