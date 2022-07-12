@@ -32,7 +32,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+
 
       <Switch>
         <Route path={['/login', '/register' ]} exact={true}>

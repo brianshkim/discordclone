@@ -4,6 +4,7 @@ import { logout } from '../../store/session';
 import { unload_channels } from '../../store/channels';
 import { unload_server } from '../../store/servers';
 import { unload_allservers } from '../../store/allservers';
+import '../dashboard/dashboard.css'
 
 const LogoutButton = () => {
   const dispatch = useDispatch()
@@ -14,7 +15,7 @@ const LogoutButton = () => {
     await dispatch(logout());
   };
 
-  return <button onClick={onLogout}>Logout</button>;
+  return <button className="logoutbut" onClick={onLogout}>Logout</button>;
 };
 
 export default LogoutButton;

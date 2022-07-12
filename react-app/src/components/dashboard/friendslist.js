@@ -8,6 +8,7 @@ import { get_channels } from '../../store/channels';
 import { get_servers } from '../../store/servers';
 import DeleteChannelModal from './channelmenu/deletechannelmodal';
 import EditChannelModal from './channelmenu/editchannelmodal';
+import LogoutButton from '../auth/LogoutButton'
 
 const FriendsList = () => {
     const location = useLocation()
@@ -16,6 +17,7 @@ const FriendsList = () => {
     const {channelid} = useParams()
 
     const user = useSelector(state=>state.session.user)
+
     const servers = useSelector(state => state?.servers)
 
 
@@ -96,6 +98,13 @@ const FriendsList = () => {
                         </>)
                         }
             </ul>
+            <footer>
+
+            <span className="usernamefoot">{user.username}</span>
+
+            <span className="logoutbutton"><LogoutButton /></span>
+
+            </footer>
 
 
         </div>
