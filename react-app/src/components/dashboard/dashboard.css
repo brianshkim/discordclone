@@ -64,6 +64,7 @@ body{
 }
 .listofchannels{
     width:100%;
+    height: 80%;
 
 }
 
@@ -179,5 +180,26 @@ body{
 }
 .serverslistchild{
     margin-left: -43px;
+
+}
+
+footer{
+    bottom: 0%;
+}
+
+.usernamefoot{
+    color: white;
+    font-size: 16px;
+    font-family: Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin-right: 20px;
+
+}
+
+.logoutbut{
+    color: white;
+    border: none;
+    background-color: #ED4245;
+    padding: 10px;
+    border-radius: 4px;
 
 }

@@ -4,7 +4,7 @@ import {useHistory} from 'react-router-dom'
 import {usedemo} from '../../store/session'
 import {get_servers} from '../../store/servers'
 import './splashpage.css'
-
+import DiscordLogoWhite from './DiscordLogoWhite.png'
 const SplashPage = () => {
     const dispatch = useDispatch()
     const history = useHistory()
@@ -30,7 +30,7 @@ const SplashPage = () => {
             <div className="firstsection">
                 <div className="navBar">
                     <nav className="navigation">
-                        <a className="logoanchor"></a>
+                        <a className="logoanchor"><img src={DiscordLogoWhite} height="40" width="50"></img></a>
                         <div className="navbarlinks">
                             <a href="https://discord.com">Download the Real Discord</a>
                             <a href="https://github.com/brianshkim/discordclone">Github</a>
