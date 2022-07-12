@@ -5,7 +5,7 @@ class Server(db.Model):
     __tablename__ = 'servers'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255), nullable=False, unique=True)
+    name = db.Column(db.String(255), nullable=False)
     adminId = db.Column(db.Integer, db.ForeignKey("users.id"))
 
 
