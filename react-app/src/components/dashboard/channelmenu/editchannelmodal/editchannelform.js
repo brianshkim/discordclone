@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { update_channel, get_channels } from "../../../../store/channels"
-
+import './editchannel.css'
 
 
 const EditChannelForm = ({ closeModal, channelid}) => {
@@ -21,18 +21,19 @@ const EditChannelForm = ({ closeModal, channelid}) => {
 
 
     return (
-        <div className="editchannel">
+        <div className="editchannelcontainer">
             <form
 
             >
-                <label>Edit Channel</label>
+                <h3 className="editchanneltitle">Overview</h3>
                 <input
+                className="editchannelinput"
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}>
                 </input>
 
-               <div><button id="submiteditchannel" onClick={(e) => { handleSubmit(e) }} type="submit" >Edit</button></div>
+               <div className="submiteditcont"><button id="submiteditchannel" onClick={(e) => { handleSubmit(e) }} type="submit" >Edit Channel</button></div>
             </form>
 
         </div>
