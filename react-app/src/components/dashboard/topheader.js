@@ -20,7 +20,10 @@ const TopHeader = () => {
 
     return (
         <div className="THContainer">
-            <div>{!!channels && channel.length >0 && channel[0].name}</div>
+            <div className="ChannelTitle">
+                <span className="channelhash"><i class="fa-solid fa-hashtag fa-lg"/> </span>
+                <span className="ChannelName">{!!channels && channel.length >0 &&  channel[0].name}</span>
+                </div>
 
 
         </div>

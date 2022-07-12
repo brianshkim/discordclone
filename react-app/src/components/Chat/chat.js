@@ -54,7 +54,7 @@ const Chat = () => {
     return (user && (
         <div>
             <div>{!!userWelcome && userWelcome}</div>
-            <div>
+            <div className="messagebox">
                 {!!messages && messages.map((message, ind) => (
                     !!message.user && <div key={ind}>{ `${message.user}: ${message.msg}`}</div>
                 ))}
