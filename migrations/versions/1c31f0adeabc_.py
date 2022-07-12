@@ -1,7 +1,7 @@
 """empty message
 
 Revision ID: 1c31f0adeabc
-Revises: 
+Revises:
 Create Date: 2022-07-12 10:38:48.133866
 
 """
@@ -41,7 +41,7 @@ def upgrade():
     sa.Column('adminId', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['adminId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('name')
+
     )
     op.create_table('channels',
     sa.Column('id', sa.Integer(), nullable=False),
