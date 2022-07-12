@@ -5,7 +5,6 @@ from wtforms.fields.html5 import EmailField
 from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import User
 from datetime import date
-import datetime
 import re
 
 def email_validation(x):
