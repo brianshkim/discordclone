@@ -6,7 +6,7 @@ import './channelmenu.css'
 
 const Menu = ({x , y,  channelid, serverid, display}) =>{
 const user = useSelector(state=>state.session.user)
-const server = useSelector(state=>state.servers.list).filter(server=>server.id==serverid)
+
 
 
 

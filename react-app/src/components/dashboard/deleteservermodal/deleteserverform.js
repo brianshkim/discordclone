@@ -19,7 +19,7 @@ const DeleteServerForm = ({closeModal, serverid}) => {
 
     useEffect(()=>{
         let newerror= []
-        if (name!==server[0].name) newerror.push("You didn't enter the server name correctly")
+        if (name!=server[0].name) newerror.push("You didn't enter the server name correctly")
         setError(newerror)
     }, [name])
 
