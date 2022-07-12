@@ -1,0 +1,41 @@
+.servercreatecontainer{
+
+    padding: 32px;
+
+}
+.servercreateheader{
+    text-align: center;
+    font-size: 25px;
+    font-family: "ABC Ginto Normal","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: bold;
+
+}
+
+.serverformcreate{
+    margin-bottom: 5px;
+    font-family: "ABC Ginto Normal","Helvetica Neue",Helvetica,Arial,sans-serif;
+
+}
+
+.createserverbut{
+    display: flex;
+    justify-content: end;
+}
+
+.createserverinput{
+    height: 15.5px;
+    width: 90%;
+    padding: 10px;
+}
+
+#submitcreate{
+    padding: 2px 16px;
+    border: none;
+    background-color: #5865F2;
+    color: white;
+    height: 38px;
+    margin-top: -10px;
+
+    margin-right: 5px;
+
+}

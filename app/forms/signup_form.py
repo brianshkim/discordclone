@@ -42,12 +42,10 @@ def username_exists(form, field):
 
 def age_check(form, field):
     birthday = field.data
-    print("Asdfo3oup43u5oi34u5iou5poi", birthday)
+
     today = date.today()
     difference = today-birthday
-    print("asdfasdlfjasfjaklfj", difference)
-    print("ASDFJAKFJAKLJFKLJF", difference.days/365)
-    if difference.days/365 < 13.00:
+    if difference.days/365 <= 13.00:
         raise ValidationError("You must be at least 13 years old to use Ioniq")
 
 

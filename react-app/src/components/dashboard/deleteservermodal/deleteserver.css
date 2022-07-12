@@ -2,9 +2,15 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: #36393f;
+    width: 400px;
+    height: 310px;
+    border-radius:1px;
+
 }
 
 .deleteserver{
+
     width: 90%;
     background-color: #18191c;
     border: none;
@@ -25,11 +31,76 @@
 }
 
 .deleteserverheader{
+    color: white;
     padding: 16px;
     font-size: 13.2px;
+    margin-top: -20px;
+    margin-left: 5px;
+    align-self: start;
     font-family: "ABC Ginto Normal","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
-.deletewarning{
+.deletewarningcont{
+    border: 1px solid;
+    border-radius: 5px;
+    color: white;
+    margin: 0 20px 20px;
+    padding: 10px;
+    width: 85%;
+    align-self: start;
+    background-color: hsl(38,calc(var(--saturation-factor, 1)*95.7%),54.1%);
+    --saturation-factor: 1;
+    font-family: Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif;
 
+}
+
+.warningform{
+    width: 100%;
+    align-self: start;
+    margin-left: 20px;
+    font-family: "ABC Ginto Normal","Helvetica Neue",Helvetica,Arial,sans-serif;
+
+}
+
+.inputboxlabel{
+    align-self:start;
+    font-size: 11px;
+    color: #B9BBBE;
+    font-weight: bold;
+}
+.typeserver{
+    margin-top: 8px;
+    padding: 10px;
+    width: 86%;
+    height: 20px;
+    color: white;
+    background-color: #202225;
+    border: none;
+    border-radius: 3px;
+}
+
+.deleteerror{
+    color: #F38688;
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+#delete-server{
+    left: 100%;
+    background-color: #D83C3E;
+    height: 38px;
+    width: 112px;
+    border: none;
+    color: white;
+    font-family: Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif;
+
+
+}
+
+.deleteservercont{
+    display: flex;
+
+    margin-right: 20px;
+    justify-content: flex-end;
+    padding: 2px 16px;
 }
