@@ -26,7 +26,6 @@ const DeleteServerForm = ({closeModal, serverid}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("hello")
         e.stopPropagation()
         await dispatch(delete_server(serverid)).then(()=>dispatch(get_servers(user.id))).then(()=>dispatch(unload_channels()))
         history.push('/channels')
