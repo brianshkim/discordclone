@@ -26,8 +26,8 @@ def user_edit_server(id):
 @login_required
 def user_delete_server(id):
 
-    query_server = Server.query.filter_by(id=id)
-    query_server.delete()
+    query_server = Server.query.get(id)
+    db.session.delete(query_server)
     db.session.commit()
     return jsonify(id)
 
@@ -69,7 +69,7 @@ def channels_edit(channelid):
 @server_routes.route('/channels/<int:channelid>', methods=['delete'])
 @login_required
 def delete_channel(channelid):
-    foundchannel = Channel.query.filter_by(id=channelid)
-    foundchannel.delete()
+    foundchannel = Channel.query.get(channelid)
+    db.session.delete(foundchannel)
     db.session.commit()
     return jsonify(channelid)
