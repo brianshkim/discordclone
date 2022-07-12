@@ -69,7 +69,7 @@ def channels_edit(channelid):
 @server_routes.route('/channels/<int:channelid>', methods=['delete'])
 @login_required
 def delete_channel(channelid):
-    foundchannel = Channel.query.get(channelid)
-    db.session.delete(foundchannel)
+    foundchannel = Channel.query.filter_by(id=channelid)
+    foundchannel.delete()
     db.session.commit()
     return jsonify(channelid)
