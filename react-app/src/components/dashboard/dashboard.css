@@ -169,3 +169,11 @@ body{
     font-family: "ABC Ginto Normal","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: bold;
 }
+
+.serverlist-list{
+    list-style: none;
+}
+.serverslistchild{
+    margin-left: -43px;
+
+}
