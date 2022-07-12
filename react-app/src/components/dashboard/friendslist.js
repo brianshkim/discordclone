@@ -6,6 +6,8 @@ import './dashboard.css'
 import ChannelMenu from './channelmenu/channelmenu'
 import { get_channels } from '../../store/channels';
 import { get_servers } from '../../store/servers';
+import DeleteChannelModal from './channelmenu/deletechannelmodal';
+import EditChannelModal from './channelmenu/editchannelmodal';
 
 const FriendsList = () => {
     const location = useLocation()
@@ -16,10 +18,10 @@ const FriendsList = () => {
     const user = useSelector(state=>state.session.user)
     const servers = useSelector(state => state?.servers)
 
+
     const channels = useSelector(state => state.channels.list)
     let server = []
     if (servers && servers.list && servers.list.length>0) server=servers.list.filter(server=>server.id==serverid)
-    console.log(server)
 
 
     const [x, setX] = useState(0);
@@ -27,7 +29,12 @@ const FriendsList = () => {
     const [channelId, setChannelId] = useState(null)
     const [display, setDisplay] = useState("none")
     const stopmenu = (e) => {
+
         e.preventDefault()
+        const CcontextMenu = document.getElementById('servercontextmenu')
+
+
+
         setDisplay("none")
 
     }
@@ -75,8 +82,19 @@ const FriendsList = () => {
             <br></br>
             <ul className="listofchannels">
                 {!!channels && channels.length > 0 &&
-                    channels.map(channel =>
-                        <div className="channellist" onContextMenu={(e) => rightonclick(e, channel.id)} ><NavLink className="friendslistlist" to={`/channels/${channel.serverId}/${channel.id}`} ><i class="fa-solid fa-hashtag fa-lg"/> {channel.name}{channelId ==channel.id && <ChannelMenu x={x} y={y} channelid={channel.id} serverid={serverid} display={display} />}</NavLink></div>)}
+                    channels.map(channel =><>
+                        <div className="channellist" onContextMenu={(e) => rightonclick(e, channel.id)} >
+                            <NavLink className="friendslistlist" to={`/channels/${channel.serverId}/${channel.id}`} ><div><i class="fa-solid fa-hashtag fa-lg"/></div> {channel.name}{channelId ==channel.id}
+                            </NavLink>
+                            <DeleteChannelModal channelid={channel.id}/>
+                            <EditChannelModal channelid={channel.id}/>
+
+                            </div>
+
+
+
+                        </>)
+                        }
             </ul>
 
 

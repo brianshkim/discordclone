@@ -4,18 +4,18 @@ import DeleteServerForm from './deleteserverform';
 import "./deleteserver.css"
 
 
-function DeleteServerModal({serverid}) {
+function DeleteServerModal({ serverid }) {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-    <button className="deleteserver" onClick={() => setShowModal(true)}>Delete Server</button>
+      <button className="deleteserver" onClick={() => setShowModal(true)}>Delete Server</button>
 
       {showModal &&
-        (<Modal onClose={() => setShowModal(false)}>
+        <Modal onClose={() => setShowModal(false)}>
           <DeleteServerForm serverid={serverid} closeModal={() => setShowModal(false)} />
         </Modal>
-        )}
+      }
     </>
   );
 }

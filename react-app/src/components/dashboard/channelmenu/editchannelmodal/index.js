@@ -9,7 +9,7 @@ function EditChannelModal({channelid}) {
 
   return (
     <>
-    <button className="channelbutton" onClick={() => setShowModal(true)}>Edit Channel</button>
+    <button className="channelbutton" onClick={() => setShowModal(true)}>Edit</button>
 
       {showModal &&
         (<Modal onClose={() => setShowModal(false)}>

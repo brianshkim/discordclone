@@ -17,8 +17,9 @@
     width: 5vw;
 }
 .navbarlinks{
+    margin-left: -20px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     width: 40%;
     height: auto;
 

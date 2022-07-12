@@ -1,13 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import {useHistory} from 'react-router-dom'
+import {usedemo} from '../../store/session'
+import {get_servers} from '../../store/servers'
 import './splashpage.css'
 
 const SplashPage = () => {
+    const dispatch = useDispatch()
     const history = useHistory()
+    const [userId, setUserId]=useState(null)
+    let user = useSelector(state=>state.session.user)
+
 
     const loginonclick = () =>{
         history.push('/login')
+
+    }
+
+    const demouser = async () =>{
+
+       await dispatch(usedemo())
+
+
     }
 
 
@@ -18,12 +32,9 @@ const SplashPage = () => {
                     <nav className="navigation">
                         <a className="logoanchor"></a>
                         <div className="navbarlinks">
-                            <a className href="/">Download</a>
-                            <a href="/">Nitro</a>
-                            <a href="/">Safety</a>
-                            <a href="/">Support</a>
-                            <a href="/">Blog</a>
-                            <a href="/">Careers</a>
+                            <a href="https://discord.com">Download the Real Discord</a>
+                            <a href="https://github.com/brianshkim/discordclone">Github</a>
+                            <a href="https://www.linkedin.com/in/brian-kim-2217ba125/">Linkedin</a>
 
                         </div>
                         <div className="loginbutton"><button onClick={loginonclick} className="loginclick">Login</button></div>
@@ -43,7 +54,8 @@ const SplashPage = () => {
                     </br>
                     <div className="secondhalf-third">
 
-                        <span><a href="/login"><button className="openin" >Open Ioniq in your Browser</button></a></span>
+                    {!user &&  <span><button className="openin" onClick={demouser} >Demo User</button></span>}
+                    {!!user &&  <span><a href="/channels"><button className="openin" >Go to Home</button></a></span>}
 
                     </div>
                 </div>

@@ -13,6 +13,8 @@ import {load_servers} from '../../store/allservers'
 const Dashboard = ()=>{
     const user = useSelector(state=>state.session.user)
     const dispatch = useDispatch()
+
+
     useEffect(() => {
         dispatch(load_servers())
         dispatch(get_servers(user.id))

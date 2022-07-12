@@ -15,8 +15,7 @@ console.log(serverid)
             color: '#B9BBBE',
             display: 'flex',
             flexDirection: 'column',
-            top: y,
-            left: x,
+
             position: 'absolute',
             display,
         }
@@ -26,7 +25,7 @@ console.log(serverid)
 
 
     return(
-        <div style={style()}>
+        <div classId="servercontextmenu" style={style()}>
             <div className="menuitem"><DeleteServerModal serverid={serverid}/></div>
             <div className="menuseparator"></div>
             <div className="menuitem" style={{...style.div, ...style.margin}}><EditServerModal serverid={serverid}/></div>

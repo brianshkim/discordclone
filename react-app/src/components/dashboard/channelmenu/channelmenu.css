@@ -12,14 +12,15 @@
 
 .channelbutton {
 
-    width: 90%;
-    height:100%;
+    width: 50px;
+    height:40px;
     background-color: #18191c;
     border: none;
     color: #B9BBBE;
     text-align: justify;
     cursor: pointer;
     font-size: 14px;
+    margin-right: 10px;
 
 }
 
