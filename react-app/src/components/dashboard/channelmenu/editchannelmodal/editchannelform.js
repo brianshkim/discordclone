@@ -25,7 +25,7 @@ const EditChannelForm = ({ closeModal, channelid}) => {
             <form
 
             >
-                <label>Edit Server</label>
+                <label>Edit Channel</label>
                 <input
                     type="text"
                     value={name}
