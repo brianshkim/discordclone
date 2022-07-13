@@ -7,13 +7,13 @@ from app.models import User
 from datetime import date
 import re
 
-def email_validation(x):
+def email_validation(email):
     a=0
-    y=len(x)
-    dot=x.find(".")
-    at=x.find("@")
+    y=len(email)
+    dot=email.find(".")
+    at=email.find("@")
     for i in range (0,at):
-        if((x[i]>='a' and x[i]<='z') or (x[i]>='A' and x[i]<='Z')):
+        if((email[i]>='a' and email[i]<='z') or (email[i]>='A' and email[i]<='Z')):
             a=a+1
     if(a>0 and at>0 and (dot-at)>0 and (dot+1)<y):
         return True
