@@ -5,6 +5,7 @@ import './editserver.css'
 
 const EditServerForm = ({ closeModal, serverid }) => {
     const dispatch = useDispatch()
+    const [error, setError] = useState([])
     const user = useSelector(state => state.session.user)
     const server = useSelector(state => state.servers.list).filter((server) => server.id == serverid)
 
@@ -18,6 +19,14 @@ const EditServerForm = ({ closeModal, serverid }) => {
         closeModal()
 
     };
+    useEffect(()=>{
+        let newerror=[]
+        if (user.id!=server[0].adminId){
+            newerror.push("You do not have permission to edit the server")
+        }
+        setError(newerror)
+
+    }, [user.id])
 
 
 
@@ -39,7 +48,9 @@ const EditServerForm = ({ closeModal, serverid }) => {
                     </input>
                     <br></br>
                     <br></br>
-                    <div className="editbuttoncont"><button id="submiteditserver" onClick={(e) => { handleSubmit(e) }} type="submit" >Edit Server</button></div>
+                    <div className="editbuttoncont"><button id="submiteditserver" onClick={(e) => { handleSubmit(e) }} type="submit" disabled={error.length>0}>Edit Server</button></div>
+                    <br></br>
+                    <div className="deleteerror">{error.length > 0 && error}</div>
                 </div>
 
 

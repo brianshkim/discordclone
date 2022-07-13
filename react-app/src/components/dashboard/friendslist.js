@@ -16,14 +16,15 @@ const FriendsList = () => {
     const { serverid } = useParams()
     const {channelid} = useParams()
 
+
     const user = useSelector(state=>state.session.user)
 
     const servers = useSelector(state => state?.servers)
-
-
+    console.log(servers)
     const channels = useSelector(state => state.channels.list)
     let server = []
     if (servers && servers.list && servers.list.length>0) server=servers.list.filter(server=>server.id==serverid)
+    console.log(server)
 
 
     const [x, setX] = useState(0);
@@ -48,7 +49,7 @@ const FriendsList = () => {
         dispatch(()=>get_servers(user.id))
         dispatch(get_channels(serverid))
 
-    }, [])
+    }, [dispatch])
 
 
     useEffect(() => {
@@ -88,8 +89,8 @@ const FriendsList = () => {
                         <div className="channellist" onContextMenu={(e) => rightonclick(e, channel.id)} >
                             <NavLink className="friendslistlist" to={`/channels/${channel.serverId}/${channel.id}`} ><div><i class="fa-solid fa-hashtag fa-lg"/></div> {channel.name}{channelId ==channel.id}
                             </NavLink>
-                            <DeleteChannelModal channelid={channel.id}/>
-                            <EditChannelModal channelid={channel.id}/>
+                            {!!servers && servers.list && servers.list.length>0&& server.length>0 && server[0].adminId == user.id && <DeleteChannelModal channelid={channel.id}/>}
+                            {!!servers && servers.list && servers.list.length>0 && server.length>0 && server[0].adminId == user.id && <EditChannelModal channelid={channel.id}/>}
 
                             </div>
 

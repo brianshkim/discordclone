@@ -2,10 +2,11 @@ import DeleteServerModal from "../deleteservermodal"
 import EditServerModal from "../editservermodal"
 import CreateChannelModal from "../createchannel"
 import './menu.css'
+import { useSelector } from "react-redux"
 
 
 const Menu = ({x , y,  serverid, display}) =>{
-console.log(serverid)
+
     const style = () =>{
         return {
             height: 150,
