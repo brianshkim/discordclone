@@ -9,7 +9,7 @@ const CreateChannelForm = ({serverid, closeModal}) => {
     const history = useHistory()
     const user= useSelector(state => state.session.user)
     const [name, setName] = useState("")
-    const [error, setError] = useState("")
+    const [error, setError] = useState([])
     const server = useSelector(state=>state.servers.list).filter(server=>server.id==serverid)
     console.log(server[0].adminId)
 
@@ -24,10 +24,15 @@ const CreateChannelForm = ({serverid, closeModal}) => {
     };
 
     useEffect(()=>{
-        if (server[0].adminId!=user.id){
-            setError("You do not have permission to create a channel")
+        let newerror = []
+        if (name.length < 1){
+            newerror.push("Name must be one or more characters")
         }
-    }, [user.id])
+        if (server[0].adminId!=user.id){
+            newerror.push("You do not have permission to create a channel")
+        }
+       setError(newerror)
+    }, [user.id, name])
 
 
 
@@ -51,7 +56,9 @@ const CreateChannelForm = ({serverid, closeModal}) => {
                 <br></br>
 
                 <div className="createchannelbutton"><button id="submitcreatechannel" onClick={(e)=>{handleSubmit(e)}} disabled={error.length>0} type="submit" >Create</button></div>
-                <div className="deleteerror">{error.length > 0 && error}</div>
+                <div className="deleteerror">{error.length > 0 && error.map(error=>(
+                    <div>{error}</div>
+                ))}</div>
             </form>
 
         </div>
