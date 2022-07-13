@@ -27,18 +27,17 @@ This project is based off of [Discord](https://discord.com).
 
 ## How to Run
 1. Download the [repository]((https://github.com/brianshkim/discordclone)) and open it in VS Code.
-2. Install the necessary dependencies by running `npm install` in the terminal.
+2. Install the necessary dependencies by running  * Initialize pipenv with pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt.` in the root directory terminal.
 3. Create an `.env` file in the root of the project. Input the corresponding information from the `.env.example` file.
 4. Create your local database called ionic_db.
     * Create a user named `ionic` with db privileges with the password "password".
-    * Initialize pipenv with pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt.
     * Then run the following:
         * `pipenv shell`
         * `flask db upgrade`
         * `flask seed all`
         * `flask run`
 5. Start the local server in your terminal by running npm install to install dependencies and `npm start` to start the local server on another terminals in your folder called react-app.
-6. Navigate to `http://localhost:3000/` in Google Chrome.
+6. Navigate to `http://localhost:3000/`
 
 ***
 
