@@ -25,7 +25,7 @@ def user_delete(id):
     user= User.query.get(id)
     user.delete()
     user.session.commit()
-    return "success"
+    return (id)
 
 @user_routes.route('/<int:id>/servers')
 @login_required
