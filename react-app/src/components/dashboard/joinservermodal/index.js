@@ -9,7 +9,7 @@ function JoinServerModal() {
 
   return (
     <>
-    <button className="joinserver" onClick={() => setShowModal(true)}><i class="fa-solid fa-compass fa-2x"></i></button>
+    <button className="joinserver" onClick={() => setShowModal(true)}><i className="fa-solid fa-compass fa-2x"></i></button>
 
       {showModal &&
         (<Modal onClose={() => setShowModal(false)}>

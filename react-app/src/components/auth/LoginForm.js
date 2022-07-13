@@ -27,15 +27,15 @@ const LoginForm = (props) => {
     const data = await dispatch(login(email, password));
     let newdata = {}
     if (data) {
-      setErrors(newdata)
 
-      //data.forEach((error)=>{
-      //let errorarray = error.split(" : ")
-      //newdata[errorarray[0]] = errorarray[1]})
+
+      data.forEach((error)=>{
+        let errorarray = error.split(" : ")
+        newdata[errorarray[0]] = errorarray[1]})
 
     }
 
-    console.log(errors)
+    setErrors(newdata)
   };
 
 
