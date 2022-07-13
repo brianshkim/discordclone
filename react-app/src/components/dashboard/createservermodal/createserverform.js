@@ -26,7 +26,7 @@ const CreateServerForm = ({closeModal}) => {
                 newerror.push("Name must be one or more characters")
             }
 
-            if (name.length > 25){
+            if (name.length > 24){
                 newerror.push("Name must be less than 25 characters")
             }
 
