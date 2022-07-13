@@ -27,6 +27,7 @@ const Chat = () => {
         socket = io();
         socket.on("welcome", (msg) => {
 
+
             setuserWelcome("Welcome to the chat " + msg)
         })
         socket.emit('join', { channelId: channelid, username: user.username })

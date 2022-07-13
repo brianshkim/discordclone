@@ -89,8 +89,9 @@ const FriendsList = () => {
                         <div className="channellist" onContextMenu={(e) => rightonclick(e, channel.id)} >
                             <NavLink className="friendslistlist" to={`/channels/${channel.serverId}/${channel.id}`} ><div><i class="fa-solid fa-hashtag fa-lg"/></div> {channel.name.length> 7 && !!servers && servers.list && servers.list.length>0&& server.length>0 && server[0].adminId == user.id? channel.name.slice(0, 4)+"...":channel.name}{channelId ==channel.id}
                             </NavLink>
-                            {!!servers && servers.list && servers.list.length>0&& server.length>0 && server[0].adminId == user.id && <DeleteChannelModal channelid={channel.id}/>}
                             {!!servers && servers.list && servers.list.length>0 && server.length>0 && server[0].adminId == user.id && <EditChannelModal channelid={channel.id}/>}
+                            {!!servers && servers.list && servers.list.length>0&& server.length>0 && server[0].adminId == user.id && <DeleteChannelModal channelid={channel.id}/>}
+
 
                             </div>
 

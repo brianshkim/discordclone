@@ -5,6 +5,11 @@
 
 }
 
+.delete{
+    background-color: #D83C3E;
+    padding: 2px;
+}
+
 .deletechanneltitle{
     color: white;
     font-size: 24px;
