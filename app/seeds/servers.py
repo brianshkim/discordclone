@@ -13,7 +13,7 @@ def seed_servers():
     )
     custom1= Server(
         name= "Test Server",
-        adminId=1,
+        adminId=2,
         users=custom_users1
     )
     db.session.add(custom)

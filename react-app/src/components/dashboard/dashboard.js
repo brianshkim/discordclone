@@ -22,7 +22,8 @@ const Dashboard = ()=>{
 
     }, [])
 
-
+    if (!user) return (<div>Loading</div>)
+    else{
     return(
     <div className = "dashboardcontainer">
         <ServerNav />
@@ -33,6 +34,7 @@ const Dashboard = ()=>{
 
     </div>
     )
+    }
 }
 
 

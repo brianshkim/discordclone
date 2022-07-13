@@ -116,6 +116,7 @@ body{
     width: 50px;
     background-color:  #2F3136;
     border: none;
+    cursor:pointer;
 
 }
 
@@ -204,5 +205,6 @@ footer{
     background-color: #ED4245;
     padding: 10px;
     border-radius: 4px;
+    cursor: pointer;
 
 }

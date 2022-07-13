@@ -20,6 +20,7 @@ const SplashPage = () => {
     const demouser = async () =>{
 
        await dispatch(usedemo())
+       history.push('/channels')
 
 
     }
@@ -54,8 +55,8 @@ const SplashPage = () => {
                     </br>
                     <div className="secondhalf-third">
 
-                    {!user &&  <span><button className="openin" onClick={demouser} >Demo User</button></span>}
-                    {!!user &&  <span><a href="/channels"><button className="openin" >Go to Home</button></a></span>}
+                    <span><button className="openin" onClick={demouser} >Demo User</button></span>
+                    {/*!!user &&  <span><a href="/channels"><button className="openin" >Go to Home</button></a></span>*/}
 
                     </div>
                 </div>
