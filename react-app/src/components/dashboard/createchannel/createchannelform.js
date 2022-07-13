@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { create_channel, get_channels } from "../../../store/channels";
 import {useHistory} from 'react-router-dom'
@@ -9,6 +9,9 @@ const CreateChannelForm = ({serverid, closeModal}) => {
     const history = useHistory()
     const user= useSelector(state => state.session.user)
     const [name, setName] = useState("")
+    const [error, setError] = useState("")
+    const server = useSelector(state=>state.servers.list).filter(server=>server.id==serverid)
+    console.log(server[0].adminId)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -19,6 +22,15 @@ const CreateChannelForm = ({serverid, closeModal}) => {
         closeModal()
 
     };
+
+    useEffect(()=>{
+        if (server[0].adminId!=user.id){
+            setError("You do not have permission to create a channel")
+        }
+    }, [user.id])
+
+
+
 
     return (
         <div className="channelcreatecontainer">
@@ -38,7 +50,8 @@ const CreateChannelForm = ({serverid, closeModal}) => {
                 <br></br>
                 <br></br>
 
-                <div className="createchannelbutton"><button id="submitcreatechannel" onClick={(e)=>{handleSubmit(e)}} type="submit" >Create</button></div>
+                <div className="createchannelbutton"><button id="submitcreatechannel" onClick={(e)=>{handleSubmit(e)}} disabled={error.length>0} type="submit" >Create</button></div>
+                <div className="deleteerror">{error.length > 0 && error}</div>
             </form>
 
         </div>

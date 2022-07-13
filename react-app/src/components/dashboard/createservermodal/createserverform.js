@@ -53,6 +53,7 @@ const CreateServerForm = ({closeModal}) => {
                 <br></br>
                 <div className="deleteerror">{error.length > 0 && error}</div>
                 <br></br>
+
             </form>
 
         </div>

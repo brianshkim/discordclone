@@ -20,6 +20,7 @@ const DeleteServerForm = ({closeModal, serverid}) => {
     useEffect(()=>{
         let newerror= []
         if (name!=server[0].name) newerror.push("You didn't enter the server name correctly")
+        if (server[0].adminId!==user.id)newerror.push("You do not have permission to delete the server")
         setError(newerror)
     }, [name])
 
@@ -48,10 +49,10 @@ const DeleteServerForm = ({closeModal, serverid}) => {
 
                 <input className="typeserver" type="text" value={name} onChange={(e)=>setName(e.target.value)} />
                 <br></br>
-                <div className="deleteerror">{error.length > 0 && error[0]}</div>
-                <br></br>
                 <div className="deleteservercont"><button id="delete-server" onClick={(e=>handleSubmit(e))} type="submit" disabled={error.length>0} >Delete Server</button></div>
-
+                <div className="deleteerror">{error.length > 0 && error.map(error=>(
+                    <div>{error}</div>
+                ))}</div>
 
 
             </form>

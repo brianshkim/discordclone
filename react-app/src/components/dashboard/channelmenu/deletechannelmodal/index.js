@@ -7,6 +7,7 @@ import '../channelmenu.css'
 function DeleteChannelModal({channelid}) {
   const [showModal, setShowModal] = useState(false);
 
+
   return (
     <>
     <button className="channelbutton" onClick={() => setShowModal(true)}>Delete</button>
