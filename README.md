@@ -62,7 +62,7 @@ This project is based off of [Discord](https://discord.com).
 
 
 ### Website Screenshots
+<img width="1118" alt="ioniqimg" src="https://user-images.githubusercontent.com/28768561/178630023-1e4ed5cd-a056-4b4d-9b94-6b387ff03221.png">
 
-<img width="957" alt="Screenshot 2022-07-10 144307" src="https://user-images.githubusercontent.com/28768561/178629757-16e1ed16-7e93-4e1a-a3ef-901f225585f8.png">
 <img width="788" alt="channel" src="https://user-images.githubusercontent.com/28768561/178629762-3a336499-4ee0-4252-ac0d-d4f7f3fa7049.png">
 
