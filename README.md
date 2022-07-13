@@ -1,16 +1,18 @@
 # Ioniq(discord clone)
 ## Technologies Used:
 * Javascript
+* Python
 * REACT
 * HTML5
 * REDUX
 * Flask
 * Socket.io
 * PostgreSQL
+
 ***
 Ioniq demo: https://ioniq-app.herokuapp.com/
 
-Github wiki: https://github.com/brianshkim/soloproj/wiki
+Github wiki: https://github.com/brianshkim/discordclone/wiki
 ***
 ## Developer:
 Brian
@@ -20,7 +22,6 @@ Brian
 ## About
 This project is based off of [Discord](https://discord.com).
 
-Spectral Waves is a clone of Soundcloud that utilizes one page to render the user's songs and playlists
 
 ***
 
