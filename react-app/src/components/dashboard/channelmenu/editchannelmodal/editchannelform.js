@@ -28,6 +28,9 @@ const EditChannelForm = ({ closeModal, channelid}) => {
         if (name.length < 1){
             newerror.push("Name must be one or more characters")
         }
+        if (name.length > 25){
+            newerror.push("Name must be less than 25 characters")
+        }
         if (user.id!=server[0].adminId){
             newerror.push("You do not have permission to edit the server")
         }

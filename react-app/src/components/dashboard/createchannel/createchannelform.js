@@ -28,6 +28,10 @@ const CreateChannelForm = ({serverid, closeModal}) => {
         if (name.length < 1){
             newerror.push("Name must be one or more characters")
         }
+
+        if (name.length > 25){
+            newerror.push("Name must be less than 25 characters")
+        }
         if (server[0].adminId!=user.id){
             newerror.push("You do not have permission to create a channel")
         }
