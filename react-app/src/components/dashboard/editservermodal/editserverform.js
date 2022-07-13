@@ -21,12 +21,15 @@ const EditServerForm = ({ closeModal, serverid }) => {
     };
     useEffect(()=>{
         let newerror=[]
+        if (name.length < 1){
+            newerror.push("Name must be one or more characters")
+        }
         if (user.id!=server[0].adminId){
             newerror.push("You do not have permission to edit the server")
         }
         setError(newerror)
 
-    }, [user.id])
+    }, [user.id, name])
 
 
 
@@ -50,7 +53,9 @@ const EditServerForm = ({ closeModal, serverid }) => {
                     <br></br>
                     <div className="editbuttoncont"><button id="submiteditserver" onClick={(e) => { handleSubmit(e) }} type="submit" disabled={error.length>0}>Edit Server</button></div>
                     <br></br>
-                    <div className="deleteerror">{error.length > 0 && error}</div>
+                    <div className="deleteerror">{error.length > 0 && error.map(error=>(
+                    <div>{error}</div>
+                ))}</div>
                 </div>
 
 
