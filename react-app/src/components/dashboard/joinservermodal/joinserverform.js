@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { get_servers } from "../../../store/servers";
 import { get_channels } from "../../../store/channels";
+import { load_servers } from "../../../store/allservers";
 
 
 
@@ -13,8 +14,11 @@ const JoinServerForm = ({ closeModal, serverid }) => {
     console.log(useSelector(state => state.allservers.list))
     const servers = useSelector(state => state?.allservers?.list).filter(Server => Server.adminId !== user.id)
 
+    useEffect(()=>{
+        dispatch(load_servers())
 
 
+    }, [])
 
     const handlejoin = async (e, serverid) => {
         e.preventDefault();
@@ -26,7 +30,7 @@ const JoinServerForm = ({ closeModal, serverid }) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(serverid)
-        }).then(() => dispatch(get_servers(user.id))).then(() => dispatch(get_channels(serverid)))
+        }).then(() => dispatch(get_servers(user.id))).then(() => dispatch(get_channels(serverid)).then(()=>dispatch(load_servers())))
 
 
 
