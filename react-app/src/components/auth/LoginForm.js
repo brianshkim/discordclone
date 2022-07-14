@@ -65,7 +65,7 @@ const LoginForm = (props) => {
           </div>
           <div className="LoginInputContainer">
             <div className="Logininput">
-              <h5 className="emailtitle" htmlFor='email'>Email {errors.email && " - " && <span className="errors"> - {errors.email}</span>}</h5>
+              <h5 className="emailtitle" htmlFor='email'>Email {!!errors.email&& " - " && <span className="errors"> - {errors.email}</span>}</h5>
               <input
                 className="Logintext"
                 name='email'
