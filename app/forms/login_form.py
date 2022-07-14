@@ -7,9 +7,12 @@ from app.models import User
 def user_exists(form, field):
     # Checking if user exists
     email = field.data
+    password = form.data['password']
     user = User.query.filter(User.email == email).first()
     if not user:
         raise ValidationError('Login or password is invalid.')
+    if not user.check_password(password):
+        raise ValidationError('Login or password is invalid')
 
 
 def password_matches(form, field):
