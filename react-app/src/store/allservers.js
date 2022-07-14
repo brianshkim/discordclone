@@ -26,7 +26,7 @@ export const load_servers = (id) => async (dispatch) => {
 
 }
 
-let initialState = {};
+let initialState = {list:[]};
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case LOAD_ALL_SERVERS:

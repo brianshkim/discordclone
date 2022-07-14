@@ -1,20 +1,25 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { create_server } from "../../../store/servers";
+import {useHistory} from "react-router-dom"
+import { create_server, get_servers } from "../../../store/servers";
 import './createserver.css'
 
 
 
 const CreateServerForm = ({closeModal}) => {
+    const history = useHistory()
     const dispatch = useDispatch()
     const user= useSelector(state => state.session.user)
     const [name, setName] = useState([])
     const [error, setError] = useState("")
+    const servers = useSelector(state=>state.servers.list)
+    console.log(servers)
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(create_server(user.id, name))
+        await dispatch(create_server(user.id, name)).then(()=>dispatch(get_servers(user.id)))
+        history.push(`/channels/${servers[servers.length-1].id}`)
         closeModal()
 
     };
@@ -56,7 +61,7 @@ const CreateServerForm = ({closeModal}) => {
                 <div className="createserverbut"> <button id="submitcreate" onClick={(e)=>handleSubmit(e)}type="submit" disabled={error.length> 0} >Create</button></div>
                 <br></br>
                 <div className="deleteerror">{error.length > 0 && error.map(error=>(
-                    <div>{error}</div>
+                    <div key={error}>{error}</div>
                 ))}</div>
                 <br></br>
 
