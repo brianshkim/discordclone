@@ -120,7 +120,7 @@ const FriendsList = () => {
                     </>)
                 }
             </ul>
-            <footer>
+            <footer >
 
                 <span className="usernamefoot">{user.username}</span>
 

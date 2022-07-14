@@ -19,6 +19,7 @@ body{
     flex-direction: column;
     align-items: center;
     background-color: #202225;
+    overflow: hidden;
 
     min-height: 0;
 
@@ -104,10 +105,18 @@ body{
 }
 
 .serverslist{
+    margin-top: -20px;
     height: 92%;
+    overflow-y: scroll;
+    margin-left: 10px;
+
+    padding-right: 40px;
+
+
 }
 .addserversbutton{
     height: 10%;
+
 }
 .addserver{
     margin-top: 20px;
@@ -183,7 +192,7 @@ body{
     list-style: none;
 }
 .serverslistchild{
-    margin-left: -43px;
+    margin-left: 0px;
 
 }
 
@@ -253,4 +262,13 @@ footer{
 
   .dropdown:hover .dropbtn {
     background-color: #3e8e41;
+}
+
+.joinserverbutton{
+    margin-left: -10px;
+    margin-bottom: -10px;
+}
+
+.addserversbutton{
+    margin-left:-10px;
 }
