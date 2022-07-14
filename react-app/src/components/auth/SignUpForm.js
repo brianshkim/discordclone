@@ -164,6 +164,11 @@ const SignUpForm = () => {
           <NavLink to='/login' exact={true} id="loginregister" activeClassName='active'>
             Already have an account?
           </NavLink>
+          <div className="signuplink">
+
+           <a className="registerbutton" href="/">Main Page </a>
+
+            </div>
           {/* <div>
 
         <label>Repeat Password</label>

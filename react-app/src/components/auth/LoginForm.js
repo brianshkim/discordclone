@@ -93,7 +93,12 @@ const LoginForm = (props) => {
             <button className="submitloginbutton" type='submit'>Login</button>
             <div className="signuplink">
               <div className="NeedAccount">Need an account?</div>
-              <a className="registerbutton" href="/register"> Register</a>
+              <a className="registerbutton" href="/register"> Register </a>
+            </div>
+            <div className="signuplink">
+
+              <a className="registerbutton" href="/"> Main Page </a>
+
             </div>
           </div>
         </div>
