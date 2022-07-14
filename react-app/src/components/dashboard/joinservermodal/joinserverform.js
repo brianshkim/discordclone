@@ -41,6 +41,27 @@ const JoinServerForm = ({ closeModal, serverid }) => {
     };
 
 
+    const handleleave = async (e, serverid, serverchannels) => {
+        e.preventDefault();
+        closeModal()
+
+        await fetch(`/api/users/${user.id}/servers/join`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(serverid)
+        }).then(() => dispatch(get_servers(user.id))).then(() => dispatch(get_channels(serverid)).then(()=>dispatch(load_servers())))
+       if (serverchannels.length > 0){
+       history.push(`/channels/${serverid}/${serverchannels[0].id}`)
+       }
+       else{
+        history.push(`/channels/${serverid}`)
+       }
+
+    };
+
+
 
     return (
         <div className="serverjoincontainer">
@@ -49,13 +70,14 @@ const JoinServerForm = ({ closeModal, serverid }) => {
                 {servers && servers.length > 0 &&
 
                     servers.map(server =>
-                        <div className="allserverscont">
+
+                        <div key={`servers-${server.id}`} className="allserverscont">
                             <li className="allservers" key={server.id}>{server.name}
                             <div className="membersdiv">{server.users.length}{server.users.length>1?" members":" member"}  <i class="fa-solid fa-users"></i></div> </li>
                             <br></br>
 
-
                             <button className="allservers-button" onClick={(e) => handlejoin(e, server.id, server.channels)}>Join Server</button>
+
                         </div>
 
                     )}

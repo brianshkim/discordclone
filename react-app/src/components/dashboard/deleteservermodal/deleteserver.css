@@ -25,11 +25,16 @@
 
 }
 
+.deleteserver.leave{
+    color: #D83C3E;
+}
+
 .deleteserver:hover{
     background-color: #738ADB;
     color:white;
 
 }
+
 
 .deleteserverheader{
     color: white;
