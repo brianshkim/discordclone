@@ -1,5 +1,5 @@
 .editchannelcontainer{
-    padding: 32px;
+    padding: 48px;
     background-color: #36393f;
 
     width: 220px;
@@ -17,8 +17,9 @@
     margin-top: -20px;
     padding: 10px;
     width: 100%;
+
     margin-left: -5px;
-    height: 16px;
+    height: 24px;
     background-color: #202225;
     border: none;
     border-radius: 3px;
@@ -32,7 +33,7 @@
 }
 
 #submiteditchannel{
-    margin-top: 20px;
+    margin-top: 25px;
     cursor:pointer;
 
     border: none;
@@ -41,4 +42,8 @@
     height: 38px;
     width: 100px;
     margin-right: -12px;
+}
+
+.editform{
+    margin-left: -10px;
 }
