@@ -48,7 +48,7 @@ const JoinServerForm = ({ closeModal, serverid }) => {
                     servers.map(server =>
                         <div className="allserverscont">
                             <li className="allservers" key={server.id}>{server.name}
-                            <div className="membersdiv">{server.users.length}{server.users.length>1?"members":"member"}  <i class="fa-solid fa-users"></i></div> </li>
+                            <div className="membersdiv">{server.users.length}{server.users.length>1?" members":" member"}  <i class="fa-solid fa-users"></i></div> </li>
                             <br></br>
 
 

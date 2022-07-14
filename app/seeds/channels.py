@@ -11,12 +11,24 @@ def seed_channels():
         name='Gaming', serverId=1, userId="1")
     Art = Channel(
         name='Art', serverId=1, userId="1")
+    general2 = Channel(
+        name='General', serverId=2, userId="2")
+    announcements2 = Channel(
+        name='Announcements', serverId=2, userId="2")
+    Gaming2 = Channel(
+        name='Gaming', serverId=2, userId="2")
+    Art2 = Channel(
+        name='Art', serverId=2, userId="2")
 
 
     db.session.add(general)
     db.session.add(announcements)
     db.session.add(Gaming)
     db.session.add(Art)
+    db.session.add(general2)
+    db.session.add(announcements2)
+    db.session.add(Gaming2)
+    db.session.add(Art2)
 
 
     db.session.commit()
