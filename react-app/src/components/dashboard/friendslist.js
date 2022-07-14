@@ -12,6 +12,7 @@ import LogoutButton from '../auth/LogoutButton'
 import CreateChannelModal from './createchannel';
 import EditServerModal from './editservermodal';
 import DeleteServerModal from './deleteservermodal';
+import LeaveServerModal from './leaveservermodal';
 
 
 const FriendsList = () => {
@@ -98,6 +99,7 @@ const FriendsList = () => {
                             <div><DeleteServerModal serverid={serverid}/></div>
                             <div><EditServerModal serverid={serverid}/></div>
                             <div><CreateChannelModal serverid={serverid}/></div>
+                            {server[0].adminId != user.id && <div><LeaveServerModal serverid={serverid}/></div>}
                         </div>
                     </div>}
 

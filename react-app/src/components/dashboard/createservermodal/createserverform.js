@@ -55,14 +55,13 @@ const CreateServerForm = ({closeModal}) => {
                 onChange={(e)=>setName(e.target.value)}>
                 </input>
                 <br></br>
-                <br></br>
-
-
-                <div className="createserverbut"> <button id="submitcreate" onClick={(e)=>handleSubmit(e)}type="submit" disabled={error.length> 0} >Create</button></div>
-                <br></br>
                 <div className="deleteerror">{error.length > 0 && error.map(error=>(
                     <div key={error}>{error}</div>
                 ))}</div>
+                <br></br>
+                <div className="createserverbut"> <button id="submitcreate" onClick={(e)=>handleSubmit(e)}type="submit" disabled={error.length> 0} >Create</button></div>
+                <br></br>
+
                 <br></br>
 
             </form>

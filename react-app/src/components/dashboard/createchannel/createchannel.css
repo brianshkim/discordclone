@@ -1,7 +1,7 @@
 .channelcreatecontainer{
     padding: 24px;
     height: 190px;
-    width: 240px;
+    width: 300px;
     background-color: #36393f;
 }
 
@@ -28,6 +28,7 @@
     margin-left: 15px;
     padding: 10px 10px 10px 28px;
     background-color: #202225;
+    width: 80%;
     border: none;
     color: white;
 }
@@ -50,5 +51,5 @@
     margin-top: -10px;
     cursor: pointer;
 
-    margin-right: 2px;
+    margin-right: -20px;
 }
