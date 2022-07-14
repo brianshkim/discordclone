@@ -16,8 +16,14 @@ def seed_servers():
         adminId=2,
         users=custom_users1
     )
+    custom2= Server(
+        name= "Test Server2",
+        adminId=3,
+        users=custom_users
+    )
     db.session.add(custom)
     db.session.add(custom1)
+    db.session.add(custom2)
     db.session.commit()
 
 def undo_servers():
