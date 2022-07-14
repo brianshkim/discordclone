@@ -101,8 +101,6 @@ const FriendsList = () => {
                         </div>
                     </div>}
 
-
-
             </div>
 
 
@@ -118,8 +116,6 @@ const FriendsList = () => {
 
 
                         </div>
-
-
 
                     </>)
                 }
