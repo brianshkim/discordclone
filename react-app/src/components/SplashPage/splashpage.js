@@ -9,7 +9,9 @@ const SplashPage = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const [userId, setUserId]=useState(null)
+    const [serverId, setServerId] = useState(null)
     let user = useSelector(state=>state.session.user)
+
 
 
     const loginonclick = () =>{
@@ -20,10 +22,22 @@ const SplashPage = () => {
     const demouser = async () =>{
 
        await dispatch(usedemo())
-       history.push('/channels')
+
+
+        history.push('/channels')
+
 
 
     }
+
+    useEffect(() => {
+        if(user) {
+            dispatch(get_servers(user.id))
+            setUserId(user.id)
+        }
+
+
+    }, [user])
 
 
     return (
