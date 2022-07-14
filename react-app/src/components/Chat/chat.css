@@ -15,7 +15,7 @@
     width: 100%;
     color: white;
     font-family: Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    overflow-wrap: break-word;
+    overflow-wrap: anywhere;
 }
 .chatcontainer{
     margin-left: 20px;
