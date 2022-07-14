@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { create_channel, get_channels } from "../../../store/channels";
 import {useHistory} from 'react-router-dom'
 import './createchannel.css'
-import { startSession } from "pg/lib/sasl";
+
 
 const CreateChannelForm = ({serverid, closeModal}) => {
     const dispatch = useDispatch()
