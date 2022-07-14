@@ -146,7 +146,7 @@ export const delete_channel = (channelId) => async (dispatch) => {
 //  }
 //}
 
-let initialState = {};
+let initialState = {list:[]};
 
 
 export default function reducer(state = initialState, action) {

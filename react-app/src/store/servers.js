@@ -141,7 +141,7 @@ export const delete_server = (serverId) => async (dispatch) => {
 //}
 
 
-let initialState = {};
+let initialState = {list:[]};
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case LOAD_SERVERS:
