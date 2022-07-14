@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { create_channel, get_channels } from "../../../store/channels";
+import { get_servers } from "../../../store/servers";
 import {useHistory} from 'react-router-dom'
 import './createchannel.css'
 
@@ -19,7 +20,7 @@ const CreateChannelForm = ({serverid, closeModal}) => {
         e.preventDefault();
         console.log("hello")
 
-        await dispatch(create_channel(user.id,serverid,name)).then(()=>(dispatch(get_channels(serverid))))
+        await dispatch(create_channel(user.id,serverid,name)).then(()=>(dispatch(get_channels(serverid)))).then(()=>dispatch(get_servers(user.id)))
         history.push(`/channels/${serverid}/${channels.list[channels.list.length-1].id}`)
         closeModal()
 
