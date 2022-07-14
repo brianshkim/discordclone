@@ -20,10 +20,10 @@ const JoinServerForm = ({ closeModal, serverid }) => {
 
     }, [])
 
-    const handlejoin = async (e, serverid) => {
+    const handlejoin = async (e, serverid, serverchannels) => {
         e.preventDefault();
         closeModal()
-        history.push(`/channels/${serverid}`)
+
         await fetch(`/api/users/${user.id}/servers/join`, {
             method: 'POST',
             headers: {
@@ -31,9 +31,12 @@ const JoinServerForm = ({ closeModal, serverid }) => {
             },
             body: JSON.stringify(serverid)
         }).then(() => dispatch(get_servers(user.id))).then(() => dispatch(get_channels(serverid)).then(()=>dispatch(load_servers())))
-
-
-
+       if (serverchannels.length > 0){
+       history.push(`/channels/${serverid}/${serverchannels[0].id}`)
+       }
+       else{
+        history.push(`/channels/${serverid}`)
+       }
 
     };
 
@@ -52,7 +55,7 @@ const JoinServerForm = ({ closeModal, serverid }) => {
                             <br></br>
 
 
-                            <button className="allservers-button" onClick={(e) => handlejoin(e, server.id)}>Join Server</button>
+                            <button className="allservers-button" onClick={(e) => handlejoin(e, server.id, server.channels)}>Join Server</button>
                         </div>
 
                     )}
