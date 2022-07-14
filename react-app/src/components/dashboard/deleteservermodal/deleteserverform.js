@@ -45,11 +45,12 @@ const DeleteServerForm = ({closeModal, serverid}) => {
 
     };
 
-
+    if (!servers && !servers.list&& servers.list.length>0) return(<div>loading</div>)
+    else{
     return (
         <div className="deletecontainer">
-            <div className="deleteserverheader"><h2>Delete '{!!servers && !!servers.list&& servers.list.length>0 &&server[0].name}'</h2></div>
-            <div className="deletewarningcont"><div className="warningtext">Are you sure you want to delete <strong>{server[0].name}</strong>? This action cannot be undone.</div></div>
+            <div className="deleteserverheader"><h2>Delete '{!!servers && !!servers.list&& servers.list.length>0 && server.length>0 && server[0].name}'</h2></div>
+            <div className="deletewarningcont"><div className="warningtext">Are you sure you want to delete <strong>{!!servers && !!servers.list&& servers.list.length>0 && server.length>0 && server[0].name}</strong>? This action cannot be undone.</div></div>
             <form
             className="warningform"
 
@@ -72,6 +73,7 @@ const DeleteServerForm = ({closeModal, serverid}) => {
 
 
     );
+                }
 
 };
 
