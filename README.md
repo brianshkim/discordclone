@@ -36,7 +36,7 @@ This project is based off of [Discord](https://discord.com).
         * `flask db upgrade`
         * `flask seed all`
         * `flask run`
-5. Start the local server in your terminal by running npm install to install dependencies and `npm start` to start the local server on another terminals in your folder called react-app.
+5. Start the local server in your terminal by running npm install to install dependencies and `npm start` to start the local server on another terminal in your folder called react-app.
 6. Navigate to `http://localhost:3000/`
 
 ***
