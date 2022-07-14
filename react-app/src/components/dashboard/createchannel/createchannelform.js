@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { create_channel, get_channels } from "../../../store/channels";
 import {useHistory} from 'react-router-dom'
 import './createchannel.css'
+import { startSession } from "pg/lib/sasl";
 
 const CreateChannelForm = ({serverid, closeModal}) => {
     const dispatch = useDispatch()
@@ -11,6 +12,7 @@ const CreateChannelForm = ({serverid, closeModal}) => {
     const [name, setName] = useState("")
     const [error, setError] = useState([])
     const server = useSelector(state=>state.servers.list).filter(server=>server.id==serverid)
+    const channels = useSelector(state=>state.channels)
     console.log(server[0].adminId)
 
     const handleSubmit = async (e) => {
@@ -18,7 +20,7 @@ const CreateChannelForm = ({serverid, closeModal}) => {
         console.log("hello")
 
         await dispatch(create_channel(user.id,serverid,name)).then(()=>(dispatch(get_channels(serverid))))
-
+        history.push(`/channels/${serverid}/${channels.list[channels.list.length-1].id}`)
         closeModal()
 
     };
