@@ -42,7 +42,7 @@ const EditChannelForm = ({ closeModal, channelid}) => {
 
     return (
         <div className="editchannelcontainer">
-            <form
+            <form className="editform"
 
             >
                 <h3 className="editchanneltitle">Overview</h3>
@@ -52,12 +52,14 @@ const EditChannelForm = ({ closeModal, channelid}) => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}>
                 </input>
-
-               <div className="submiteditcont"><button id="submiteditchannel" onClick={(e) => { handleSubmit(e) }} type="submit" disabled={error.length > 0} >Edit Channel</button></div>
-               <br></br>
-               <div className="deleteerror">{error.length > 0 && error.map(error=>(
+                <div className="deleteerror">{error.length > 0 && error.map(error=>(
                     <div>{error}</div>
                 ))}</div>
+                <br></br>
+
+               <div className="submiteditcont"><button id="submiteditchannel" onClick={(e) => { handleSubmit(e) }} type="submit" disabled={error.length > 0} >Edit Channel</button></div>
+
+
 
             </form>
 
