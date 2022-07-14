@@ -22,6 +22,7 @@
 }
 
 .serverjoincontainer{
+    overflow: auto;
 
     width: 350px;
     background-color: #36393f;;
