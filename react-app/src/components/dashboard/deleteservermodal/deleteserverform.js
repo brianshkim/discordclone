@@ -13,9 +13,20 @@ const DeleteServerForm = ({closeModal, serverid}) => {
     const [error, setError] = useState([])
     const dispatch = useDispatch()
     const user= useSelector(state => state.session.user)
-    const server = useSelector(state=>state.servers.list).filter(server=>server.id==serverid)
+    let servers = (useSelector(state=>state.servers))
+    let server = [];
+    if (servers && servers.list&& servers.list.length>0) {
+        server = servers.list.filter((server) => server.id == serverid)
+
+    }
 
     console.log(serverid)
+
+    useEffect(() => {
+        dispatch(() => get_servers(user.id))
+
+
+    }, [dispatch])
 
     useEffect(()=>{
         let newerror= []
@@ -34,11 +45,12 @@ const DeleteServerForm = ({closeModal, serverid}) => {
 
     };
 
-
+    if (!servers && !servers.list&& servers.list.length>0) return(<div>loading</div>)
+    else{
     return (
         <div className="deletecontainer">
-            <div className="deleteserverheader"><h2>Delete '{server[0].name}'</h2></div>
-            <div className="deletewarningcont"><div className="warningtext">Are you sure you want to delete <strong>{server[0].name}</strong>? This action cannot be undone.</div></div>
+            <div className="deleteserverheader"><h2>Delete '{!!servers && !!servers.list&& servers.list.length>0 && server.length>0 && server[0].name}'</h2></div>
+            <div className="deletewarningcont"><div className="warningtext">Are you sure you want to delete <strong>{!!servers && !!servers.list&& servers.list.length>0 && server.length>0 && server[0].name}</strong>? This action cannot be undone.</div></div>
             <form
             className="warningform"
 
@@ -61,6 +73,7 @@ const DeleteServerForm = ({closeModal, serverid}) => {
 
 
     );
+                }
 
 };
 

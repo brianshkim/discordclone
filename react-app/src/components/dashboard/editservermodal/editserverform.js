@@ -5,24 +5,48 @@ import './editserver.css'
 
 const EditServerForm = ({ closeModal, serverid }) => {
     const dispatch = useDispatch()
+    const [name, setName] = useState("")
     const [error, setError] = useState([])
     const user = useSelector(state => state.session.user)
-    const server = useSelector(state => state.servers.list).filter((server) => server.id == serverid)
+    let servers = (useSelector(state=>state.servers))
+    let server = [];
+    if (servers && servers.list&& servers.list.length>0) {
+        server = servers.list.filter((server) => server.id == serverid)
 
-    const [name, setName] = useState(`${server[0].name}`)
+    }
+
+
+
+
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await dispatch(update_server(serverid, name)).then(() => dispatch(get_servers(user.id)))
+        await dispatch(update_server(serverid, name))
+        await dispatch(get_servers(user.id))
 
         closeModal()
 
     };
+
+    useEffect(() => {
+        dispatch(() => get_servers(user.id))
+
+
+    }, [dispatch])
+
+    useEffect(()=>{
+        if(server.length > 0){
+            setName(server[0].name)
+        }
+    }, [server.length])
     useEffect(()=>{
         let newerror=[]
         if (name.length < 1){
             newerror.push("Name must be one or more characters")
+        }
+        if (name.length > 23){
+            newerror.push("Name must be less than 23 characters")
         }
         if (user.id!=server[0].adminId){
             newerror.push("You do not have permission to edit the server")
@@ -30,6 +54,8 @@ const EditServerForm = ({ closeModal, serverid }) => {
         setError(newerror)
 
     }, [user.id, name])
+
+
 
 
 

@@ -8,7 +8,7 @@ import './createserver.css'
 const CreateServerForm = ({closeModal}) => {
     const dispatch = useDispatch()
     const user= useSelector(state => state.session.user)
-    const [name, setName] = useState("")
+    const [name, setName] = useState([])
     const [error, setError] = useState("")
 
 
@@ -19,15 +19,19 @@ const CreateServerForm = ({closeModal}) => {
 
     };
 
-    useEffect(()=>{
-        let str = ""
-        if (name.length < 1){
-            str="Name should be one or more characters."
-        }
-        setError(str)
 
+        useEffect(()=>{
+            let newerror = []
+            if (name.length < 1){
+                newerror.push("Name must be one or more characters")
+            }
 
-    }, [name])
+            if (name.length > 23){
+                newerror.push("Name must be less than 23 characters")
+            }
+
+           setError(newerror)
+        }, [user.id, name])
 
 
 
@@ -49,9 +53,11 @@ const CreateServerForm = ({closeModal}) => {
                 <br></br>
 
 
-                <div className="createserverbut"> <button id="submitcreate" onClick={(e)=>handleSubmit(e)}type="submit" disabled={name.length <= 0} >Create</button></div>
+                <div className="createserverbut"> <button id="submitcreate" onClick={(e)=>handleSubmit(e)}type="submit" disabled={error.length> 0} >Create</button></div>
                 <br></br>
-                <div className="deleteerror">{error.length > 0 && error}</div>
+                <div className="deleteerror">{error.length > 0 && error.map(error=>(
+                    <div>{error}</div>
+                ))}</div>
                 <br></br>
 
             </form>
