@@ -92,7 +92,7 @@ const FriendsList = () => {
 
         <div className="friendslistcontainer">
             <div className="friendslistheader">{!!servers && !!servers.list && servers.list.length > 0 && server.length > 0 && server[0].name}
-                   {!!serverid && <div class="dropdown">
+                   {!!serverid && !!servers && servers.list && servers.list.length > 0 && server.length > 0 && server[0].name && <div class="dropdown">
                         <button class="dropbtn"><i class="fa-solid fa-circle-chevron-down"></i></button>
                         <div class="dropdown-content">
                             <div><DeleteServerModal serverid={serverid}/></div>
