@@ -20,7 +20,7 @@ const DeleteServerForm = ({closeModal, serverid}) => {
 
     }
 
-    console.log(serverid)
+
 
     useEffect(() => {
         dispatch(() => get_servers(user.id))

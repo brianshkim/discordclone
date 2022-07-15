@@ -8,7 +8,6 @@ import "./loginpage.css"
 const LoginForm = (props) => {
 
   const location = useLocation()
-  console.log(location.pathname)
   const [currentPath,setCurrentPath] = useState(window.location.pathname)
 
   const [errors, setErrors] = useState([]);

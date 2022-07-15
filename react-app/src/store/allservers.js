@@ -20,7 +20,7 @@ export const unload_allservers = () => async(dispatch)=>{
 export const load_servers = (id) => async (dispatch) => {
     const response = await fetch(`/api/servers/servers`);
     const data = await response.json()
-    console.log(data)
+
     dispatch(loadservers(data.allservers));
 
 

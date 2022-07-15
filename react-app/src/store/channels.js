@@ -82,7 +82,7 @@ export const update_channel = (channelid, name) => async (dispatch) => {
     });
 
     const data = await response.json()
-    console.log(data)
+
 
     dispatch(editchannel(data));
 
@@ -161,7 +161,7 @@ export default function reducer(state = initialState, action) {
             })
             return {...state, list: channellist}
         case CREATE_CHANNEL:
-            console.log(state)
+
 
 
             state.list.push(action.channel)
@@ -177,8 +177,7 @@ export default function reducer(state = initialState, action) {
 
             return newstate
         case DELETE_CHANNEL:
-            console.log(action.channel)
-            console.log(state.channels)
+
 
 
             return state.list.filter(channel=>(

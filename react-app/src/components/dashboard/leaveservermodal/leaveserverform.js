@@ -16,7 +16,7 @@ const LeaveServerForm = ({closeModal, serverid}) => {
     const dispatch = useDispatch()
     const user= useSelector(state => state.session.user)
     let servers = (useSelector(state=>state.servers))
-    console.log(serverid)
+
     let server = [];
     if (servers && servers.list&& servers.list.length>0) {
         server = servers.list.filter((server) => server.id == serverid)

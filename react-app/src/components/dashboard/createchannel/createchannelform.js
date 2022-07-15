@@ -14,7 +14,7 @@ const CreateChannelForm = ({serverid, closeModal}) => {
     const [error, setError] = useState([])
     const server = useSelector(state=>state.servers.list).filter(server=>server.id==serverid)
     const channels = useSelector(state=>state.channels)
-    console.log(server[0].adminId)
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();

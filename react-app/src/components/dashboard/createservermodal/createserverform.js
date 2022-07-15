@@ -14,7 +14,7 @@ const CreateServerForm = ({closeModal}) => {
     const [name, setName] = useState([])
     const [error, setError] = useState("")
     const servers = useSelector(state=>state.servers.list)
-    console.log(servers)
+
 
 
     const handleSubmit = async (e) => {
@@ -24,7 +24,7 @@ const CreateServerForm = ({closeModal}) => {
 
 
         await dispatch(create_server(user.id, name)).then(()=>dispatch(get_servers(user.id))).then(()=>(dispatch(get_channels(servers[servers.length-1].id))))
-        console.log(servers)
+
         history.push(`/channels/${servers[servers.length-1].id}`)
         closeModal()
 
