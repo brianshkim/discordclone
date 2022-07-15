@@ -13,12 +13,13 @@ const JoinServerForm = ({ closeModal, serverid }) => {
     const user = useSelector(state => state.session.user)
     console.log(useSelector(state => state.allservers.list))
     const servers = useSelector(state => state?.allservers?.list).filter(Server => Server.adminId !== user.id)
-
+    const serversusers = useSelector(state=>state.allservers.userlist)
     useEffect(()=>{
         dispatch(load_servers())
 
 
     }, [])
+    console.log(serversusers)
 
     const handlejoin = async (e, serverid, serverchannels) => {
         e.preventDefault();
@@ -75,8 +76,9 @@ const JoinServerForm = ({ closeModal, serverid }) => {
                             <li className="allservers" key={server.id}>{server.name}
                             <div className="membersdiv">{server.users.length}{server.users.length>1?" members":" member"}  <i class="fa-solid fa-users"></i></div> </li>
                             <br></br>
-
-                            <button className="allservers-button" onClick={(e) => handlejoin(e, server.id, server.channels)}>Join Server</button>
+                            {!!serversusers && console.log(serversusers[server.id].includes(user.id))}
+                            {!!serversusers && !serversusers[server.id].includes(user.id) ?<button className="allservers-button" onClick={(e) => handlejoin(e, server.id, server.channels)}>Join Server</button>:
+                            <div className="belong">You already belong to this server</div>}
 
                         </div>
 
