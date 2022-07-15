@@ -18,11 +18,14 @@ const CreateChannelForm = ({serverid, closeModal}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("hello")
+
+        closeModal()
+        let submitbutton = document.getElementById("submitcreatechannel")
 
         await dispatch(create_channel(user.id,serverid,name)).then(()=>(dispatch(get_channels(serverid)))).then(()=>dispatch(get_servers(user.id))).then(()=>(dispatch(get_channels(serverid))))
         history.push(`/channels/${serverid}/${channels.list[channels.list.length-1].id}`)
-        closeModal()
+        submitbutton.disabled=true;
+
 
     };
 
