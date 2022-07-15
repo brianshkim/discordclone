@@ -19,8 +19,10 @@ const CreateServerForm = ({closeModal}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const submitbutton = document.getElementById("submitcreate")
-        submitbutton.disabled="true"
+       document.getElementById("submitcreate").disabled=true
+
+
+
         await dispatch(create_server(user.id, name)).then(()=>dispatch(get_servers(user.id))).then(()=>(dispatch(get_channels(servers[servers.length-1].id))))
         console.log(servers)
         history.push(`/channels/${servers[servers.length-1].id}`)
