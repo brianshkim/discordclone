@@ -44,6 +44,11 @@
     font-family: Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif
 }
 
+.chatboxinput::placeholder{
+    padding: 20px;
+
+}
+
 .submitchat{
     display: none;
 }
