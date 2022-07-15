@@ -33,6 +33,7 @@ const LeaveServerForm = ({closeModal, serverid}) => {
             },
             body: JSON.stringify(serverid)
         }).then(() => dispatch(get_servers(user.id))).then(() => dispatch(load_servers())).then(()=>dispatch(unload_channels()))
+        history.push('/channels')
 
 
     };
