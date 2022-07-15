@@ -8,9 +8,11 @@ import Chat from '../Chat/chat';
 const ChannelMessages = () =>{
     const {serverid, channelid} = useParams()
     const channels = useSelector(state=>state.channels)
+    //{!!serverid && !!channelid && channels && channels.list && channels.list.length>0&& <Chat />}
     return(
+
     <div className = "CMContainer">
-        {!!serverid && !!channelid && channels && channels.list && channels.list.length>0&& <Chat />}
+
 
 
 
