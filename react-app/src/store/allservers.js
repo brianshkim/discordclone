@@ -26,18 +26,28 @@ export const load_servers = (id) => async (dispatch) => {
 
 }
 
-let initialState = {list:[]};
+let initialState = {list:[], userlist:{}};
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case LOAD_ALL_SERVERS:
             let serverlist = []
+            let userlists = {}
             action.servers.forEach(server => {
                 serverlist.push(server)
+                let servers = {}
+                let users=[]
+
+                server.users.forEach(user=>{
+                    users.push(user.id)
+
+            })
+                userlists[server.id]=users
+
             })
             serverlist.sort((a, b)=>{
                 return a.id - b.id
             })
-            return {...state, list: serverlist}
+            return {...state, list: serverlist, userlist:userlists}
         case UNLOAD_ALL_SERVERS:
             return initialState = {list:[]};
 

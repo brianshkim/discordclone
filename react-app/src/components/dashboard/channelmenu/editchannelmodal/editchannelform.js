@@ -18,8 +18,9 @@ const EditChannelForm = ({ closeModal, channelid}) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         e.stopPropagation()
-        await dispatch(update_channel(channelid, name)).then(() => dispatch(get_channels(channel[0].serverId)))
         closeModal()
+        await dispatch(update_channel(channelid, name)).then(() => dispatch(get_channels(channel[0].serverId)))
+
 
     };
 

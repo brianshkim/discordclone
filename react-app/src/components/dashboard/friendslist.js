@@ -93,9 +93,9 @@ const FriendsList = () => {
 
         <div className="friendslistcontainer">
             <div className="friendslistheader">{!!servers && !!servers.list && servers.list.length > 0 && server.length > 0 && server[0].name}
-                   {!!serverid && !!servers && servers.list && servers.list.length > 0 && server.length > 0 && server[0].name && <div class="dropdown">
-                        <button class="dropbtn"><i class="fa-solid fa-circle-chevron-down"></i></button>
-                        <div class="dropdown-content">
+                   {!!serverid && !!servers && servers.list && servers.list.length > 0 && server.length > 0 && server[0].name && <div className="dropdown">
+                        <button className="dropbtn"><i className="fa-solid fa-circle-chevron-down"></i></button>
+                        <div className="dropdown-content">
                             <div><DeleteServerModal serverid={serverid}/></div>
                             <div><EditServerModal serverid={serverid}/></div>
                             <div><CreateChannelModal serverid={serverid}/></div>
@@ -110,8 +110,8 @@ const FriendsList = () => {
             <ul className="listofchannels">
                 {!!channels && channels.length > 0 &&
                     channels.map(channel => <>
-                        <div className="channellist" onContextMenu={(e) => rightonclick(e, channel.id)} >
-                            <NavLink className="friendslistlist" to={`/channels/${channel.serverId}/${channel.id}`} ><div><i class="fa-solid fa-hashtag fa-lg" /></div> {channel.name.length > 7 && !!servers && servers.list && servers.list.length > 0 && server.length > 0 && server[0].adminId == user.id ? channel.name.slice(0, 4) + "..." : channel.name}{channelId == channel.id}
+                        <div  key={channel.id} className="channellist" onContextMenu={(e) => rightonclick(e, channel.id)} >
+                            <NavLink className="friendslistlist" to={`/channels/${channel.serverId}/${channel.id}`} ><div><i className="fa-solid fa-hashtag fa-lg" /></div> {channel.name.length > 7 && !!servers && servers.list && servers.list.length > 0 && server.length > 0 && server[0].adminId == user.id ? channel.name.slice(0, 4) + "..." : channel.name}{channelId == channel.id}
                             </NavLink>
                             {!!servers && servers.list && servers.list.length > 0 && server.length > 0 && server[0].adminId == user.id && <EditChannelModal channelid={channel.id} />}
                             {!!servers && servers.list && servers.list.length > 0 && server.length > 0 && server[0].adminId == user.id && <DeleteChannelModal channelid={channel.id} />}
