@@ -163,6 +163,7 @@ export default function reducer(state = initialState, action) {
         case CREATE_CHANNEL:
             console.log(state)
 
+
             state.list.push(action.channel)
             return {...state}
         case UPDATE_CHANNEL:
@@ -185,7 +186,8 @@ export default function reducer(state = initialState, action) {
 
             ))
         case UNLOAD_CHANNELS:
-            return {}
+            initialState={list:[]}
+            return initialState
         default:
             return state;
     }
