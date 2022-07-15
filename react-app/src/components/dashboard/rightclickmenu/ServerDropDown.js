@@ -9,7 +9,7 @@ const useRightClickMenu = () => {
 
     const handleContextMenu = (e) => {
         e.preventDefault();
-        console.log(e.pageX)
+
 
         setX(e.PageX);
         setY(e.PageY);

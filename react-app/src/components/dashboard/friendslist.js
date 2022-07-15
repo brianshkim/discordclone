@@ -25,11 +25,11 @@ const FriendsList = () => {
     const user = useSelector(state => state.session.user)
 
     const servers = useSelector(state => state?.servers)
-    console.log(servers)
+
     const channels = useSelector(state => state.channels.list)
     let server = []
     if (servers && servers.list && servers.list.length > 0) server = servers.list.filter(server => server.id == serverid)
-    console.log(server)
+
 
 
     const [x, setX] = useState(0);
@@ -76,7 +76,7 @@ const FriendsList = () => {
 
 
     const rightonclick = (e, channelid) => {
-        console.log(channelid)
+
         e.stopPropagation()
         e.preventDefault()
         setChannelId(channelid)

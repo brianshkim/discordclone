@@ -20,7 +20,7 @@ const SignUpForm = () => {
   const days = []
   const years = [];
   const currentyear = new Date()
-  console.log(birthday)
+
 
 
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const SignUpForm = () => {
 
     }
     setErrors(newdata)
-    console.log(errors)
+
 
   };
 
@@ -73,7 +73,7 @@ const SignUpForm = () => {
 
   const onselectMonth = async (e) => {
     let index = e.target.selectedIndex;
-    console.log(index)
+
     var optionElement = e.target.childNodes[index].value
     setMonth(optionElement)
 
@@ -82,7 +82,7 @@ const SignUpForm = () => {
   const onselectDay = async (e) => {
 
     let index = e.target.selectedIndex;
-    console.log(index)
+
     var optionElement = e.target.childNodes[index].innerHTML
     setDay(optionElement)
 
@@ -91,7 +91,7 @@ const SignUpForm = () => {
   const onselectYear = async (e) => {
 
     let index = e.target.selectedIndex;
-    console.log(index)
+
     var optionElement = e.target.childNodes[index].innerHTML
     setYear(optionElement)
 

@@ -12,9 +12,7 @@ const Chat = () => {
     const [userWelcome, setuserWelcome] = useState("")
     const user = useSelector(state => state.session.user)
     const { serverid, channelid } = useParams()
-    console.log(serverid, channelid)
 
-    console.log(messages)
 
 
     useEffect(() => {

@@ -31,7 +31,7 @@ const ServerNav = () => {
 
     }
 
-    console.log(servers)
+
 
 
 
@@ -55,7 +55,7 @@ const ServerNav = () => {
 
         let filtered = allservers.filter(server=>server.id==serverid)
         await dispatch(get_channels(serverid))
-        console.log(filtered)
+
         if (filtered && filtered.length > 0 && filtered[0].channels && filtered[0].channels.length>0) history.push(`/channels/${serverid}/${filtered[0].channels[0].id}`)
         else history.push(`/channels/${serverid}`)
 

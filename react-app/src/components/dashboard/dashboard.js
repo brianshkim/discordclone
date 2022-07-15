@@ -18,7 +18,7 @@ const Dashboard = ()=>{
     const dispatch = useDispatch()
     const servers = useSelector(state=>state.servers)
     const channels = useSelector(state=>state.channels)
-    console.log(servers)
+
 
 
 
