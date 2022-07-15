@@ -150,7 +150,7 @@ export default function reducer(state = initialState, action) {
                 serverlist.push(server)
             })
             serverlist.sort((a, b)=>{
-                return a.id - b.id
+                return a.name.localeCompare(b.name)
             })
             return {...state, list: serverlist}
         case CREATE_SERVER:
