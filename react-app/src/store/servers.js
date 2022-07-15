@@ -53,7 +53,7 @@ export const create_server = (id, name) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(createserver(data.newserver))
-        return null;
+        return data.newserver;
     } else if (response.status < 500) {
         const data = await response.json();
         if (data.errors) {
@@ -174,6 +174,7 @@ export default function reducer(state = initialState, action) {
 
             ))
         case UNLOAD_SERVER:
+            initialState = {list:[]}
             return initialState
 
 

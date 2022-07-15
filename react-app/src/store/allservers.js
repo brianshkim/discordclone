@@ -39,7 +39,7 @@ export default function reducer(state = initialState, action) {
             })
             return {...state, list: serverlist}
         case UNLOAD_ALL_SERVERS:
-            return initialState;
+            return initialState = {list:[]};
 
 
         default:
