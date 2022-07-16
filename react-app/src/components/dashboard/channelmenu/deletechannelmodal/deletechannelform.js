@@ -24,10 +24,7 @@ const DeleteChannelForm = ({ closeModal, channelid }) => {
 
             history.push(`/channels/${serverid}/${channels[1].id}`)
         }
-        else if (channels.length > 0){
 
-            history.push(`/channels/${serverid}/${channels[0].id}`)
-        }
         closeModal()
 
     };

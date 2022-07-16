@@ -116,7 +116,7 @@
 
 .allservers-button{
     width: 50%;
-    margin-top: 5px;
+    margin-top: 15px;
     margin-right: 30px;
     background-color: #5865F2;
     border: none;
@@ -124,13 +124,15 @@
     height: 50px;
     color: white;
     cursor: pointer;
+    border-radius: 5px;
 
 }
 
 .belong{
+    margin-top: 15px;
     color: #ED4245;
     font-size:12px;
     text-align: center;
-    margin-right: 20px;
+    margin-right: 42px;
 
 }
