@@ -14,7 +14,7 @@ function DeleteChannelModal({channelid}) {
 
       {showModal &&
         (<Modal onClose={() => setShowModal(false)}>
-          <DeleteChannelForm channelid={channelid} closeModal={() => setShowModal(false)} />
+          <DeleteChannelForm channelId={channelid} closeModal={() => setShowModal(false)} />
         </Modal>
         )}
     </>
