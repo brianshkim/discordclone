@@ -5,6 +5,8 @@ import {usedemo} from '../../store/session'
 import {get_servers} from '../../store/servers'
 import './splashpage.css'
 import DiscordLogoWhite from './DiscordLogoWhite.png'
+import {io} from "socket.io-client"
+let socket;
 const SplashPage = () => {
     const dispatch = useDispatch()
     const history = useHistory()
@@ -20,8 +22,11 @@ const SplashPage = () => {
     }
 
     const demouser = async () =>{
+        socket=io();
 
        await dispatch(usedemo())
+       socket.on("connect")
+
 
 
         history.push('/channels')
