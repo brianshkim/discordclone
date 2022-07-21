@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux"
+import {useParams} from "react-router-dom"
 
 import { NavLink } from 'react-router-dom';
 import { io } from "socket.io-client"
+import './onlinestatus.css'
+import DiscordLogoWhite from './SplashPage/DiscordLogoWhite.png'
 let socket;
 
-function UsersList() {
+function UsersList(){
+  const {serverid} = useParams()
   const dispatch = useDispatch()
   const [users, setUsers] = useState([]);
   const user = useSelector(state => state.session.user)
   const [usersOnline, setUsersOnline] = useState([])
+  const servers = useSelector(state=> state.servers?.list)
+
+  let server = servers?.filter(server=>server.id == serverid)
+  console.log(servers)
 
   useEffect(() => {
     async function fetchData() {
@@ -59,20 +67,30 @@ function UsersList() {
 
   })
 
-  const userComponents = users.map((user) => {
-    return (
-      <li key={user.id}>
-        <NavLink to={`/users/${user.id}`}>{user.username}{usersOnline.includes(user.id) ? "Online" : "Offline"}</NavLink>
-      </li>
-    );
-  });
+
+
+if(serverid){
 
   return (
-    <>
-      <h1>User List: </h1>
-      <ul>{userComponents}</ul>
-    </>
+    <div className="UserListContainer">
+      <p className="userlistonline">ALL USERS - {!!servers && servers.length>0 && server && server.length >0 && server[0].users.length} </p>
+      <ul>
+        {!!servers && servers.length>0 && server && server.length >0 && server[0].users.map((user) => (
+
+
+          <li className="userslist" key={user.id}>
+          <div className="usercontainer" ><div className="useravatar"><img className="discordavatar" src={DiscordLogoWhite} height="18" width="18"></img> {usersOnline.includes(user.id) ? <div className="onlinestatusshape"></div>:null}</div> </div>
+          <span className="usernametext">{user.username}</span>
+          </li>
+
+    ))}
+    </ul>
+    </div>
   );
+}
+else{
+  return(null)
+}
 }
 
 export default UsersList;

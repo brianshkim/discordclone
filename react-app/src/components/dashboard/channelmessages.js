@@ -14,7 +14,7 @@ const ChannelMessages = () =>{
 
     <div className = "CMContainer">
         {!!serverid && !!channelid && channels && channels.list && channels.list.length>0&& <Chat />}
-        <UsersList />
+
 
 
 

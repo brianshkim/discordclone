@@ -10,6 +10,7 @@ import { get_servers } from '../../store/servers';
 import {load_servers} from '../../store/allservers'
 import { get_channels } from '../../store/channels';
 import { io } from 'socket.io-client';
+import UsersList from '../UsersList';
 let socket;
 
 
@@ -53,6 +54,7 @@ const Dashboard = ()=>{
         <FriendsList />
         <ChannelMessages />
         <TopHeader />
+        <UsersList />
 
 
 
