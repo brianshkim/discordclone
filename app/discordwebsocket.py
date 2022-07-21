@@ -16,6 +16,10 @@ else:
 socketio = SocketIO(cors_allowed_origins=origins)
 
 # handle chat messages
+
+
+users = []
+
 @socketio.on("chat")
 def handle_chat(data):
 
@@ -30,3 +34,24 @@ def joinroom(data):
     join_room(room)
 
     emit("welcome", f"{username}", room=room)
+
+@socketio.on('connection')
+def user_connection(data):
+    print("connected", data['userId'])
+    print(users)
+
+    if data['userId'] not in users:
+            users.append(data["userId"])
+    print(users)
+    emit('connection', {"users": users})
+
+
+
+@socketio.on("disconnection")
+def user_disconnection(data):
+    print("disconnected", users)
+
+    if data['userId'] in users:
+        users.remove(data['userId'])
+    print(users)
+    emit ('disconnection', {'users': users})
