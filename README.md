@@ -57,6 +57,8 @@ This project is based off of [Discord](https://discord.com).
 * Save user messages
 * Friends
 * User Avatar using AWS
+* Right Click Menus(code in place but not logic)
+* Polish styling
 
 
 ***
