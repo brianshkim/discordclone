@@ -50,10 +50,13 @@ This project is based off of [Discord](https://discord.com).
 
 ***
 
-## Future Features
-* Friends
+## Future Features Priority List
+* Server User List(Done)
+* Voice Channels (in progress)
+* Screen Share
 * Save user messages
-* Server User List
+* Friends
+* User Avatar using AWS
 
 
 ***
