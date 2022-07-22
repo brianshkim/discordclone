@@ -42,7 +42,8 @@ export const get_channels = (serverid) => async (dispatch) => {
 
 }
 
-export const create_channel = (userid, serverid, name) => async (dispatch) => {
+export const create_channel = (userid, serverid, name, voice) => async (dispatch) => {
+    console.log(voice)
 
     const response = await fetch(`/api/servers/channels/create`, {
         method: 'POST',
@@ -53,6 +54,7 @@ export const create_channel = (userid, serverid, name) => async (dispatch) => {
             'userid': userid,
             "serverid": serverid,
             "name": name,
+            "voice":voice,
 
         })
     });

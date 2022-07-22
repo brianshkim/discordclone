@@ -1,55 +1,183 @@
-.channelcreatecontainer{
+.channelcreatecontainer {
     padding: 24px;
-    height: 190px;
-    width: 300px;
-    background-color: #36393f;
+    height: 400px;
+    width: 460px;
+    background-color: #4f545c;
+    border-radius: 5px;;
 }
 
-.createchannelheader{
+#modal-content{
+    border-radius: 5px;;
+
+}
+
+.createchannelheader {
+    margin-left: -15px;
     margin-top: -20px;
     height: 32px;
     padding: 16px;
     margin-bottom: 20px;
-    font-family: "ABC Ginto Normal","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "ABC Ginto Normal", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 13.5px;
     color: white;
 }
 
-.createinputtitle{
+.createinputtitle {
     color: #DCDDDE;
-    font-family: "ABC Ginto Normal","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "ABC Ginto Normal", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 12px;
-    margin-top: 0px;
-    margin-left: 17px;
-    margin-bottom: 8px;
+    margin-top: 20px;
+    margin-left: -4px;
+    margin-bottom: 10px;
+
 }
 
-.createchannelinput{
-    margin-left: 15px;
+.createchannelinput {
+    margin-left: -5px;
     padding: 10px 10px 10px 28px;
     background-color: #202225;
-    width: 80%;
+    width: 93%;
     border: none;
     color: white;
+    border-radius: 3px;
+    margin-bottom: 20px;
 }
 
-.createchannelbutton{
-    width: 90%;
+.createchannelbutton {
+    width: 111%;
+    margin-left: -25px;
+    height: 50px;;
     display: flex;
-    margin-top: -10px;
+    margin-top: -20px;
     justify-content: flex-end;
+    background-color: #36393f;
+
 
 
 }
 
-#submitcreatechannel{
+
+
+#submitcreatechannel {
     padding: 2px 16px;
     border: none;
     background-color: #5865F2;
     color: white;
     height: 38px;
-    margin-top: -10px;
+    margin-top: 15px;
     cursor: pointer;
 
-    margin-right: -20px;
+    margin-right: 25px;
+}
+
+.voiceicon {
+    color: #b9bbbe;
+    margin-top: 10px;
+}
+
+.voicetext {
+    margin-top: -10px;
+    margin-left: 10px;
+}
+
+.createvoice {
+    display: flex;
+    flex-direction: row;
+    background-color: #36393f;
+    height: 40px;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 10px;;
+}
+
+
+
+.voicetitle {
+
+    margin-top: 10px;
+    color: white;
+    font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    margin-bottom: 4px;
+
+}
+
+.voicepara {
+    color: #b9bbbe;
+    font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+
+}
+
+#voiceradio {
+    margin-left: 30px;
+    margin-top: 0px;
+}
+
+.createvoice>input[type="radio"] {
+    display: none;
+}
+
+.createvoice>input[type="radio"]::before {
+    background-color: #36393f;
+    content: "";
+    display: inline-block;
+    vertical-align: bottom;
+    width: 1rem;
+    height: 1rem;
+    margin-left: -5px;;
+    margin-right: 0.3rem;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #b9bbbe;
+}
+
+.createvoice>input[type="radio"]:checked {
+    color: white;
+}
+
+.createvoice>input[type="radio"]:checked::before {
+    background: radial-gradient(white, white 40%, transparent 45%, transparent);
+    border-color: white;
+}
+
+
+.createvoice>input[type="radio"] {
+    display: inline-block;
+    padding: 3rem 3rem;
+
+
+    margin-bottom: 17px;
+
+    margin-left: 0px;
+}
+
+#textradio{
+    margin-left:45px;
+}
+
+#voiceradio{
+    margin-top: 3px;
+    margin-left:60px;
+}
+
+.voicepara{
+    width: 100%;
+    font-size: 13px;
+}
+
+.createdeleteerror{
+    color: #F38688;
+    font-size: 12px;
+    margin-top: 0px;
+    height: 65px;
+    width: 111%;
+    margin-left: -25px;
+    background-color: #36393f;
+}
+
+.errorlist{
+    margin-left: 20px;
 }
