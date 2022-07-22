@@ -45,10 +45,15 @@ def channels(id):
 @login_required
 def create_channels():
     req = request.get_json()
+
+    voice_bool=False
+    if req['voice'] == "voice":
+        voice_bool=True
     newChannel = Channel(
         name=req['name'],
         userId=req['userid'],
-        serverId=req['serverid']
+        serverId=req['serverid'],
+        voice=voice_bool
 
     )
     db.session.add(newChannel)

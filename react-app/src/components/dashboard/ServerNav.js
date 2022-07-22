@@ -26,7 +26,7 @@ const ServerNav = () => {
     }
 
     const handleClick = (e) => {
-        e.preventDefault()
+
         setDisplay("none")
 
     }

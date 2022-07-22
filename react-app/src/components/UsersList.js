@@ -17,7 +17,7 @@ function UsersList(){
   const servers = useSelector(state=> state.servers?.list)
 
   let server = servers?.filter(server=>server.id == serverid)
-  console.log(servers)
+
 
   useEffect(() => {
     async function fetchData() {
@@ -30,23 +30,23 @@ function UsersList(){
 
   useEffect(() => {
     socket = io()
-    console.log(socket?.ids)
+
     socket.connect()
 
     socket.on("disconnection", (users)=>{
       const newusers = [...users.users]
-      console.log(newusers)
+
       setUsersOnline(newusers)
 
     })
 
 
     socket.on("connection", (users) => {
-      console.log(users)
+
       const newusers = [...users.users]
-      console.log(newusers)
+
       setUsersOnline(newusers)
-      console.log(usersOnline)
+
 
     })
 
