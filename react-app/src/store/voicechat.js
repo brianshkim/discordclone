@@ -22,8 +22,22 @@ const initialState = {
     isScreenSharingActive: false
 }
 
+export const setOpenRoom = (isUserRoomCreator=false, isUserInRoom=false)=>{
+    return{
+        type: OPEN_ROOM,
+        isUserRoomCreator,
+        isUserInRoom,
+    }
+}
+
 export default function reducer (state=initialState, action) {
     switch(action.type){
+        case OPEN_ROOM:
+            return {
+                ...state,
+                isUserInRoom: action.isUserInRoom,
+                isUserRoomCreator: action.isUserRoomCreator
+            }
         default:
             return state
     }
