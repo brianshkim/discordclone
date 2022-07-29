@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux"
 import {useParams} from "react-router-dom"
-
-import { NavLink } from 'react-router-dom';
 import { io } from "socket.io-client"
 import './onlinestatus.css'
 import DiscordLogoWhite from './SplashPage/DiscordLogoWhite.png'

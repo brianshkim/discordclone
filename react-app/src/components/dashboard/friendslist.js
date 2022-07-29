@@ -13,7 +13,7 @@ import CreateChannelModal from './createchannel';
 import EditServerModal from './editservermodal';
 import DeleteServerModal from './deleteservermodal';
 import LeaveServerModal from './leaveservermodal';
-
+import { setOpenRoom } from '../../store/voicechat';
 
 const FriendsList = () => {
     const location = useLocation()
