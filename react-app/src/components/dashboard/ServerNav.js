@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory, Route, Redirect } from 'react-router-dom';
+import { useHistory, Route, Redirect, useParams } from 'react-router-dom';
 import { get_servers } from '../../store/servers';
 import { get_channels } from '../../store/channels';
 import Menu from './rightclickmenu/menu';
@@ -10,8 +10,10 @@ import JoinServerModal from './joinservermodal';
 import FriendsList from './friendslist';
 
 const ServerNav = () => {
+    const {serverid} = useParams()
     const history = useHistory()
     const dispatch = useDispatch()
+    const serverRef = useRef([])
     const user = useSelector(state => state.session.user)
     const allservers = useSelector(state=>state.servers.list)
     const [x, setX] = useState(0);
@@ -19,6 +21,7 @@ const ServerNav = () => {
     const [serverId, setserverId] = useState(null)
     const [display, setDisplay] = useState("none")
     const servers = useSelector(state => state?.servers)
+
     const stopmenu = (e) => {
         e.preventDefault()
         setDisplay("none")
@@ -30,7 +33,19 @@ const ServerNav = () => {
         setDisplay("none")
 
     }
-
+//
+   // useEffect(()=>{
+   //     serverRef.current =serverRef.current.slice(0, allservers.length)
+   //     if(allservers.length > 0 && serverid){
+   //         console.log(serverRef.current)
+   //         serverRef.current[serverid].style.backgroundColor = "hsl(235,calc(var(--saturation-factor, 1)*85.6%),64.7%)"
+   //         serverRef.current[serverid].style.borderRadius = "35%"
+   //     }
+//
+//
+//
+   // }, [allservers.length, serverid])
+//
 
 
 
@@ -51,6 +66,7 @@ const ServerNav = () => {
     const gotoserver = async(e, serverid)=>{
         e.preventDefault()
         let button = document.getElementById(`button-${serverid}`)
+
 
 
         let filtered = allservers.filter(server=>server.id==serverid)
@@ -82,10 +98,13 @@ const ServerNav = () => {
                     {servers && servers.list && servers.list.map((Server) => (
 
 
-                        <li className="serverlist-list" key={Server.id}><button id={`button-${Server.id}`}
-                        onClick={(e)=>gotoserver(e, Server.id)}
-                        className="serverbuttons"
-                        onContextMenu={(e) => rightonclick(e, Server.id)} > {/*serverId === Server.id && <Menu x={x} y={y} serverid={Server.id} display={display} />*/}{Server.name[0].toUpperCase()} </button></li>
+                        <li className="serverlist-list" key={`list-${Server.id}`}>
+                            <span className={serverid==Server.id?"onServer onserverdis":"onServer"}></span>
+                            <button id={Server.id}
+                                //ref={el => serverRef.current[Server.id] = el }
+                                onClick={(e)=>gotoserver(e, Server.id)}
+                                className={serverid ==Server.id ?"serverbuttonsfocus":"serverbuttons"}
+                                onContextMenu={(e) => rightonclick(e, Server.id)} > {/*serverId === Server.id && <Menu x={x} y={y} serverid={Server.id} display={display} />*/}{Server.name[0].toUpperCase()} </button></li>
 
                     ))}
 
