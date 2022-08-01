@@ -29,7 +29,7 @@ const user = useSelector(state=>state.session.user)
 
 
     return(
-        <div className="channelmenu"style={style()}>
+        <div id="channelmenu"style={style()}>
             <div className='channelitem'><EditChannelModal channelid={channelid} serverid={serverid}/></div>
             <div className='channelitemseparator'></div>
             <div className='channelitem' ><DeleteChannelModal channelid={channelid} serverid={serverid}/></div>

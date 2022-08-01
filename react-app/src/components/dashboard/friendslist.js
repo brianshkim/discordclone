@@ -4,6 +4,7 @@ import { Switch, useParams, NavLink, useLocation, Route } from 'react-router-dom
 import { useDispatch, useSelector } from 'react-redux'
 import './dashboard.css'
 import ChannelMenu from './channelmenu/channelmenu'
+import Menu from './rightclickmenu/menu';
 import { get_channels } from '../../store/channels';
 import { get_servers } from '../../store/servers';
 import DeleteChannelModal from './channelmenu/deletechannelmodal';
@@ -78,6 +79,7 @@ const FriendsList = () => {
 
     const rightonclick = (e, channelid) => {
 
+
         e.stopPropagation()
         e.preventDefault()
         setChannelId(channelid)
@@ -86,8 +88,35 @@ const FriendsList = () => {
         setY(e.pageY)
 
 
+
     }
 
+    const hidechannels = (e) =>{
+        e.stopPropagation()
+        let hidebutton;
+         if(document.getElementsByClassName("fa-solid fa-angle-down fa-xs").length > 0) {
+            hidebutton = document.getElementsByClassName("fa-solid fa-angle-down fa-xs")[0]
+            hidebutton.className="fa-solid fa-angle-right fa-xs"
+         }
+         else if(document.getElementsByClassName("fa-solid fa-angle-right fa-xs").length > 0) {
+            hidebutton = document.getElementsByClassName("fa-solid fa-angle-right fa-xs")[0]
+            hidebutton.className="fa-solid fa-angle-down fa-xs"
+         }
+         console.log(hidebutton.className)
+
+
+        let channels = document.getElementsByClassName("channellist")
+        for (let i = 0;i<channels.length;i++){
+            if(channels[i].style.display === "none"){
+                channels[i].style.display = "flex"
+            }
+            else{
+                channels[i].style.display = "none"
+            }
+
+        }
+
+    }
 
     return (
 
@@ -109,9 +138,16 @@ const FriendsList = () => {
 
             <br></br>
             <ul className="listofchannels">
+                {serverid &&
+                <div className="textchanneldropdown" onClick={e=>hidechannels(e)}>
+                    <span className="angle"><i className="fa-solid fa-angle-down fa-xs" ></i></span>
+                    <span className="textchannelstitle">TEXT CHANNELS</span>
+                </div>
+}
                 {!!channels && channels.length > 0 &&
-                    channels.map(channel => <>
+                    channels.filter(channel=>!channel.voice).map(channel => <>
                         <div  key={channel.id} className={channelid==channel.id?"channellistfocus":"channellist"} onContextMenu={(e) => rightonclick(e, channel.id)} >
+
                             <NavLink className={channelid==channel.id?"friendslistlistfocus":"friendslistlist"} to={`/channels/${channel.serverId}/${channel.id}`} ><span><i className="fa-solid fa-hashtag fa-lg" /></span> {channel.name.length > 15 && !!servers && servers.list && servers.list.length > 0 && server.length > 0 && server[0].adminId == user.id ? channel.name.slice(0, 15) + "..." : channel.name}{channelId == channel.id}
                             </NavLink>
 
@@ -122,7 +158,9 @@ const FriendsList = () => {
 
                     </>)
                 }
+
             </ul>
+
             <footer >
 
                 <span className="usernamefoot">{user.username}</span>
