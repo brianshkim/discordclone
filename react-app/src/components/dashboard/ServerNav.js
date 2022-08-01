@@ -99,7 +99,7 @@ const ServerNav = () => {
 
 
                         <li className="serverlist-list" key={`list-${Server.id}`}>
-                            <span className={serverid==Server.id?"onServer onserverdis":"onServer"}></span>
+                            <span className={serverid==Server.id?"onserverdis":"onServer"}></span>
                             <button id={Server.id}
                                 //ref={el => serverRef.current[Server.id] = el }
                                 onClick={(e)=>gotoserver(e, Server.id)}
