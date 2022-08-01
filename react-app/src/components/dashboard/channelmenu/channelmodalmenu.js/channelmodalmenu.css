@@ -1,0 +1,128 @@
+.channelmenumodalbutton{
+    margin-top: 5px;
+
+    border: none;
+    background-color: #2F3136;
+    color: #96989d;
+    cursor: pointer;
+
+}
+
+.channelMenuCont{
+    display: flex;
+    flex-direction: row;
+    width: 206vh;
+    height: 103vh;
+    background-color: white;
+}
+
+.channelmodalbutton{
+    height: 60px;
+    width: 60px;
+    background-color: white;
+
+}
+
+
+.channelmenulist{
+    display: flex;
+    width: 27.5%;
+    justify-content: flex-end;
+    background-color: hsl(223,calc(var(--saturation-factor, 1)*6.9%),19.8%);
+}
+
+.chmenucont{
+    width: 218px;
+    padding: 60px 6px 60px 20px;
+
+}
+
+.chmenutitle{
+    color: hsl(223,calc(var(--saturation-factor, 1)*3.4%),60.2%);
+    font-weight: bold;
+    font-size: 12px;
+    font-family: "ABC Ginto Normal","Helvetica Neue",Helvetica,Arial,sans-serif;
+    padding: 0px 10px 6px;
+}
+
+.chmenutitlevoice{
+    margin-left: 4px;
+    font-size: 10px;
+
+}
+
+.chmenuitems{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    cursor: pointer;
+    font-size: 16px;
+    color: #b9bbbe;
+    margin: 0px 0px 2px;
+    padding: 6px 10px;
+    height: 20px;
+    width: 88%;
+}
+
+.chmenuitems:hover{
+    color:white;
+    background-color: #4F545C99;
+
+
+    border-radius: 3px;
+}
+
+.chmenudivider{
+    margin: 8px 10px;
+    height: 1px;
+    background-color: hsla(217,calc(var(--saturation-factor, 1)*7.6%),33.5%,0.48);
+    width: 90%;
+}
+
+.channelmenuescape{
+    background-color: #36393f;
+    width: 30%;
+
+}
+.escbuttonborder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:2px solid #b9bbbe;
+    border-radius: 50px;
+    height: 36px;
+    width: 36px;
+    color: #b9bbbe;
+    cursor: pointer;
+}
+
+
+
+.chescbutton{
+    width:36px;
+    margin-top: 10%;
+    height: 57px;
+
+}
+
+
+.chescbutton div:nth-child(1):hover,
+.chescbutton div:nth-child(1):hover~div:nth-child(2){
+    color:white;
+    border-color: white;
+}
+
+
+
+
+
+
+.esctext{
+    width: 10px;
+    margin-top: 8px;
+    color: #b9bbbe;
+    margin-left: 20%;
+    font-size: 12px;
+    font-family: Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif;;
+}

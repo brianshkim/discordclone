@@ -14,6 +14,7 @@ import EditServerModal from './editservermodal';
 import DeleteServerModal from './deleteservermodal';
 import LeaveServerModal from './leaveservermodal';
 import { setOpenRoom } from '../../store/voicechat';
+import CreateChannelModalMenu from './channelmenu/channelmodalmenu.js';
 
 const FriendsList = () => {
     const location = useLocation()
@@ -111,10 +112,10 @@ const FriendsList = () => {
                 {!!channels && channels.length > 0 &&
                     channels.map(channel => <>
                         <div  key={channel.id} className="channellist" onContextMenu={(e) => rightonclick(e, channel.id)} >
-                            <NavLink className="friendslistlist" to={`/channels/${channel.serverId}/${channel.id}`} ><div><i className="fa-solid fa-hashtag fa-lg" /></div> {channel.name.length > 7 && !!servers && servers.list && servers.list.length > 0 && server.length > 0 && server[0].adminId == user.id ? channel.name.slice(0, 4) + "..." : channel.name}{channelId == channel.id}
+                            <NavLink className="friendslistlist" to={`/channels/${channel.serverId}/${channel.id}`} ><span><i className="fa-solid fa-hashtag fa-lg" /></span> {channel.name.length > 15 && !!servers && servers.list && servers.list.length > 0 && server.length > 0 && server[0].adminId == user.id ? channel.name.slice(0, 15) + "..." : channel.name}{channelId == channel.id}
                             </NavLink>
-                            {!!servers && servers.list && servers.list.length > 0 && server.length > 0 && server[0].adminId == user.id && <EditChannelModal channelid={channel.id} />}
-                            {!!servers && servers.list && servers.list.length > 0 && server.length > 0 && server[0].adminId == user.id && <DeleteChannelModal channelid={channel.id} />}
+
+                            {!!servers && servers.list && servers.list.length > 0 && server.length > 0 && server[0].adminId == user.id && <CreateChannelModalMenu channelid={channel.id} />}
 
 
                         </div>

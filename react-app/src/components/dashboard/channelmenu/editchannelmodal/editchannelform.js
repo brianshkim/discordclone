@@ -18,7 +18,7 @@ const EditChannelForm = ({ closeModal, channelid}) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         e.stopPropagation()
-        closeModal()
+
         await dispatch(update_channel(channelid, name)).then(() => dispatch(get_channels(channel[0].serverId)))
 
 
@@ -46,7 +46,8 @@ const EditChannelForm = ({ closeModal, channelid}) => {
             <form className="editform"
 
             >
-                <h3 className="editchanneltitle">Overview</h3>
+                <h3 className="editchanneltitle">OVERVIEW</h3>
+                <div className="editechanneltitletitle">CHANNEL NAME</div>
                 <input
                 className="editchannelinput"
                     type="text"
