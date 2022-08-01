@@ -10,7 +10,7 @@ function CreateChannelModalMenu({channelid}) {
 
   return (
     <>
-    <button className="channelmenumodalbutton" onClick={() => setShowModal(true)}><i class="fa-solid fa-gear"></i></button>
+    <div className="channelmenumodalbutton" onClick={() => setShowModal(true)}><i class="fa-solid fa-gear fa-xs"></i></div>
 
       {showModal &&
         (<Modal onClose={() => setShowModal(false)}>

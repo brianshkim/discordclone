@@ -1,8 +1,11 @@
 .channelmenumodalbutton{
-    margin-top: 5px;
-
+    margin-top: 10px;
+    height: 16px;
+    width:16px;
     border: none;
-    background-color: #2F3136;
+    margin-right: 10px;
+
+
     color: #96989d;
     cursor: pointer;
 
@@ -68,8 +71,6 @@
 .chmenuitems:hover{
     color:white;
     background-color: #4F545C99;
-
-
     border-radius: 3px;
 }
 
@@ -112,10 +113,6 @@
     color:white;
     border-color: white;
 }
-
-
-
-
 
 
 .esctext{
