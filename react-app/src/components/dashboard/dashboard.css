@@ -411,6 +411,7 @@ footer{
 .angle{
     color:#96989d;
     margin-top: 10px;
+    transition: ease-in 1s;
 }
 
 .textchanneldropdown{

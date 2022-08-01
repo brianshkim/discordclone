@@ -104,7 +104,7 @@ const ServerNav = () => {
                                 //ref={el => serverRef.current[Server.id] = el }
                                 onClick={(e)=>gotoserver(e, Server.id)}
                                 className={serverid ==Server.id ?"serverbuttonsfocus":"serverbuttons"}
-                                onContextMenu={(e) => rightonclick(e, Server.id)} > {serverId === Server.id && <Menu x={x} y={y} serverid={Server.id} display={display} />}{Server.name[0].toUpperCase()} </button></li>
+                                onContextMenu={(e) => rightonclick(e, Server.id)} > {/*serverId === Server.id && <Menu x={x} y={y} serverid={Server.id} display={display} />*/}{Server.name[0].toUpperCase()} </button></li>
 
                     ))}
 

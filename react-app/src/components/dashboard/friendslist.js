@@ -138,10 +138,12 @@ const FriendsList = () => {
 
             <br></br>
             <ul className="listofchannels">
+                {serverid &&
                 <div className="textchanneldropdown" onClick={e=>hidechannels(e)}>
                     <span className="angle"><i className="fa-solid fa-angle-down fa-xs" ></i></span>
                     <span className="textchannelstitle">TEXT CHANNELS</span>
                 </div>
+}
                 {!!channels && channels.length > 0 &&
                     channels.filter(channel=>!channel.voice).map(channel => <>
                         <div  key={channel.id} className={channelid==channel.id?"channellistfocus":"channellist"} onContextMenu={(e) => rightonclick(e, channel.id)} >
