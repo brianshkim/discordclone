@@ -3,8 +3,6 @@
     background-color: #36393F;
     border-radius: 3px;
 
-
-
 }
 
 .delete{
@@ -30,7 +28,7 @@
 
 .deletebutton-cont{
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 #cancel-button{

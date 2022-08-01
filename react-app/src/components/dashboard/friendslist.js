@@ -111,8 +111,8 @@ const FriendsList = () => {
             <ul className="listofchannels">
                 {!!channels && channels.length > 0 &&
                     channels.map(channel => <>
-                        <div  key={channel.id} className="channellist" onContextMenu={(e) => rightonclick(e, channel.id)} >
-                            <NavLink className="friendslistlist" to={`/channels/${channel.serverId}/${channel.id}`} ><span><i className="fa-solid fa-hashtag fa-lg" /></span> {channel.name.length > 15 && !!servers && servers.list && servers.list.length > 0 && server.length > 0 && server[0].adminId == user.id ? channel.name.slice(0, 15) + "..." : channel.name}{channelId == channel.id}
+                        <div  key={channel.id} className={channelid==channel.id?"channellistfocus":"channellist"} onContextMenu={(e) => rightonclick(e, channel.id)} >
+                            <NavLink className={channelid==channel.id?"friendslistlistfocus":"friendslistlist"} to={`/channels/${channel.serverId}/${channel.id}`} ><span><i className="fa-solid fa-hashtag fa-lg" /></span> {channel.name.length > 15 && !!servers && servers.list && servers.list.length > 0 && server.length > 0 && server[0].adminId == user.id ? channel.name.slice(0, 15) + "..." : channel.name}{channelId == channel.id}
                             </NavLink>
 
                             {!!servers && servers.list && servers.list.length > 0 && server.length > 0 && server[0].adminId == user.id && <CreateChannelModalMenu channelid={channel.id} />}
