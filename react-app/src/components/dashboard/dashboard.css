@@ -44,7 +44,7 @@ body{
 
     margin-top: 10px;
     margin-right: 20px;
-    display: flex;
+
     color:#96989d;
     font-size: 16px;
     font-family: Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif
@@ -103,11 +103,11 @@ body{
 
 .channellist{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     margin-bottom: 10px;
     height: 34px;
-    width: 100%;
-    margin-left: -20px;
+    width: 95%;
+    margin-left: 0px;
 
 }
 
@@ -194,18 +194,29 @@ body{
 }
 
 
-
 .serverbuttons:hover{
     background-color: hsl(235,calc(var(--saturation-factor, 1)*85.6%),64.7%);
     border-radius: 35%;
-    transition: 0.15s ease-out
+    transition: 0.15s ease-out;
+
+
+
 
 }
 
-.serverbuttons:focus{
+.serverbuttonsfocus{
     background-color: hsl(235,calc(var(--saturation-factor, 1)*85.6%),64.7%);
     border-radius: 35%;
-    transition: 0.15s ease-out
+    transition: 0.15s ease-out;
+    height: 50px;
+    width: 50px;
+    border: none;
+    color: white;
+    font-size: 100%;
+    font-weight: 500;
+    cursor:pointer;
+    margin-top: 20px;
+
 }
 
 .channelhash{
@@ -220,6 +231,8 @@ body{
 }
 
 .serverlist-list{
+    display: inline-flex;
+    flex-direction: row;
     list-style: none;
 }
 .serverslistchild{
@@ -300,4 +313,28 @@ footer{
 
 .addserversbutton{
     margin-left:-10px;
+}
+
+.onServer{
+    position: absolute;
+
+    margin-top: 40px;
+    margin-left: -14px;
+
+    width: 8px;
+    background-color: hsl(0,calc(var(--saturation-factor, 1)*0%),100%);
+    border-radius: 0px 4px 4px 0px;
+    height: 15px;
+    visibility: hidden;
+}
+
+.onserverdis{
+    margin-top: 25px;
+    visibility: visible;
+    height: 40px;
+    transition: 0.15s ease-out;
+}
+
+.serverlist-list:hover .onServer{
+    visibility: visible;
 }

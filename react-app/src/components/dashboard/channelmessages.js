@@ -8,9 +8,13 @@ import Chat from '../Chat/chat';
 
 const ChannelMessages = () =>{
     const {serverid, channelid} = useParams()
+    console.log(channelid)
     const channels = useSelector(state=>state.channels)
-    const channel = channels.list.filter(channel=>channel.id == channelid)
-    //
+    console.log(channels)
+    let channel = []
+    if(channels && channels.list && channels.list.length>0)channel = channels.list.filter(channel=>channel.id == channelid)
+
+
     return(
 
     <div className = "CMContainer">

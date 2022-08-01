@@ -10,7 +10,7 @@ function DeleteChannelModal({channelid}) {
 
   return (
     <>
-    <button className="channelbutton delete" onClick={() => setShowModal(true)}>Delete</button>
+    <div className="chmenuitems" onClick={() => setShowModal(true)}>Delete Channel <span><i class="fa-solid fa-trash-can fa-xs"></i></span></div>
 
       {showModal &&
         (<Modal onClose={() => setShowModal(false)}>
