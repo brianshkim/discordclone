@@ -365,10 +365,12 @@ footer{
     margin-left: -14px;
 
 
-    width: 8px;
+
+    width: 2px;
     background-color: hsl(0,calc(var(--saturation-factor, 1)*0%),100%);
     border-radius: 0px 4px 4px 0px;
-    height: 7px;
+    height: 22px;
+
     visibility: hidden;
 }
 
@@ -378,6 +380,7 @@ footer{
     width: 8px;
     margin-top: 25px;
     visibility: visible;
+
     height: 40px;
     transition: 0.15s ease-out;
     border-radius: 0px 4px 4px 0px;
@@ -385,9 +388,11 @@ footer{
 }
 
 .serverlist-list:hover .onServer{
-    height: 15px;
+
+    width: 7px;
     transition: 0.15s ease-out;
     margin-top: 35px;
+
 
     visibility: visible;
 }
