@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
+
 
 import { useParams } from "react-router-dom"
 import { useSelector } from "react-redux";
@@ -13,6 +14,7 @@ let socket;
 const Chat = () => {
     const dispatch = useDispatch()
     const { serverid, channelid } = useParams()
+    const messagesEnd = useRef(null)
 
     const [chatInput, setChatInput] = useState("");
     const [messages, setMessages] = useState([]);
@@ -24,6 +26,7 @@ const Chat = () => {
     console.log(messageslist)
 
     let d = new Date()
+    console.log(d.toLocaleString())
     let month = (d.getMonth())
 
 
@@ -82,6 +85,17 @@ const Chat = () => {
         setChatInput("")
     }
 
+    const scrollToBottom = () => {
+        console.log(messagesEnd)
+        messagesEnd.current?.scrollIntoView({ behavior: "smooth", block: 'end', inline: 'nearest' })
+
+    }
+
+    useEffect(() => {
+        scrollToBottom()
+
+    }, [messageslist.list.length, messages])
+
     return (user && (
         <div className="chatcontainer">
 
@@ -106,12 +120,13 @@ const Chat = () => {
                                             <span className="previoususername">{message.username}</span>
                                             <span className="messagedatetime">{new Date(message.createdate).getMonth() == d.getMonth() &&
                                                 new Date(message.createdate).getDay() == d.getDay() &&
-                                                new Date(message.createdate).getFullYear() == d.getFullYear() ? `Today at ${new Date(message.createdate).getHours() > 12 ? new Date(message.createdate).getHours() - 12 : new Date(message.createdate).getHours()}:${new Date(message.createdate).getMinutes()} ${new Date(message.createdate).getHours() > 12 ? "PM" : "AM"}` : null}
+                                                new Date(message.createdate).getFullYear() == d.getFullYear() ? `Today at ${new Date(message.createdate).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}` : null}
                                                 {new Date(message.createdate).getMonth() == d.getMonth() &&
-                                                    new Date(message.createdate).getDay() == d.getDay() - 1 && new Date(message.createdate).getFullYear() == d.getFullYear() ? "yesterday" : null}
+                                                    new Date(message.createdate).getDay() == d.getDay() - 1 && new Date(message.createdate).getFullYear() == d.getFullYear() ? `Yesterday at ${new Date(message.createdate).getHours() > 12 ? new Date(message.createdate).getHours() - 12 : new Date(message.createdate).getHours()}:${new Date(message.createdate).getMinutes() < 10 ? "00" + new Date(message.createdate).getMinutes() : new Date(message.createdate).getMinutes()} ${new Date(message.createdate).getHours() > 12 ? "PM" : "AM"}` : null}
                                                 {new Date(message.createdate).getMonth() !== d.getMonth() &&
                                                     new Date(message.createdate).getDay() !== d.getDay() &&
                                                     new Date(message.createdate).getFullYear() !== d.getFullYear() && `${new Date(message.createdate).getMonth() + 1}/${new Date(message.createdate).getDay()}/${new Date(message.createdate).getFullYear()}`}
+
 
                                             </span>
                                         </div>
@@ -126,10 +141,27 @@ const Chat = () => {
 
                     {!!messages && messages.map((message, ind) => (
                         !!message.user && <>
-                            <div className="currentmessage" key={ind}>
+                            <div className="previousmessagescont2" key={ind}>
                                 {message.user != user.username &&
                                     <>
-                                        <div>{message.user}</div><div>{message.msg}</div>
+                                        <span><div className="useravatar2"><img className="discordavatar2" src={DiscordLogoWhite} height="18" width="18"></img> </div> </span>
+                                        <span className="previousmessage2">
+                                            <div className="previoususer">
+                                                <span className="previoususername">{message.user}</span>
+                                            <span className="messagedatetime">{new Date().getMonth() == d.getMonth() &&
+                                                new Date().getDay() == d.getDay() &&
+                                                new Date().getFullYear() == d.getFullYear() ? `Today at ${new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}` : null}
+                                                {new Date().getMonth() == d.getMonth() &&
+                                                    new Date().getDay() == d.getDay() - 1 && new Date().getFullYear() == d.getFullYear() ? `Yesterday at ${new Date().getHours() > 12 ? new Date().getHours() - 12 : new Date().getHours()}:${new Date().getMinutes() < 10 ? "00" + new Date().getMinutes() : new Date().getMinutes()} ${new Date().getHours() > 12 ? "PM" : "AM"}` : null}
+                                                {new Date().getMonth() !== d.getMonth() &&
+                                                    new Date().getDay() !== d.getDay() &&
+                                                    new Date().getFullYear() !== d.getFullYear() && `${new Date(message.createdate).getMonth() + 1}/${new Date(message.createdate).getDay()}/${new Date(message.createdate).getFullYear()}`}
+
+
+                                            </span>
+                                            </div>
+                                            <div className="messageprevious">{message.msg}</div>
+                                        </span>
 
 
                                     </>
@@ -138,6 +170,7 @@ const Chat = () => {
                         </>
 
                     ))}
+                    <div className="dummydiv" ref={messagesEnd}></div>
                 </div>
 
             </div>
