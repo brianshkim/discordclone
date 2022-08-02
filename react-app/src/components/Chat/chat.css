@@ -4,6 +4,7 @@
     align-content:flex-end;
     width: 100%;
 
+
     height: 87%;
 }
 .welcomemessage{
@@ -13,15 +14,41 @@
 #messagebox{
     align-self: flex-end;
     width: 100%;
+    height: 100%;
+    overflow: auto;
 
     font-family: Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif;
     overflow-wrap: anywhere;
+
+
 }
+
+#messagebox::-webkit-scrollbar {
+    width: 7px;
+    background-color: #282a2d;
+}
+
+#messagebox::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+#messagebox::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+#messagebox::-webkit-scrollbar-thumb {
+    background-color: #202225;
+    border: 2px none #282a2d;
+    border-radius: 4px;
+}
+
 .chatcontainer{
     margin-left: 20px;
-
     height: 100%;
-    width: 95%;
+    width: 100%;
+
 }
 
 .chatbox{
@@ -35,7 +62,7 @@
 
 .chatboxinput{
     padding: 11px 10px 11px 0px;
-    width: 100%;
+    width: 97%;
     height: 20px;
     background-color: #424549;
     border: none;
@@ -62,6 +89,7 @@
 .previousmessagescont{
 display: flex;
 flex-direction: row;
+
 
 
 }
