@@ -91,13 +91,25 @@
 }
 
 .previousmessagescont{
-margin-top: %;
+
 display: flex;
 flex-direction: row;
 
 
 
 }
+
+
+.previousmessagescont2{
+    margin-top:  auto;
+
+    display: flex;
+    flex-direction: row;
+    margin-bottom: auto;
+
+
+
+    }
 
 .previoususer{
     color: white;
@@ -134,6 +146,12 @@ flex-direction: row;
 
 .previousmessage{
     margin-left: 2.5%;
+}
+
+.previousmessage2{
+    width: 100%;
+    margin-left: 2.5%;
+    margin-bottom: 15px;
 }
 
 .startmessage{
