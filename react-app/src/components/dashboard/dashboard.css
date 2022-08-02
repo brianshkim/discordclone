@@ -156,6 +156,39 @@ body{
 
 }
 
+
+.channellistvoice{
+    display: flex;
+    padding: 1px;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    height: 34px;
+    width: 92%;
+    margin-left: 1.5%;
+    text-align: center;
+    line-height: 1;
+    border-radius: 3px;
+    color:#96989d;
+
+}
+
+
+.channellistvoicefocus{
+    display: flex;
+    padding: 1px;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    height: 34px;
+    width: 92%;
+    margin-left: 1.5%;
+    text-align: center;
+    line-height: 1;
+    background-color: #4F545C99;
+    border-radius: 3px;
+    color: white;
+
+}
+
 .CMContainer{
     flex-grow: 1;
     background-color: #36393F;
@@ -292,19 +325,24 @@ footer{
 
 .usernamefoot{
     color: white;
-    font-size: 16px;
+    margin-top: -10px;
+    margin-left: -100px;
+    font-weight: bold;
+
+    font-size: 13px;
     font-family: Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    margin-right: 20px;
+
 
 }
 
 .logoutbut{
-    color: white;
+    color: #b9bbbe;
     border: none;
-    background-color: #ED4245;
-    padding: 10px;
+
+    padding: 8px;
     border-radius: 4px;
     cursor: pointer;
+    margin-right: 5px;
 
 }
 
@@ -419,4 +457,24 @@ footer{
 
 .textchanneldropdown{
     cursor: pointer;
+}
+
+.userbar{
+    padding: 2px;
+    margin-top: 10%;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 7%;
+    background-color:hsl(220,calc(var(--saturation-factor, 1)*6.8%),17.3%);
+}
+
+.discordavatar2{
+    margin-top: 8px;
+    margin-left: 10px;
+}
+
+.userusercont{
+    margin-left: 5px;
 }
