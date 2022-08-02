@@ -71,9 +71,21 @@ if(serverid){
 
   return (
     <div className="UserListContainer">
-      <p className="userlistonline">ALL USERS - {!!servers && servers.length>0 && server && server.length >0 && server[0].users.length} </p>
+      <p className="userlistonline">ONLINE - {usersOnline.length} </p>
       <ul>
-        {!!servers && servers.length>0 && server && server.length >0 && server[0].users.map((user) => (
+        {!!servers && servers.length>0 && server && server.length >0 && server[0].users.filter(user=>usersOnline.includes(user.id)).map((user) => (
+
+
+          <li className="userslist" key={user.id}>
+          <div className="usercontainer" ><div className="useravatar"><img className="discordavatar" src={DiscordLogoWhite} height="18" width="18"></img> {usersOnline.includes(user.id) ? <div className="onlinestatusshape"></div>:null}</div> </div>
+          <span className="usernametext">{user.username}</span>
+          </li>
+
+    ))}
+    </ul>
+    <p className="userlistoffline">OFFLINE - {servers && servers.length>0 && server && server.length >0 && server[0].users.length - usersOnline.length}</p>
+    <ul>
+        {!!servers && servers.length>0 && server && server.length >0 && server[0].users.filter(user=>!usersOnline.includes(user.id)).map((user) => (
 
 
           <li className="userslist" key={user.id}>
