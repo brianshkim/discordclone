@@ -10,10 +10,10 @@
     align-self: flex-end;
 }
 
-.messagebox{
+#messagebox{
     align-self: flex-end;
     width: 100%;
-    color: white;
+
     font-family: Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif;
     overflow-wrap: anywhere;
 }
@@ -57,4 +57,48 @@
 
     width: 100%;
     border-bottom: 1px solid rgba(79, 84, 92, 0.48);
+}
+
+.previousmessagescont{
+display: flex;
+flex-direction: row;
+
+
+}
+
+.previoususer{
+    color: white;
+}
+
+.messageprevious{
+    color: #dcddde;
+}
+
+.messagedatetime{
+    margin-left: 8px;
+    font-size: .75rem;
+    line-height: 1.35rem;
+    color: hsl(214,calc(var(--saturation-factor, 1)*4%),65.3%);
+
+
+
+}
+
+.useravatar2{
+
+    margin-top: 5%;
+    height: 32px;
+    width: 32px;
+    background-color: #5865F2;
+    border-radius: 50%;
+
+}
+
+.discordavatar2{
+    margin-top: 23%;
+    margin-left: 20%;
+}
+
+.previousmessage{
+    margin-left: 1%;
 }

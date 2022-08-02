@@ -1,17 +1,36 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom"
 import { useSelector } from "react-redux";
+import { get_messages, create_message } from "../../store/messages";
 import { io } from 'socket.io-client';
+import DiscordLogoWhite from '../SplashPage/DiscordLogoWhite.png'
 import './chat.css'
 let socket;
 
 
 const Chat = () => {
+    const dispatch = useDispatch()
     const [chatInput, setChatInput] = useState("");
     const [messages, setMessages] = useState([]);
     const [userWelcome, setuserWelcome] = useState("")
     const user = useSelector(state => state.session.user)
+    const messageslist = useSelector(state => state.messages)
+    console.log(messageslist)
     const { serverid, channelid } = useParams()
+    let d = new Date()
+    let month = (d.getMonth())
+
+
+
+
+
+    console.log(Intl.DateTimeFormat().resolvedOptions().timeZone)
+
+    useEffect(() => {
+        dispatch(get_messages(channelid))
+
+    }, [dispatch, channelid])
 
 
 
@@ -30,7 +49,7 @@ const Chat = () => {
 
             setuserWelcome("Welcome to the chat " + msg)
         })
-        socket.emit('join', {channelId: channelid, username: user.username })
+        socket.emit('join', { channelId: channelid, username: user.username })
 
         socket.on("chat", (chat) => {
             setMessages(messages => [...messages, chat])
@@ -49,6 +68,10 @@ const Chat = () => {
 
     const sendChat = (e) => {
         e.preventDefault()
+        let d = new Date()
+
+        dispatch(create_message(chatInput, channelid, user.username, user.id, d.getTime()))
+
         socket.emit("chat", { user: user.username, msg: chatInput, channelId: channelid });
 
         setChatInput("")
@@ -56,25 +79,66 @@ const Chat = () => {
 
     return (user && (
         <div className="chatcontainer">
+
             <div className="messagecontainer">
 
-                    <div className="messagebox">
-                    {!!userWelcome && userWelcome}
-                        {!!messages && messages.map((message, ind) => (
-                            !!message.user &&<> <div key={ind}>{`${message.user} : ${message.msg}`}</div><div className="messageseparator"></div><br></br></>
 
-                        ))}
-                    </div>
+
+
+                <div id="messagebox">
+                    {
+                        !!messageslist && messageslist.list && messageslist.list.length > 0 && messageslist.list.map(message =>
+                            <>
+                                <div className="previousmessagescont" id={`message-${message.id}}`}>
+                                    <span><div className="useravatar2"><img className="discordavatar2" src={DiscordLogoWhite} height="18" width="18"></img> </div> </span>
+                                    <span className="previousmessage">
+                                        <div className="previoususer">
+                                            <span className="previoususername">{message.username}</span>
+                                            <span className="messagedatetime">{new Date(message.createdate).getMonth() == d.getMonth() &&
+                                                new Date(message.createdate).getDay() == d.getDay() &&
+                                                new Date(message.createdate).getFullYear() == d.getFullYear() ? `Today at ${new Date(message.createdate).getHours() > 12 ? new Date(message.createdate).getHours() - 12 : new Date(message.createdate).getHours()}:${new Date(message.createdate).getMinutes()} ${new Date(message.createdate).getHours() > 12 ? "PM" : "AM"}` : null}
+                                                {new Date(message.createdate).getMonth() == d.getMonth() &&
+                                                    new Date(message.createdate).getDay() == d.getDay() - 1 && new Date(message.createdate).getFullYear() == d.getFullYear() ? "yesterday" : null}
+                                                {new Date(message.createdate).getMonth() !== d.getMonth() &&
+                                                    new Date(message.createdate).getDay() !== d.getDay() &&
+                                                    new Date(message.createdate).getFullYear() !== d.getFullYear() && `${new Date(message.createdate).getMonth() + 1}/${new Date(message.createdate).getDay()}/${new Date(message.createdate).getFullYear()}`}
+
+                                            </span>
+                                        </div>
+                                        <div className="messageprevious"> {message.content}</div>
+                                    </span>
+                                </div>
+
+                                <br></br>
+                            </>
+                        )
+                    }
+
+                    {!!messages && messages.map((message, ind) => (
+                        !!message.user && <>
+                            <div className="currentmessage" key={ind}>
+                                {message.user != user.username &&
+                                    <>
+                                        <div>{message.user}</div><div>{message.msg}</div>
+
+
+                                    </>
+                                }
+                            </div>
+                        </>
+
+                    ))}
+                </div>
 
             </div>
             <form className="chatbox" onSubmit={sendChat}>
                 <input
-                className="chatboxinput"
+                    className="chatboxinput"
                     value={chatInput}
                     onChange={updateChatInput}
                     placeholder="Send your message here"
                 />
-                <button className="submitchat" type="submit" onClick={(e) => sendChat(e)}>Send</button>
+                <button className="submitchat" type="submit" onClick={(e) => sendChat(e)} disabled={chatInput.length < 1}>Send</button>
             </form>
         </div>
 
