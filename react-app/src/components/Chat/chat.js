@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+
 import { useParams } from "react-router-dom"
 import { useSelector } from "react-redux";
 import { get_messages, create_message } from "../../store/messages";
@@ -11,13 +12,17 @@ let socket;
 
 const Chat = () => {
     const dispatch = useDispatch()
+    const { serverid, channelid } = useParams()
+
     const [chatInput, setChatInput] = useState("");
     const [messages, setMessages] = useState([]);
     const [userWelcome, setuserWelcome] = useState("")
     const user = useSelector(state => state.session.user)
     const messageslist = useSelector(state => state.messages)
+    const channels = useSelector(state => state.channels)
+    const ch = channels.list.filter(channel => channel.id == channelid)
     console.log(messageslist)
-    const { serverid, channelid } = useParams()
+
     let d = new Date()
     let month = (d.getMonth())
 
@@ -83,9 +88,14 @@ const Chat = () => {
             <div className="messagecontainer">
 
 
-
-
                 <div id="messagebox">
+                    <div className="startmessage">
+                        <div className="startmessagetext"><i className="fa-solid fa-hashtag fa-3x"></i></div>
+                        <div className="startmessagetitle">Welcome to #{ch[0].name} </div>
+                        <div className="startmessagepara">This is the start of the #{ch[0].name} channel</div>
+
+
+                    </div>
                     {
                         !!messageslist && messageslist.list && messageslist.list.length > 0 && messageslist.list.map(message =>
                             <>
