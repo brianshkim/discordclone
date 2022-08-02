@@ -78,3 +78,36 @@ def delete_channel(channelid):
     foundchannel.delete()
     db.session.commit()
     return jsonify(channelid)
+
+
+@server_routes.route('/channels/<int:channelid>/messages', methods=['get'])
+@login_required
+def get_messages(channelid):
+    foundmessages = Message.query.filter_by(channelId=channelid)
+    return {"messages":[messages.to_dict() for messages in foundmessages]}
+
+@server_routes.route('/channels/<int:channelid>/messages', methods=['post'])
+@login_required
+def create_messages(channelid):
+    req = request.get_json()
+    newmessage = Message(
+        content=req["content"],
+        channelId=channelid,
+        userId=req['userid'],
+        username=req['username'],
+        createdate=req['createdate']
+
+    )
+    db.session.add(newmessage)
+    db.session.commit()
+    return newmessage.to_dict()
+
+
+@server_routes.route('/channels/<int:channelid>/messages/<int:messageid>', methods=['post'])
+@login_required
+def edit_messages(messageid):
+    req = request.get_json()
+    foundmessage = Message.query.get(id=messageid)
+    foundmessage.content=req
+    db.session.commit()
+    return foundmessage.to_dict()
