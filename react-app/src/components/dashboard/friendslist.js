@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Switch, useParams, NavLink, useLocation, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import './dashboard.css'
+import ProfilePageMenu from './profilepage';
 import ChannelMenu from './channelmenu/channelmenu'
 import Menu from './rightclickmenu/menu';
 import { get_channels } from '../../store/channels';
@@ -217,6 +218,7 @@ const FriendsList = () => {
                 <span className="userusercont"><div className="usercontainer" ><div className="useravatar"><img className="discordavatar2" src={DiscordLogoWhite} height="18" width="18"></img> <div className="onlinestatusshape"></div></div></div></span>
 
                 <span className="usernamefoot">{user.username}</span>
+                <span className="profilepage"><ProfilePageMenu /></span>
 
                 <span className="logoutbutton"><LogoutButton /></span>
 
