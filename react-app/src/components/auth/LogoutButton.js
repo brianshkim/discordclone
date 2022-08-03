@@ -31,7 +31,7 @@ const LogoutButton = () => {
     history.push('/')
   };
 
-  return <div className="logoutbut" onClick={onLogout}><i class="fa-solid fa-right-from-bracket"></i></div>;
+  return <div className="chmenuitems" onClick={onLogout}>Log Out<span><i class="fa-solid fa-right-from-bracket"></i></span></div>;
 };
 
 export default LogoutButton;

@@ -55,3 +55,8 @@ def user_disconnection(data):
         users.remove(data['userId'])
     print(users)
     emit ('disconnection', {'users': users})
+
+@socketio.on('changeprofile')
+def change_profile():
+    print ("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+    emit ('changeprofile')

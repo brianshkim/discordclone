@@ -135,7 +135,7 @@
 }
 
 .ProfilePageTitle{
-    margin-left: 30px;
+    margin-left: 15px;
     margin-top: 10%;
     color: white;
     padding: 15px;
@@ -162,6 +162,14 @@
     border-radius: 4px;
 
 
+}
+
+.profileseparator{
+    margin-left: 15px;
+    width: 81%;
+    height: 1px;
+    background-color: hsla(217,calc(var(--saturation-factor, 1)*7.6%),33.5%,0.48);
+    margin-top: 40px;
 }
 
 .ProfileCardInner{
@@ -211,6 +219,7 @@
     font-family: "ABC Ginto Normal","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: bold;
 
+
 }
 
 .gotoprofilebutton{
@@ -219,16 +228,25 @@
 }
 
 .profbutton{
-    margin-right: -80px;
-    padding: 4px 16px;
-    height: 32.5px;
-    color: white;
-    background-color: #5865F2;
+    display: block;
+    position: relative;
     font-size: 14px;
+    margin-right: 18px;
+
+    margin-top: 15px;
+    width: 150px;
+    height: 32px;
     border-radius: 4px;
-    cursor: pointer;
-    border: none;
+    background-color: #5865F2;
     font-family: Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+
+    cursor: pointer;
+
 }
 .profbutton:hover{
     background-color: #4166f5;
@@ -272,4 +290,45 @@
 
 .revealemail:hover{
    text-decoration: underline;
+}
+
+.PAtitle{
+    margin-top: 40px;
+    color: white;
+    font-size: 20px;
+    font-family: "ABC Ginto Normal","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: bold;
+
+}
+
+.PAcont{
+    margin-left: 15px;
+}
+
+.changepassword{
+    margin-top: 28px;
+    background-color: #5865F2;
+    font-family: Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    border: none;
+    color: white;
+    padding: 2px 16px;
+    height: 32px;
+    cursor:pointer;
+
+}
+
+.changepassword:hover{
+    background-color: #4166f5;
+}
+
+#file{
+    opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+  position: absolute;
+}
+
+.logoutbutton{
+    margin-top: -10px;
 }

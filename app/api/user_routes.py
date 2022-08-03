@@ -76,7 +76,7 @@ def leave_server(id):
     return jsonify(req)
 
 
-@user_routes.route("/<int:id>/upload", methods=['POST'])
+@user_routes.route('/<int:id>/upload', methods=['POST'])
 @login_required
 def upload_image(id):
     if "image" not in request.files:

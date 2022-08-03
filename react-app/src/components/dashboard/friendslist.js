@@ -215,12 +215,12 @@ const FriendsList = () => {
             </ul>
 
             <footer className="userbar" >
-                <span className="userusercont"><div className="usercontainer" ><div className="useravatar"><img className="discordavatar2" src={DiscordLogoWhite} height="18" width="18"></img> <div className="onlinestatusshape"></div></div></div></span>
+                <span className="userusercont"><div className="usercontainer" ><img src={user.avatar} className="useravatar"></img><div className="onlinestatusshape"></div></div></span>
 
                 <span className="usernamefoot">{user.username}</span>
-                <span className="profilepage"><ProfilePageMenu /></span>
 
-                <span className="logoutbutton"><LogoutButton /></span>
+
+                <span className="logoutbutton"><ProfilePageMenu /></span>
 
             </footer>
 

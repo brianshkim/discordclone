@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
-
-
+import { getallusers } from "../../store/allusers";
 import { useParams } from "react-router-dom"
 import { useSelector } from "react-redux";
 import { get_messages, create_message } from "../../store/messages";
+
 import { io } from 'socket.io-client';
 import DiscordLogoWhite from '../SplashPage/DiscordLogoWhite.png'
 import './chat.css'
@@ -23,14 +23,17 @@ const Chat = () => {
     const messageslist = useSelector(state => state.messages)
     const channels = useSelector(state => state.channels)
     const ch = channels.list.filter(channel => channel.id == channelid)
+    const allusers = useSelector(state=>state.allusers)
     console.log(messageslist)
 
     let d = new Date()
     console.log(d.toLocaleString())
     let month = (d.getMonth())
 
+    useEffect(()=>{(
+        dispatch(getallusers())
 
-
+    )}, [])
 
 
     console.log(Intl.DateTimeFormat().resolvedOptions().timeZone)
@@ -114,7 +117,8 @@ const Chat = () => {
                         !!messageslist && messageslist.list && messageslist.list.length > 0 && messageslist.list.map(message =>
                             <>
                                 <div className="previousmessagescont" id={`message-${message.id}}`}>
-                                    <span><div className="useravatar2"><img className="discordavatar2" src={DiscordLogoWhite} height="18" width="18"></img> </div> </span>
+                                    <span>{!!allusers && !!allusers[message.userId] && !allusers[message.userId].avatar &&<div className="useravatar"><img className="discordavatar" src={DiscordLogoWhite} height="16" width="16"></img> </div>}
+              {!!allusers && !!allusers[message.userId] && !!allusers[message.userId].avatar &&<div className="useravatar"><img className="discordavatar3" src={allusers[message.userId].avatar} height="32" width="32"></img></div>} </span>
                                     <span className="previousmessage">
                                         <div className="previoususer">
                                             <span className="previoususername">{message.username}</span>
@@ -144,7 +148,8 @@ const Chat = () => {
                             <div className="previousmessagescont2" key={ind}>
                                 {message.user != user.username &&
                                     <>
-                                        <span><div className="useravatar2"><img className="discordavatar2" src={DiscordLogoWhite} height="18" width="18"></img> </div> </span>
+                                        <span>{!user.avatar &&<div className="useravatar"><img className="discordavatar" src={DiscordLogoWhite} height="16" width="16"></img></div>}
+              {!!user.avatar &&<div className="useravatar"><img className="discordavatar3" src={user.avatar} height="32" width="32"></img> </div>} </span>
                                         <span className="previousmessage2">
                                             <div className="previoususer">
                                                 <span className="previoususername">{message.user}</span>

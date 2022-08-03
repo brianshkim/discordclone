@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
+import { refreshuser } from '../store/session';
 import { io } from "socket.io-client"
 import './onlinestatus.css'
 import DiscordLogoWhite from './SplashPage/DiscordLogoWhite.png'
@@ -25,6 +26,8 @@ function UsersList() {
     }
     fetchData();
   }, []);
+
+
 
   useEffect(() => {
     socket = io()
@@ -77,7 +80,9 @@ function UsersList() {
 
 
             <li className="userslist" key={user.id}>
-              <div className="usercontainer" ><div className="useravatar"><img className="discordavatar" src={DiscordLogoWhite} height="18" width="18"></img> {usersOnline.includes(user.id) ? <div className="onlinestatusshape"></div> : null}</div> </div>
+              <div className="usercontainer" > {!user.avatar &&<div className="useravatar"><img className="discordavatar" src={DiscordLogoWhite} height="16" width="16"></img> {usersOnline.includes(user.id) ? <div className="onlinestatusshapelogo"></div> : null}</div>}
+              {!!user.avatar &&<div className="useravatar"><img className="discordavatar3" src={user.avatar} height="32" width="32"></img> {usersOnline.includes(user.id) ? <div className="onlinestatusshape"></div> : null}</div>}</div>
+
               <span className="usernametext">{user.username}</span>
             </li>
 
@@ -89,13 +94,14 @@ function UsersList() {
 
 
             <li className="userslist2" key={user.id}>
-              <div className="usercontainer" ><div className="useravatar"><img className="discordavatar" src={DiscordLogoWhite} height="18" width="18"></img> {usersOnline.includes(user.id) ? <div className="onlinestatusshape"></div> : null}</div> </div>
+              <div className="usercontainer" >{!user.avatar &&<div className="useravatar"><img className="discordavatar" src={DiscordLogoWhite} height="16" width="16"></img> {usersOnline.includes(user.id) ? <div className="onlinestatusshape"></div> : null}</div>}
+              {!!user.avatar &&<div className="useravatar"><img className="discordavatar3" src={user.avatar} height="32" width="32"></img> {usersOnline.includes(user.id) ? <div className="onlinestatusshape"></div> : null}</div>}</div>
               <span className="usernametext">{user.username}</span>
             </li>
 
           ))}
         </ul>
-      </div>
+      </div >
     );
   }
   else {

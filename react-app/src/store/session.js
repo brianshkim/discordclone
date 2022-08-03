@@ -44,6 +44,8 @@ export const login = (email, password) => async (dispatch) => {
 
 
 
+
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
@@ -90,6 +92,13 @@ export const usedemo = () => async (dispatch) => {
 
 }
 
+export const refreshuser = (id) =>async(dispatch)=>{
+  const response = await fetch(`/api/users/${id}`)
+  if (response.ok){
+    const data = await response.json()
+    dispatch(setUser(data))
+  }
+}
 
 export const logout = () => async (dispatch) => {
   const response = await fetch('/api/auth/logout', {
