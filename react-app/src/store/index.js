@@ -6,6 +6,7 @@ import channels from './channels'
 import allservers from './allservers'
 import voicechat from './voicechat'
 import messages from './messages'
+import allusers from './allusers'
 
 const rootReducer = combineReducers({
   session,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   channels,
   allservers,
   voicechat,
-  messages
+  messages,
+  allusers
 
 });
 

@@ -43,6 +43,7 @@
 #submiteditchannel{
     margin-top: 25px;
     cursor:pointer;
+    border-radius: 3px;
 
     border: none;
     background-color: #5865F2;

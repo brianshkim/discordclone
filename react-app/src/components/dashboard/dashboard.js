@@ -11,6 +11,7 @@ import {load_servers} from '../../store/allservers'
 import { get_channels } from '../../store/channels';
 import { io } from 'socket.io-client';
 import UsersList from '../UsersList';
+import {getallusers} from "../../store/allusers"
 let socket;
 
 
@@ -27,14 +28,11 @@ const Dashboard = ()=>{
 
 
     useEffect(() => {
-        socket = io()
+
         console.log(socket?.ids)
 
         dispatch(load_servers())
         dispatch(get_servers(user.id))
-
-
-
 
         //if (servers && servers.list && servers.list.length>0 && servers.list[0] && channels && channels.list && channels.list.length>0 &&channels.list[0]){
 //
