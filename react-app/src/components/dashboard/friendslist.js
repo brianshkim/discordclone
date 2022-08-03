@@ -215,7 +215,8 @@ const FriendsList = () => {
             </ul>
 
             <footer className="userbar" >
-                <span className="userusercont"><div className="usercontainer" ><img src={user.avatar} className="useravatar"></img><div className="onlinestatusshape"></div></div></span>
+                <span className="userusercont"><div className="usercontainer" >{!user.avatar &&<div className="useravatar"><img className="discordavatar4" src={DiscordLogoWhite} height="16" width="16"></img> <div className="onlinestatusshape2"></div></div>}
+              {!!user.avatar &&<div className="useravatar"><img className="discordavatar3" src={user.avatar} height="32" width="32"></img> <div className="onlinestatusshape"></div></div>}</div></span>
 
                 <span className="usernamefoot">{user.username}</span>
 

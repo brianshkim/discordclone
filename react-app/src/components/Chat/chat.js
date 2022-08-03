@@ -117,7 +117,7 @@ const Chat = () => {
                         !!messageslist && messageslist.list && messageslist.list.length > 0 && messageslist.list.map(message =>
                             <>
                                 <div className="previousmessagescont" id={`message-${message.id}}`}>
-                                    <span>{!!allusers && !!allusers[message.userId] && !allusers[message.userId].avatar &&<div className="useravatar"><img className="discordavatar" src={DiscordLogoWhite} height="16" width="16"></img> </div>}
+                                    <span>{!!allusers && !!allusers[message.userId] && !allusers[message.userId].avatar &&<div className="useravatar"><img className="discordavatar4" src={DiscordLogoWhite} height="16" width="16"></img> </div>}
               {!!allusers && !!allusers[message.userId] && !!allusers[message.userId].avatar &&<div className="useravatar"><img className="discordavatar3" src={allusers[message.userId].avatar} height="32" width="32"></img></div>} </span>
                                     <span className="previousmessage">
                                         <div className="previoususer">
