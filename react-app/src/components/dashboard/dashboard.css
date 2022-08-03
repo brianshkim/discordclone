@@ -452,7 +452,7 @@ footer{
     transition: ease-in 1s;
 }
 
-.textchanneldropdown{
+.textchanneldropdown, .voicechanneldropdown{
     cursor: pointer;
 }
 

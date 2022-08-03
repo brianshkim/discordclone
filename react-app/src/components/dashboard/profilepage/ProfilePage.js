@@ -174,11 +174,7 @@ const ProfilePage = ({ closeModal }) => {
 
                         </div>
                         <div className="profileseparator"></div>
-                        <div className="PAcont">
-                            <div className="PAtitle">Password and authentication</div>
-                            <button className="changepassword">Change Password</button>
-                        </div>
-                        <div className="profileseparator"></div>
+
 
 
                     </>
