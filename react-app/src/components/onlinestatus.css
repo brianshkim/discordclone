@@ -67,3 +67,21 @@
     font-weight: bold;
     font-family: "ABC Ginto Normal","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
+
+
+.userslist2{
+    color: #96989D;
+    display: flex;
+    margin-left: -30px;
+    opacity: .5;
+
+
+    flex-direction: row;
+    font-family: Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    padding: 0px 8px;
+    height: 38px;
+    list-style: none;
+    text-align: center;
+    margin-bottom: 8px;
+
+}
