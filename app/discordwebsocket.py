@@ -19,6 +19,7 @@ socketio = SocketIO(cors_allowed_origins=origins)
 
 
 users = []
+rooms = {}
 
 @socketio.on("chat")
 def handle_chat(data):
@@ -60,3 +61,22 @@ def user_disconnection(data):
 def change_profile():
     print ("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
     emit ('changeprofile')
+
+
+@socketio.on('join-voice')
+def joinroom(data):
+    print(data, "LASDJFKSADFJKAJFKSJDAFJFKSJKFJLKFJFJAKSFJASKFJKFJASKFJ")
+
+    userId = data['userId']
+    room = int(data['channelid'])
+    print(type(room), "LADSJFKLJKJAFJAKFJKSADFJKLSADJFLKSAFLKSADJFLKSADJFLKSDAJFLSKAJFLSKADJFLKSADJF")
+    peerId = data['peerId']
+    join_room(room)
+    if room in rooms.keys() and userId not in rooms[room]:
+        rooms[room].append(userId)
+    else:
+        rooms[room] = [userId]
+
+    print (rooms, "SLDFJSLDFJKLASJFKLSDAJFLSADJFLSADJFLSADJFKSAJFKLSJAFLKJAKLFJSAKLDFJSAKLFJASLDF")
+
+    emit("members", {"room":rooms[room], "peerId":peerId}, room=room)
