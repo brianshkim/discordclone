@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
-import { refreshuser } from '../store/session';
+import { refreshuser } from '../store/session'
+import {get_servers} from '../store/servers'
 import { io } from "socket.io-client"
 import './onlinestatus.css'
 import DiscordLogoWhite from './SplashPage/DiscordLogoWhite.png'
@@ -42,9 +43,11 @@ function UsersList() {
     })
 
 
+
     socket.on("connection", (users) => {
 
       const newusers = [...users.users]
+
 
       setUsersOnline(newusers)
 
@@ -66,7 +69,7 @@ function UsersList() {
     //    dispatch(get_channels(servers.list[0].id)).then(()=>history.push(`/channels/${servers.list[0].id}/${channels.list[0].id}`))
     //}
 
-  })
+  }, [socket])
 
 
 
