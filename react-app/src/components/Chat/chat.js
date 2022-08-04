@@ -63,7 +63,8 @@ const Chat = () => {
         socket.emit('join', { channelId: channelid, username: user.username })
 
         socket.on("chat", (chat) => {
-            setMessages(messages => [...messages, chat])
+
+            dispatch(get_messages(channelid))
         })
         // when component unmounts, disconnect
 
