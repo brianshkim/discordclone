@@ -34,14 +34,6 @@ const Chat = () => {
 
     let month = (d.getMonth())
 
-    const addEmoji = (e) => {
-        let sym = e.unified.split("-");
-        let codesArray = [];
-        sym.forEach((el) => codesArray.push("0x" + el));
-        let emoji = String.fromCodePoint(...codesArray);
-        setInput(input + emoji);
-      };
-
     useEffect(()=>{(
         dispatch(getallusers())
 
