@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom"
 import { useSelector } from "react-redux";
 import { get_messages, create_message } from "../../store/messages";
 
+
+
 import { io } from 'socket.io-client';
 import DiscordLogoWhite from '../SplashPage/DiscordLogoWhite.png'
 import './chat.css'
@@ -15,6 +17,8 @@ const Chat = () => {
     const dispatch = useDispatch()
     const { serverid, channelid } = useParams()
     const messagesEnd = useRef(null)
+    const [showEmojis, setShowEmojis] = useState(false);
+    const [input, setInput] = useState("");
 
     const [chatInput, setChatInput] = useState("");
     const [messages, setMessages] = useState([]);
@@ -24,11 +28,19 @@ const Chat = () => {
     const channels = useSelector(state => state.channels)
     const ch = channels.list.filter(channel => channel.id == channelid)
     const allusers = useSelector(state=>state.allusers)
-    console.log(messageslist)
+
 
     let d = new Date()
-    console.log(d.toLocaleString())
+
     let month = (d.getMonth())
+
+    const addEmoji = (e) => {
+        let sym = e.unified.split("-");
+        let codesArray = [];
+        sym.forEach((el) => codesArray.push("0x" + el));
+        let emoji = String.fromCodePoint(...codesArray);
+        setInput(input + emoji);
+      };
 
     useEffect(()=>{(
         dispatch(getallusers())
@@ -188,6 +200,7 @@ const Chat = () => {
                     placeholder="Send your message here"
                 />
                 <button className="submitchat" type="submit" onClick={(e) => sendChat(e)} disabled={chatInput.length < 1}>Send</button>
+
             </form>
         </div>
 

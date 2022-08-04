@@ -65,8 +65,8 @@
 }
 
 .chatboxinput{
-    padding: 11px 10px 11px 0px;
-    width: 97%;
+    padding: 11px 10px 11px 20px;
+    width: 95%;
     height: 20px;
     background-color: #424549;
     border: none;
@@ -79,6 +79,7 @@
     padding: 20px;
 
 }
+
 
 .submitchat{
     display: none;
