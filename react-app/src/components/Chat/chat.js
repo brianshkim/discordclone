@@ -120,18 +120,7 @@ const Chat = () => {
             }
 
         })
-        document.addEventListener('click', (e) => {
-            e.preventDefault()
 
-
-
-                msgdiv.focus()
-
-
-
-
-
-        })
     }
 
     const editeddiv = (e, id, userId, originalmessage) => {
@@ -168,11 +157,7 @@ const Chat = () => {
 
         })
 
-        document.addEventListener('click', (e) => {
 
-            message.focus()
-
-        })
 
 
     }
