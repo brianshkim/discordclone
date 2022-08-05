@@ -4,6 +4,7 @@
     align-content:flex-end;
     flex-direction: column-reverse;
     width: 100%;
+    margin-left: -10px;
 
 
     height: 90%;
@@ -93,11 +94,18 @@
 
 .previousmessagescont{
 
+
 display: flex;
 flex-direction: row;
 
 
 
+
+
+}
+
+.previousmessagescont:hover{
+    background-color: #282a2d;
 }
 
 
@@ -114,10 +122,15 @@ flex-direction: row;
 
 .previoususer{
     color: white;
+
 }
+
 
 .messageprevious{
     color: #dcddde;
+    height: auto;
+    overflow-wrap:anywhere;
+
 }
 
 .messagedatetime{
@@ -147,6 +160,8 @@ flex-direction: row;
 
 .previousmessage{
     margin-left: 2.5%;
+    height: 70px;
+    width: 100%;
 }
 
 .previousmessage2{
@@ -194,4 +209,96 @@ flex-direction: row;
     font-size: 16px;
     margin-top: 10px;
     margin-bottom: 40px;
+}
+
+.messagebuttonbox{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: auto;
+    height: 35px;
+    background-color: #2f3136;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+
+
+}
+
+.messageboxcontainer{
+
+
+    display: none;
+    justify-content: flex-end;
+    background-color: #2f3136;
+    height: 35px;
+    width: auto;
+    margin-left: 300px;
+    margin-top: -40px;
+    float:right;
+    border-radius: 5px;
+    white-space: nowrap;
+    overflow: none;
+}
+
+
+.messageboxcontainernull{
+
+
+    display: none;
+
+}
+
+.previousmessage:hover > .messageboxcontainer{
+    display: flex;
+}
+
+
+
+
+.editmbutton{
+    height: 100%;
+    background-color: #2f3136;
+    margin-left: -40px;
+
+    border: none;
+    color: #dcddde;
+
+    width: 40px;
+    border-radius: 5px;
+
+}
+
+.editmbutton:hover{
+    color: white;
+    background-color: #36393f;
+
+}
+
+.deletembutton{
+    height: 100%;
+    background-color: #2f3136;
+    float:right;
+
+    border: none;
+    color: #dcddde;
+
+    width: 40px;
+
+
+}
+
+.deletembutton:hover{
+    color: white;
+    background-color: #36393f;
+
+}
+
+.messageinstruc{
+    display: none;
+
+    font-size: 12px;
+    font-family: Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #dcddde;
+
 }

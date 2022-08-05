@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { getallusers } from "../../store/allusers";
 import { useParams } from "react-router-dom"
 import { useSelector } from "react-redux";
-import { get_messages, create_message } from "../../store/messages";
+import { get_messages, create_message, update_message } from "../../store/messages";
 
 
 
@@ -17,7 +17,6 @@ const Chat = () => {
     const dispatch = useDispatch()
     const { serverid, channelid } = useParams()
     const messagesEnd = useRef(null)
-    const [showEmojis, setShowEmojis] = useState(false);
     const [input, setInput] = useState("");
 
     const [chatInput, setChatInput] = useState("");
@@ -27,17 +26,20 @@ const Chat = () => {
     const messageslist = useSelector(state => state.messages)
     const channels = useSelector(state => state.channels)
     const ch = channels.list.filter(channel => channel.id == channelid)
-    const allusers = useSelector(state=>state.allusers)
+    const allusers = useSelector(state => state.allusers)
+    const [editMessage, setEditMessage] = useState('')
 
 
     let d = new Date()
 
     let month = (d.getMonth())
 
-    useEffect(()=>{(
-        dispatch(getallusers())
+    useEffect(() => {
+        (
+            dispatch(getallusers())
 
-    )}, [])
+        )
+    }, [])
 
 
     console.log(Intl.DateTimeFormat().resolvedOptions().timeZone)
@@ -99,6 +101,82 @@ const Chat = () => {
 
     }
 
+    const editbutton = (e, id) => {
+        e.preventDefault()
+        let msgdiv = document.getElementById(`messagebox${id}`)
+        let mesinstr = document.getElementById(`${id}instruc`)
+        mesinstr.style.display="flex"
+        console.log(msgdiv)
+        msgdiv.contentEditable = "true"
+        msgdiv.focus()
+        msgdiv.addEventListener('keydown', (e) => {
+
+
+            if (e.key === "Escape") {
+                msgdiv.blur()
+                msgdiv.contentEditable = "false"
+                msgdiv.innerText = msgdiv.innerText
+                mesinstr.style.display="none"
+            }
+
+        })
+        document.addEventListener('click', (e) => {
+            e.preventDefault()
+
+
+
+                msgdiv.focus()
+
+
+
+
+
+        })
+    }
+
+    const editeddiv = (e, id, userId, originalmessage) => {
+        let om = originalmessage
+        console.log(om)
+        let value = e.target.innerText
+        let mesinstr = document.getElementById(`${id}instruc`)
+        console.log(mesinstr)
+        mesinstr.style.display="flex"
+
+        let message = e.target
+
+
+
+        message.addEventListener('keydown', (e) => {
+
+            if (e.key === "Enter") {
+                (console.log(value))
+                if (userId == user.id && value.length > 0) {
+                    dispatch(update_message(id, value))
+                }
+                console.log("enter")
+                message.blur()
+                message.contentEditable = "false"
+                mesinstr.style.display="none"
+
+            }
+            if (e.key === "Escape") {
+                message.blur()
+                message.contentEditable = "false"
+                message.innerText = om
+                mesinstr.style.display="none"
+            }
+
+        })
+
+        document.addEventListener('click', (e) => {
+
+            message.focus()
+
+        })
+
+
+    }
+
     useEffect(() => {
         scrollToBottom()
 
@@ -122,8 +200,8 @@ const Chat = () => {
                         !!messageslist && messageslist.list && messageslist.list.length > 0 && messageslist.list.map(message =>
                             <>
                                 <div className="previousmessagescont" id={`message-${message.id}}`}>
-                                    <span>{!!allusers && !!allusers[message.userId] && !allusers[message.userId].avatar &&<div className="useravatar"><img className="discordavatar4" src={DiscordLogoWhite} height="16" width="16"></img> </div>}
-              {!!allusers && !!allusers[message.userId] && !!allusers[message.userId].avatar &&<div className="useravatar"><img className="discordavatar3" src={allusers[message.userId].avatar} height="32" width="32"></img></div>} </span>
+                                    <span>{!!allusers && !!allusers[message.userId] && !allusers[message.userId].avatar && <div className="useravatar"><img className="discordavatar4" src={DiscordLogoWhite} height="16" width="16"></img> </div>}
+                                        {!!allusers && !!allusers[message.userId] && !!allusers[message.userId].avatar && <div className="useravatar"><img className="discordavatar3" src={allusers[message.userId].avatar} height="32" width="32"></img></div>} </span>
                                     <span className="previousmessage">
                                         <div className="previoususer">
                                             <span className="previoususername">{message.username}</span>
@@ -139,9 +217,21 @@ const Chat = () => {
 
                                             </span>
                                         </div>
-                                        <div className="messageprevious"> {message.content}</div>
+                                        <div className={message.userId === user.id ? "messageboxcontainer" : "messageboxcontainernull"}>
+                                            <div className="messagebuttonbox">
+                                                <span><button className="editmbutton" onClick={(e) => editbutton(e, message.id)}><i class="fa-solid fa-pencil"></i></button></span>
+
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div contentEditable="false" suppressContentEditableWarning="true" onInput={(e) => editeddiv(e, message.id, message.userId, message.content)} id={`messagebox${message.id}`} className="messageprevious"> {message.content}</div>
+                                            <div id={`${message.id}instruc`} className="messageinstruc">Press Esc to Cancel or Enter to Submit Changes</div>
+                                        </div>
+
                                     </span>
+
                                 </div>
+
 
                                 <br></br>
                             </>
@@ -153,22 +243,22 @@ const Chat = () => {
                             <div className="previousmessagescont2" key={ind}>
                                 {message.user != user.username &&
                                     <>
-                                        <span>{!user.avatar &&<div className="useravatar"><img className="discordavatar" src={DiscordLogoWhite} height="16" width="16"></img></div>}
-              {!!user.avatar &&<div className="useravatar"><img className="discordavatar3" src={user.avatar} height="32" width="32"></img> </div>} </span>
+                                        <span>{!user.avatar && <div className="useravatar"><img className="discordavatar" src={DiscordLogoWhite} height="16" width="16"></img></div>}
+                                            {!!user.avatar && <div className="useravatar"><img className="discordavatar3" src={user.avatar} height="32" width="32"></img> </div>} </span>
                                         <span className="previousmessage2">
                                             <div className="previoususer">
                                                 <span className="previoususername">{message.user}</span>
-                                            <span className="messagedatetime">{new Date().getMonth() == d.getMonth() &&
-                                                new Date().getDay() == d.getDay() &&
-                                                new Date().getFullYear() == d.getFullYear() ? `Today at ${new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}` : null}
-                                                {new Date().getMonth() == d.getMonth() &&
-                                                    new Date().getDay() == d.getDay() - 1 && new Date().getFullYear() == d.getFullYear() ? `Yesterday at ${new Date().getHours() > 12 ? new Date().getHours() - 12 : new Date().getHours()}:${new Date().getMinutes() < 10 ? "00" + new Date().getMinutes() : new Date().getMinutes()} ${new Date().getHours() > 12 ? "PM" : "AM"}` : null}
-                                                {new Date().getMonth() !== d.getMonth() &&
-                                                    new Date().getDay() !== d.getDay() &&
-                                                    new Date().getFullYear() !== d.getFullYear() && `${new Date(message.createdate).getMonth() + 1}/${new Date(message.createdate).getDay()}/${new Date(message.createdate).getFullYear()}`}
+                                                <span className="messagedatetime">{new Date().getMonth() == d.getMonth() &&
+                                                    new Date().getDay() == d.getDay() &&
+                                                    new Date().getFullYear() == d.getFullYear() ? `Today at ${new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}` : null}
+                                                    {new Date().getMonth() == d.getMonth() &&
+                                                        new Date().getDay() == d.getDay() - 1 && new Date().getFullYear() == d.getFullYear() ? `Yesterday at ${new Date().getHours() > 12 ? new Date().getHours() - 12 : new Date().getHours()}:${new Date().getMinutes() < 10 ? "00" + new Date().getMinutes() : new Date().getMinutes()} ${new Date().getHours() > 12 ? "PM" : "AM"}` : null}
+                                                    {new Date().getMonth() !== d.getMonth() &&
+                                                        new Date().getDay() !== d.getDay() &&
+                                                        new Date().getFullYear() !== d.getFullYear() && `${new Date(message.createdate).getMonth() + 1}/${new Date(message.createdate).getDay()}/${new Date(message.createdate).getFullYear()}`}
 
 
-                                            </span>
+                                                </span>
                                             </div>
                                             <div className="messageprevious">{message.msg}</div>
                                         </span>

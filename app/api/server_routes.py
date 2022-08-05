@@ -103,11 +103,13 @@ def create_messages(channelid):
     return newmessage.to_dict()
 
 
-@server_routes.route('/channels/<int:channelid>/messages/<int:messageid>', methods=['post'])
+@server_routes.route('/channels/messages/<int:messageid>', methods=['post'])
 @login_required
 def edit_messages(messageid):
     req = request.get_json()
-    foundmessage = Message.query.get(id=messageid)
+    print(req, "aldsfafjasfkal;fjksj;ffj;kasfjksd;jfkalsjfkalsdfjk;slfja")
+    foundmessage = Message.query.get(messageid)
     foundmessage.content=req
+    foundmessage.createdate=foundmessage.createdate
     db.session.commit()
     return foundmessage.to_dict()
