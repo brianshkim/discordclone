@@ -208,7 +208,7 @@ const Chat = () => {
 
                                             </div>
                                         </div>
-                                        <div>
+                                        <div className="messagecontentcont">
                                             <div contentEditable="false" suppressContentEditableWarning="true" onInput={(e) => editeddiv(e, message.id, message.userId, message.content)} id={`messagebox${message.id}`} className="messageprevious"> {message.content}</div>
                                             <div id={`${message.id}instruc`} className="messageinstruc">Press Esc to Cancel or Enter to Submit Changes</div>
                                         </div>

@@ -1,6 +1,6 @@
 
 .messagecontainer{
-    display: flex;
+    display: inline-flex;
     align-content:flex-end;
     flex-direction: column-reverse;
     width: 100%;
@@ -15,15 +15,16 @@
 
 #messagebox{
 
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
+
 
     width: 100%;
     height: 100%;
     overflow-y: scroll;
 
     font-family: Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    overflow-wrap: anywhere;
+    overflow-wrap: break-word;
 
 
 }
@@ -93,10 +94,12 @@
 }
 
 .previousmessagescont{
-
-
+float:left;
+width: 100%;
+max-width: 890px;
 display: flex;
 flex-direction: row;
+
 
 
 
@@ -127,6 +130,9 @@ flex-direction: row;
 
 
 .messageprevious{
+    float: left;
+    width: 100%;
+
     color: #dcddde;
     height: auto;
     overflow-wrap:anywhere;
@@ -223,6 +229,10 @@ flex-direction: row;
     border-radius: 5px;
 
 
+}
+
+.messagecontentcont{
+    width: 100%;
 }
 
 .messageboxcontainer{
