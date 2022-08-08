@@ -234,6 +234,7 @@ flex-direction: row;
 
 .messagecontentcont{
     display: flex;
+    flex-direction: column;
     width: 100%;
 }
 
