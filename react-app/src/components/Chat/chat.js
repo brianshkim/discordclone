@@ -213,6 +213,7 @@ const Chat = () => {
                                             <div id={`${message.id}instruc`} className="messageinstruc">Press Esc to Cancel or Enter to Submit Changes</div>
                                         </div>
 
+
                                     </span>
 
                                 </div>
