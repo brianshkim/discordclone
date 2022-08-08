@@ -31,6 +31,7 @@ const Chat = () => {
 
 
     let d = new Date()
+    console.log(d.getDate())
 
     let month = (d.getMonth())
 
@@ -190,17 +191,19 @@ const Chat = () => {
                                     <span className="previousmessage">
                                         <div className="previoususer">
                                             <span className="previoususername">{message.username}</span>
-                                            <span className="messagedatetime">{new Date(message.createdate).getMonth() == d.getMonth() &&
-                                                new Date(message.createdate).getDay() == d.getDay() &&
+                                            <span className="messagedatetime">
+
+                                                {new Date(message.createdate).getMonth() == d.getMonth() &&
+                                                new Date(message.createdate).getDate() == d.getDate() &&
                                                 new Date(message.createdate).getFullYear() == d.getFullYear() ? `Today at ${new Date(message.createdate).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}` : null}
                                                 {new Date(message.createdate).getMonth() == d.getMonth() &&
-                                                    new Date(message.createdate).getDay() == d.getDay() - 1 && new Date(message.createdate).getFullYear() == d.getFullYear() ? `Yesterday at ${new Date(message.createdate).getHours() > 12 ? new Date(message.createdate).getHours() - 12 : new Date(message.createdate).getHours()}:${new Date(message.createdate).getMinutes() < 10 ? "00" + new Date(message.createdate).getMinutes() : new Date(message.createdate).getMinutes()} ${new Date(message.createdate).getHours() > 12 ? "PM" : "AM"}` : null}
-                                                {new Date(message.createdate).getMonth() !== d.getMonth() &&
-                                                    new Date(message.createdate).getDay() !== d.getDay() &&
-                                                    new Date(message.createdate).getFullYear() !== d.getFullYear() && `${new Date(message.createdate).getMonth() + 1}/${new Date(message.createdate).getDay()}/${new Date(message.createdate).getFullYear()}`}
-
+                                                    new Date(message.createdate).getDate() == d.getDate() - 1 && new Date(message.createdate).getFullYear() == d.getFullYear() ? `Yesterday at ${new Date(message.createdate).getHours() > 12 ? new Date(message.createdate).getHours() - 12 : new Date(message.createdate).getHours()}:${new Date(message.createdate).getMinutes() < 10 ? "00" + new Date(message.createdate).getMinutes() : new Date(message.createdate).getMinutes()} ${new Date(message.createdate).getHours() > 12 ? "PM" : "AM"}` : null}
+                                                {new Date(message.createdate).getMonth() !== d.getMonth() ||
+                                                    new Date(message.createdate).getDate() !== d.getDate() ||
+                                                    new Date(message.createdate).getFullYear() !== d.getFullYear() ? `${new Date(message.createdate).getMonth() + 1}/${new Date(message.createdate).getDay()}/${new Date(message.createdate).getFullYear()}`:null}
 
                                             </span>
+
                                         </div>
                                         <div className={message.userId === user.id ? "messageboxcontainer" : "messageboxcontainernull"}>
                                             <div className="messagebuttonbox">
