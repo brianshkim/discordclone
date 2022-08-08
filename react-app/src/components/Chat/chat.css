@@ -94,7 +94,7 @@
 }
 
 .previousmessagescont{
-float:left;
+
 width: 100%;
 max-width: 890px;
 display: flex;
@@ -130,7 +130,7 @@ flex-direction: row;
 
 
 .messageprevious{
-    float: left;
+
     width: 100%;
 
     color: #dcddde;
