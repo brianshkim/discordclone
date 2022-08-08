@@ -52,7 +52,7 @@ const ProfilePage = ({ closeModal }) => {
             console.log(data)
 
             setImageLoading(false);
-            await dispatch(refreshuser(user.id)).then((setavatarurl(data.url))).then(()=>dispatch(getallusers()).then(()=>dispatch(get_servers(user.id)))
+            await dispatch(refreshuser(user.id)).then(()=>setavatarurl(data.url)).then(()=>dispatch(getallusers())).then(()=>dispatch(get_servers(user.id)))
 
 
 
