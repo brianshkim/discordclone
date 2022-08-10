@@ -38,6 +38,24 @@ export const get_messages = (channelid) => async (dispatch) => {
 
 }
 
+export const update_message = (messageid, content) => async (dispatch) => {
+    console.log(content)
+    const response = await fetch(`/api/servers/channels/messages/${messageid}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(content)
+    });
+
+    const data = await response.json()
+
+
+    dispatch(editmessage(data));
+
+
+};
+
 export const create_message = (content, channelid, username, userid, time) => async (dispatch) => {
 
 
@@ -79,6 +97,8 @@ export default function reducer(state = initialState, action) {
             action.messages.forEach(message => {
                 messagelist.push(message)
             })
+            messagelist.sort((a,b)=>{
+            return a.id-b.id })
 
             return {...state, list: messagelist}
         case CREATE_MESSAGE:
@@ -88,15 +108,16 @@ export default function reducer(state = initialState, action) {
             state.list.push(action.message)
             return {...state}
         case UPDATE_MESSAGE:
-            let newstate = state.list.map((channel)=>{
-                if( channel.id === action.channel.id){
-                    channel.name = action.channel.name
-                }
-                return channel
+            console.log(state.list)
+            state.list.map((message)=>(
+                 message.id === action.message.id?message.content= action.message.content:message.content
 
-            })
 
-            return newstate
+
+            ))
+
+
+            return state
         case DELETE_MESSAGE:
 
 
