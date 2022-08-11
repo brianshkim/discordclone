@@ -14,6 +14,7 @@ import Channels from './components/channel';
 import SplashPage from './components/SplashPage/splashpage';
 import Dashboard from './components/dashboard/dashboard';
 import FriendsList from './components/dashboard/friendslist';
+import ServerDiscovery from './components/dashboard/serverdiscovery';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -47,6 +48,10 @@ function App() {
         <ProtectedRoute path={['/channels', '/channels/:serverid' , '/channels/:serverid/:channelid']} exact={true}>
           <Dashboard />
 
+
+        </ProtectedRoute>
+        <ProtectedRoute path={['/guild-discovery']} exact={true}>
+          <ServerDiscovery />
 
         </ProtectedRoute>
 

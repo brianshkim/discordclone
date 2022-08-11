@@ -72,11 +72,31 @@ def joinroom(data):
     print(type(room), "LADSJFKLJKJAFJAKFJKSADFJKLSADJFLKSAFLKSADJFLKSADJFLKSDAJFLSKAJFLSKADJFLKSADJF")
     peerId = data['peerId']
     join_room(room)
-    if room in rooms.keys() and userId not in rooms[room]:
-        rooms[room].append(userId)
-    else:
-        rooms[room] = [userId]
+    if room not in rooms.keys():
+        rooms[room]=[]
+    users = []
+    specificroom = []
+    for user in rooms[room]:
+       for key in user.keys():
+        users.append(key)
+        for value in user.values():
+            specificroom.append(value)
+    peerids = []
+    for id in specificroom:
+        peerids.append(id['peerId'])
+    print(peerids)
+    print(users)
+    print (specificroom)
+    if room in rooms.keys() and not userId in users:
+        rooms[room].append({userId:{"userId":userId, "peerId":peerId}})
+
+
 
     print (rooms, "SLDFJSLDFJKLASJFKLSDAJFLSADJFLSADJFLSADJFKSAJFKLSJAFLKJAKLFJSAKLDFJSAKLFJASLDF")
 
-    emit("members", {"room":rooms[room], "peerId":peerId}, room=room)
+    emit("members", {"room":peerids, "peerId":peerId}, room=room)
+
+
+@socketio.on('peerClose')
+def peerclose(data):
+    None

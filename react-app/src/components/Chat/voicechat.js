@@ -37,6 +37,8 @@ function VoiceChat() {
     peer?.on("open", (id) => {
       setPeerId(id);
 
+
+
       // User join to room
       socket.emit("join-voice", {userId: user.id, channelid, peerId: id });
 
@@ -51,6 +53,7 @@ function VoiceChat() {
           // Play local stream and call stream to other users
           playStream(id, stream, true);
           data.room.forEach((member) => {
+            console.log(member)
             if (member !== id) {
               let call = peer.call(member, stream);
               call?.on("stream", (remoteStream) => {
