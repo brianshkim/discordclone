@@ -102,4 +102,14 @@ def joinroom(data):
 
 @socketio.on('peerClose')
 def peerclose(data):
-    None
+    userId = data['userId']
+    room = int(data['channelid'])
+    peerId = data['peerId']
+    users = []
+    specificroom = []
+
+    for user in rooms[room]:
+        if (userId in user.keys()):
+            del user[userId]
+
+    emit('peerClose', {'userId': userId, "peerId":peerId}, room=room)

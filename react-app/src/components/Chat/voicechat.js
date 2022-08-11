@@ -47,6 +47,12 @@ function VoiceChat() {
 
       // User join to room
       socket.emit("join-voice", {userId: user.id, channelid, peerId: id });
+      socket.on('peerClose', data=>{
+        setMembers(members.filter(member=>member!=data['peerId']))
+        setOnlineUsers(onlineUsers.filter(user=>user != data[user.id]))
+
+
+      })
 
       // Notify to all members in the room
       socket.on("members", (data) => {
@@ -73,6 +79,8 @@ function VoiceChat() {
           updateStream(data.room);
         });
 
+
+
         // Answer
         peer.on("call", (call) => {
           if (videos) videos.innerHTML = "";
@@ -98,9 +106,16 @@ function VoiceChat() {
 
   useEffect(() => {
     return () => {
-      socket?.emit("peerClose", { peerId });
+      socket.emit("peerClose", { peerId, userId:user.id, channelid });
+
+
     };
   }, [socket, peerId]);
+
+  const disconnectcall = (e)=>{
+    peer.dataConnection.close()
+
+  }
 
 
 
@@ -204,6 +219,7 @@ function VoiceChat() {
       <div>{!!server && server.length>0 && server[0].users.filter(user=>onlineUsers.includes(user.id)).map(online=>(
        <div>{online.username}</div>
        ))} </div>
+       <button onClick={(e)=>disconnectcall(e)}>disconnect</button>
     </div>
   );
 }
