@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
@@ -11,6 +11,8 @@ let socket
 
 
 function VoiceChat() {
+  let history = useHistory()
+  let location = useLocation()
   const { serverid } = useParams()
   const servers = useSelector(state => state.servers?.list)
   console.log(servers)
@@ -23,6 +25,7 @@ function VoiceChat() {
   const [onlineUsers, setOnlineUsers] = useState([])
   const [peerId, setPeerId] = useState();
   const [members, setMembers] = useState([]);
+  const [calls, setCalls] = useState([])
   const [peer] = useState(
     () =>
       new Peer({
@@ -39,6 +42,7 @@ function VoiceChat() {
   useEffect(() => {
     socket = io();
     // Peer connect
+
     peer?.on("open", (id) => {
       setPeerId(id);
       console.log(id)
@@ -48,8 +52,8 @@ function VoiceChat() {
       // User join to room
       socket.emit("join-voice", {userId: user.id, channelid, peerId: id });
       socket.on('peerClose', data=>{
-        setMembers(members.filter(member=>member!=data['peerId']))
-        setOnlineUsers(onlineUsers.filter(user=>user != data[user.id]))
+        setMembers(members.filter(member=>member!=data.peerId))
+        setOnlineUsers(onlineUsers.filter(user=>user != data.userId))
 
 
       })
@@ -71,6 +75,7 @@ function VoiceChat() {
             console.log(member)
             if (member !== id) {
               let call = peer.call(member, stream);
+              setCalls([...calls, call])
               call?.on("stream", (remoteStream) => {
                 playStream(member, remoteStream);
               });
@@ -102,18 +107,32 @@ function VoiceChat() {
         setMembers(data.room);
       });
     });
+
   }, [socket, channelid, user, peer, members, streamLocal]);
 
   useEffect(() => {
     return () => {
       socket.emit("peerClose", { peerId, userId:user.id, channelid });
+      peer.disconnect()
+      calls?.forEach(call=>(
+      call.close()
+    ))
+    streamLocal?.getTracks().forEach((track) => track.stop());
+    setStreamLocal(null)
+
 
 
     };
-  }, [socket, peerId]);
+  }, []);
 
   const disconnectcall = (e)=>{
-    peer.dataConnection.close()
+    calls.forEach(call=>(
+      call.close()
+    ))
+    streamLocal?.getTracks().forEach((track) => track.stop());
+
+    history.push(`/channels/${serverid}`)
+
 
   }
 
