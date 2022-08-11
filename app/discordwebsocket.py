@@ -77,10 +77,13 @@ def joinroom(data):
     users = []
     specificroom = []
     for user in rooms[room]:
-       for key in user.keys():
-        users.append(key)
-        for value in user.values():
-            specificroom.append(value)
+        if (userId in user.keys()):
+            specuser = user[userId]
+            specuser['peerId']=peerId
+        for key in user.keys():
+            users.append(key)
+            for value in user.values():
+                specificroom.append(value)
     peerids = []
     for id in specificroom:
         peerids.append(id['peerId'])
@@ -94,7 +97,7 @@ def joinroom(data):
 
     print (rooms, "SLDFJSLDFJKLASJFKLSDAJFLSADJFLSADJFLSADJFKSAJFKLSJAFLKJAKLFJSAKLDFJSAKLFJASLDF")
 
-    emit("members", {"room":peerids, "peerId":peerId}, room=room)
+    emit("members", {"room":peerids, "peerId":peerId, "users":users}, room=room)
 
 
 @socketio.on('peerClose')

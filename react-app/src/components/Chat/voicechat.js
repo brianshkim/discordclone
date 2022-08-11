@@ -11,11 +11,16 @@ let socket
 
 
 function VoiceChat() {
+  const { serverid } = useParams()
+  const servers = useSelector(state => state.servers?.list)
+  console.log(servers)
+  let server = servers?.filter(server => server.id == serverid)
 
 
   const {channelid} = useParams()
   const user = useSelector((state) => state.session.user);
   const [streamLocal, setStreamLocal] = useState(null);
+  const [onlineUsers, setOnlineUsers] = useState([])
   const [peerId, setPeerId] = useState();
   const [members, setMembers] = useState([]);
   const [peer] = useState(
@@ -36,6 +41,7 @@ function VoiceChat() {
     // Peer connect
     peer?.on("open", (id) => {
       setPeerId(id);
+      console.log(id)
 
 
 
@@ -45,9 +51,12 @@ function VoiceChat() {
       // Notify to all members in the room
       socket.on("members", (data) => {
         console.log(data)
+        setOnlineUsers([...onlineUsers, ...data.users])
+        console.log(data.users)
+        console.log(onlineUsers)
         let videos = document.getElementById("videoContainer");
         if (videos) videos.innerHTML = "";
-        navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then((stream) => {
+        navigator.mediaDevices.getUserMedia({ video: false, audio: true }).then((stream) => {
           streamLocal?.getTracks().forEach((track) => track.stop());
           setStreamLocal(stream);
           // Play local stream and call stream to other users
@@ -67,7 +76,7 @@ function VoiceChat() {
         // Answer
         peer.on("call", (call) => {
           if (videos) videos.innerHTML = "";
-          navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then((stream) => {
+          navigator.mediaDevices.getUserMedia({ video: false, audio: true }).then((stream) => {
             setStreamLocal(stream);
             call.answer(stream);
             playStream(id, stream, true);
@@ -104,6 +113,7 @@ function VoiceChat() {
           arr.push(videos.childNodes[i]);
         }
       }
+      console.log(arr)
     }
   }
 
@@ -112,6 +122,7 @@ function VoiceChat() {
       let video = document.createElement("video");
       let div = document.createElement("div");
       let videos = document.getElementById("videoContainer");
+
 
       div.className = "max-w-full min-w-min flex justify-center items-center";
       video.srcObject = stream;
@@ -127,10 +138,17 @@ function VoiceChat() {
             console.log(error);
           });
       }
+      console.log(div)
       div.appendChild(video);
       if (videos) videos.appendChild(div);
     }
+
+
   }
+
+
+
+
 
   return (
     <div className="w-full h-full flex">
@@ -183,6 +201,9 @@ function VoiceChat() {
         </div>
 
       </div>
+      <div>{!!server && server.length>0 && server[0].users.filter(user=>onlineUsers.includes(user.id)).map(online=>(
+       <div>{online.username}</div>
+       ))} </div>
     </div>
   );
 }
