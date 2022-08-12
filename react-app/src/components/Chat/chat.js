@@ -60,6 +60,7 @@ const Chat = () => {
         // open socket connection
         // create websocket
         socket = io();
+        console.log(socket)
         socket.on("welcome", (msg) => {
             console.log(msg)
 

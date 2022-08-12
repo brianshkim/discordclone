@@ -1,3 +1,4 @@
+
 import { useParams } from "react-router";
 import { Redirect, useHistory, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -11,15 +12,16 @@ let socket
 
 
 function VoiceChat() {
+  const [refresh, setRefresh] = useState(true)
   let history = useHistory()
   let location = useLocation()
   const { serverid } = useParams()
   const servers = useSelector(state => state.servers?.list)
-  console.log(servers)
+
   let server = servers?.filter(server => server.id == serverid)
 
 
-  const {channelid} = useParams()
+  const { channelid } = useParams()
   const user = useSelector((state) => state.session.user);
   const [streamLocal, setStreamLocal] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([])
@@ -30,10 +32,10 @@ function VoiceChat() {
     () =>
       new Peer({
         config: {
-            iceServers: [
-                {
-                  urls: "stun:stun.l.google.com:19302",
-                },
+          iceServers: [
+            {
+              urls: "stun:stun.l.google.com:19302",
+            },
           ],
         },
       })
@@ -43,6 +45,10 @@ function VoiceChat() {
     socket = io();
     // Peer connect
 
+
+
+
+
     peer?.on("open", (id) => {
       setPeerId(id);
       console.log(id)
@@ -50,10 +56,11 @@ function VoiceChat() {
 
 
       // User join to room
-      socket.emit("join-voice", {userId: user.id, channelid, peerId: id });
-      socket.on('peerClose', data=>{
-        setMembers(members.filter(member=>member!=data.peerId))
-        setOnlineUsers(onlineUsers.filter(user=>user != data.userId))
+      socket.emit("join-voice", { userId: user.id, channelid, peerId: id });
+      socket.on('peerClose', data => {
+        console.log("PEERCLOSE")
+        setMembers(members.filter(member => member != data.peerId))
+        setOnlineUsers(onlineUsers.filter(user => user != data.userId))
 
 
       })
@@ -107,31 +114,49 @@ function VoiceChat() {
         setMembers(data.room);
       });
     });
-
-  }, [socket, channelid, user, peer, members, streamLocal]);
-
-  useEffect(() => {
     return () => {
-      socket.emit("peerClose", { peerId, userId:user.id, channelid });
-      peer.disconnect()
-      calls?.forEach(call=>(
-      call.close()
-    ))
-    streamLocal?.getTracks().forEach((track) => track.stop());
-    setStreamLocal(null)
+
+
+      socket.disconnect()
+
+
+
+
+
+
 
 
 
     };
-  }, []);
+  }, [socket, channelid, user, peer, members, streamLocal]);
 
-  const disconnectcall = (e)=>{
-    calls.forEach(call=>(
+
+  useEffect(()=>{
+    return() =>{
+
+      console.log("DISMount")
+      socket.emit('peerClose', { userId: user.id, peerId, channelid })
+    }
+  }, [socket, channelid, location.pathname])
+
+  const disconnectcall = (e) => {
+    calls.forEach(call => (
       call.close()
     ))
-    streamLocal?.getTracks().forEach((track) => track.stop());
+    streamLocal?.getTracks().forEach((track) => {
+      track.enabled = "false"
+      track.stop()
+    });
+    let videos = document.getElementById("videoContainer");
+    for (let i = 0; i < videos.childNodes.length; i++) {
+      let video = videos.childNodes[i]
+      console.log(video)
+      videos.removeChild(video)
+    }
 
-    history.push(`/channels/${serverid}`)
+    socket.emit('peerClose', { userId: user.id, peerId, channelid })
+
+    //history.push(`/channels/${serverid}`)
 
 
   }
@@ -147,7 +172,7 @@ function VoiceChat() {
           arr.push(videos.childNodes[i]);
         }
       }
-      console.log(arr)
+
     }
   }
 
@@ -167,12 +192,12 @@ function VoiceChat() {
       let playPromise = video.play();
       if (playPromise !== undefined) {
         playPromise
-          .then((_) => {})
+          .then((_) => { })
           .catch((error) => {
             console.log(error);
           });
       }
-      console.log(div)
+
       div.appendChild(video);
       if (videos) videos.appendChild(div);
     }
@@ -235,10 +260,10 @@ function VoiceChat() {
         </div>
 
       </div>
-      <div>{!!server && server.length>0 && server[0].users.filter(user=>onlineUsers.includes(user.id)).map(online=>(
-       <div>{online.username}</div>
-       ))} </div>
-       <button onClick={(e)=>disconnectcall(e)}>disconnect</button>
+      <div>{!!server && server.length > 0 && server[0].users.filter(user => onlineUsers.includes(user.id)).map(online => (
+        <div>{online.username}</div>
+      ))} </div>
+      <button onClick={(e) => disconnectcall(e)}>disconnect</button>
     </div>
   );
 }
