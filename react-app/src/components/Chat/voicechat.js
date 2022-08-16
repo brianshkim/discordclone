@@ -118,14 +118,6 @@ function VoiceChat() {
       socket.emit('peerClose', { userId: user.id, peerId, channelid })
       socket.disconnect()
 
-
-
-
-
-
-
-
-
     };
   }, []);
 
@@ -216,7 +208,7 @@ function VoiceChat() {
       ></div>
       <div className="w-1/4 hidden sm:block h-full border-l border-gray-300">
         <div className="w-full h-16 flex justify-around items-center border-b">
-          <button className="flex flex-col justify-center items-center p-1 rounded-lg hover:bg-blue-100">
+          {/*<button className="flex flex-col justify-center items-center p-1 rounded-lg hover:bg-blue-100">
             <div>
               <svg width="1em" height="1em" viewBox="0 0 24 24">
                 <path
@@ -231,9 +223,9 @@ function VoiceChat() {
               </svg>
             </div>
             <div className="text-xs">Screen</div>
-          </button>
+  </button>*/}
 
-          <button className="flex flex-col justify-center items-center p-1 rounded-lg hover:bg-blue-100">
+          {/*<button className="flex flex-col justify-center items-center p-1 rounded-lg hover:bg-blue-100">
             <div>
               <svg width="1em" height="1em" viewBox="0 0 256 256">
                 <path
@@ -242,10 +234,10 @@ function VoiceChat() {
                 ></path>
               </svg>
             </div>
-            <div className="text-xs">Micro</div>
+            <div className="text-xs"></div>
           </button>
 
-          <button className="flex flex-col justify-center items-center p-1 rounded-lg hover:bg-blue-100">
+          {/*<button className="flex flex-col justify-center items-center p-1 rounded-lg hover:bg-blue-100">
             <div>
               <svg width="1em" height="1em" viewBox="0 0 24 24">
                 <path
@@ -254,15 +246,19 @@ function VoiceChat() {
                 ></path>
               </svg>
             </div>
-            <div className="text-xs">Webcam</div>
-          </button>
-        </div>
+            <div className="text-xs"></div>
+  </button>*/}
+  </div>
+
 
       </div>
+      <div className="voicechatusers">Users in this Call:</div>
       <div>{!!server && server.length > 0 && server[0].users.filter(user => onlineUsers.includes(user.id)).map(online => (
-        <div>{online.username}</div>
+
+        <div className="voicechatonline">{online.username}</div>
+
       ))} </div>
-      <button onClick={(e) => disconnectcall(e)}>disconnect</button>
+      <button onClick={(e) => disconnectcall(e)}>Disconnect</button>
     </div>
   );
 }

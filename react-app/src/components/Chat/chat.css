@@ -315,3 +315,14 @@ flex-direction: row;
     color: #dcddde;
 
 }
+
+
+.voicechatusers{
+    color: white;
+    font-family: Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.voicechatonline{
+    color: white;
+    font-family: Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
