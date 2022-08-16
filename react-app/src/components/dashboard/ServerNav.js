@@ -22,6 +22,7 @@ const ServerNav = () => {
     const [display, setDisplay] = useState("none")
     const servers = useSelector(state => state?.servers)
 
+
     const stopmenu = (e) => {
         e.preventDefault()
         setDisplay("none")

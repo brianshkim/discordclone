@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {useParams} from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux";
+import VoiceChat from '../Chat/voicechat';
 import UsersList from '../UsersList';
 
 import './dashboard.css'
@@ -19,8 +20,7 @@ const ChannelMessages = () =>{
 
     <div className = "CMContainer">
         {!!serverid && !!channelid && channels && channels.list && channels.list.length>0&& !!channel && channel.length > 0 && !channel[0].voice && <Chat />}
-
-
+        {!!serverid && !!channelid && channels && channels.list && channels.list.length>0&& !!channel && channel.length > 0 && channel[0].voice && <VoiceChat />}
 
 
 

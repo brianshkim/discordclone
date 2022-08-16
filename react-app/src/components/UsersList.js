@@ -58,6 +58,7 @@ function UsersList() {
 
     return (() => {
       socket.disconnect()
+      socket.off()
     })
 
 
