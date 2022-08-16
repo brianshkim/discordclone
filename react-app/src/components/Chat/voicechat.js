@@ -115,8 +115,7 @@ function VoiceChat() {
       });
     });
     return () => {
-
-
+      socket.emit('peerClose', { userId: user.id, peerId, channelid })
       socket.disconnect()
 
 
@@ -128,7 +127,7 @@ function VoiceChat() {
 
 
     };
-  }, [socket, channelid, user, peer, members, streamLocal]);
+  }, []);
 
 
   useEffect(()=>{
