@@ -212,12 +212,12 @@ body{
 }
 
 .serverslist{
-    margin-top: -20px;
+
     height: 92%;
     overflow-y: scroll;
-    margin-left: 10px;
-
-    padding-right: 40px;
+    margin-left: 30%;
+    box-sizing:content-box;
+    padding-right: 12px;
 
 
 }
