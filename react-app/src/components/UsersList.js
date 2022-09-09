@@ -78,7 +78,7 @@ function UsersList() {
 
     return (
       <div className="UserListContainer">
-        <p className="userlistonline">ONLINE - {usersOnline.length} </p>
+        <p className="userlistonline">{usersOnline.length>0 && `ONLINE - ${usersOnline.length}`} </p>
         <ul>
           {!!servers && servers.length > 0 && server && server.length > 0 && server[0].users.filter(user => usersOnline.includes(user.id)).map((user) => (
 
