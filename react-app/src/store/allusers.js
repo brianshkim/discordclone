@@ -1,10 +1,14 @@
+
 const GET_USERS = 'allusers/GET_USERS'
+
 
 
 const load_users = (users) =>({
     type: GET_USERS,
     users
 });
+
+
 
 export const getallusers = () => async (dispatch) =>{
     const response = await fetch('/api/users/');
@@ -16,6 +20,8 @@ export const getallusers = () => async (dispatch) =>{
 
 
 }
+
+
 
 let initialState = {}
 
@@ -29,7 +35,9 @@ export default function reducer(state = initialState, action) {
             })
 
             return {...state, ...userlist}
+
+
         default:
-            return state;
+            return state
         }
     }

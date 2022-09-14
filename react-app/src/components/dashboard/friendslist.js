@@ -15,7 +15,7 @@ import CreateChannelModal from './createchannel';
 import EditServerModal from './editservermodal';
 import DeleteServerModal from './deleteservermodal';
 import LeaveServerModal from './leaveservermodal';
-import { setOpenRoom } from '../../store/voicechat';
+import { getallfriends } from '../../store/friends';
 import CreateChannelModalMenu from './channelmenu/channelmodalmenu.js';
 import DiscordLogoWhite from '../SplashPage/DiscordLogoWhite.png'
 
@@ -26,11 +26,13 @@ const FriendsList = () => {
     const { channelid } = useParams()
 
 
-    const user = useSelector(state => state.session.user)
+    const user = useSelector(state => state?.session.user)
 
     const servers = useSelector(state => state?.servers)
+    const friends = useSelector(state=>state?.friends)
+    console.log(friends)
 
-    const channels = useSelector(state => state.channels.list)
+    const channels = useSelector(state => state?.channels.list)
     let server = []
     if (servers && servers.list && servers.list.length > 0) server = servers.list.filter(server => server.id == serverid)
 
@@ -55,7 +57,8 @@ const FriendsList = () => {
         setDisplay("none")
     }
     useEffect(() => {
-        dispatch(() => get_servers(user.id))
+        dispatch(get_servers(user.id))
+        dispatch(getallfriends(user.id))
         dispatch(get_channels(serverid))
 
     }, [dispatch])
@@ -165,9 +168,13 @@ const FriendsList = () => {
             </div>
 
 
+
+            <>
             <br></br>
             <ul className="listofchannels">
-                {serverid &&
+
+
+                {serverid && serverid!=="@me" &&
                 <div className="textchanneldropdown" onClick={e=>hidechannels(e)}>
                     <span className="angle"><i className="fa-solid fa-angle-down fa-xs" ></i></span>
                     <span className="textchannelstitle">TEXT CHANNELS</span>
@@ -191,7 +198,7 @@ const FriendsList = () => {
             </ul>
 
             <ul className="listofchannels">
-                {serverid &&
+                {serverid && serverid!=="@me" &&
                 <div className="voicechanneldropdown" onClick={e=>voice(e)}>
                     <span className="angle"><i className="v fa-solid fa-angle-down fa-xs" ></i></span>
                     <span className="textchannelstitle">VOICE CHANNELS</span>
@@ -212,7 +219,12 @@ const FriendsList = () => {
                     </>)
                 }
 
+
             </ul>
+
+
+            </>
+
 
             <footer className="userbar" >
                 <span className="userusercont"><div className="usercontainer" >{!user.avatar &&<div className="useravatar"><img className="discordavatar4" src={DiscordLogoWhite} height="16" width="16"></img> <div className="onlinestatusshape2"></div></div>}

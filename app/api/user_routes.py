@@ -19,6 +19,12 @@ def user(id):
     user = User.query.get(id)
     return user.to_dict()
 
+@user_routes.route('/<int:id>/friends')
+@login_required
+def user_friends(id):
+    user = User.query.get(id)
+    return {"friends":user.get_friends()}
+
 
 @user_routes.route('/<int:id>/delete', methods=['delete'])
 @login_required
