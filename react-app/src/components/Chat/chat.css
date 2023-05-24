@@ -96,7 +96,7 @@
 .previousmessagescont{
 
 width: 100%;
-max-width: 890px;
+padding: 5px;
 display: flex;
 flex-direction: row;
 
@@ -179,7 +179,7 @@ flex-direction: row;
 
 .startmessage{
     margin-top: auto;
-    height: 30%;
+    height: 15%;
     width: 100%;
     align-self: flex-end;
 
