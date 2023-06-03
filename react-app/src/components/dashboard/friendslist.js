@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+
 import { Switch, useParams, NavLink, useLocation, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import './dashboard.css'
 import ProfilePageMenu from './profilepage';
-import ChannelMenu from './channelmenu/channelmenu'
-import Menu from './rightclickmenu/menu';
+
 import { get_channels } from '../../store/channels';
 import { get_servers } from '../../store/servers';
-import DeleteChannelModal from './channelmenu/deletechannelmodal';
-import EditChannelModal from './channelmenu/editchannelmodal';
-import LogoutButton from '../auth/LogoutButton'
+
 import CreateChannelModal from './createchannel';
 import EditServerModal from './editservermodal';
 import DeleteServerModal from './deleteservermodal';
@@ -169,12 +166,9 @@ const FriendsList = () => {
 
             </div>
 
-            {!!serverid && serverid!=="@me" &&
-            <ChannelList />}
-            {!!serverid && serverid == "@me" &&
-            <MyChannel />
-
-            }
+            
+            <ChannelList />
+ 
 
 
 

@@ -1,4 +1,4 @@
-from app.models import db, Server, User
+from app.models import db
 
 def seed_serverlists():
     pass

@@ -4,6 +4,7 @@ from app.models import db, User
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     users = User.query.all()
+    print(users)
     custom_users=[user for user in users if user.id in [2,3]]
     custom_users1=[user for user in users if user.id in [1,3]]
     custom_users2=[user for user in users if user.id in [1,2]]
@@ -25,12 +26,16 @@ def seed_users():
         password='password',
         birthday = '1985-08-25',
         friends=custom_users2)
+    
 
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
 
+
     db.session.commit()
+    print(custom_users,"==============================================")
+    
 
 
 # Uses a raw SQL query to TRUNCATE the users table.

@@ -21,6 +21,7 @@ def seed_servers():
         adminId=3,
         users=custom_users
     )
+    
     db.session.add(custom)
     db.session.add(custom1)
     db.session.add(custom2)

@@ -34,6 +34,8 @@ class User(db.Model, UserMixin):
         secondaryjoin = (friendlist.c.friendId == id),
         backref = db.backref('friendlist', lazy = 'dynamic'),
         lazy = 'dynamic')
+    requests = db.relationship('FriendRequests', back_populates='users', cascade='all,delete')
+    requested =db.relationship('FriendRequests', back_populates='users', cascade='all,delete')
 
 
 

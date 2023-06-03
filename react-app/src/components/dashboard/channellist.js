@@ -130,7 +130,7 @@ const ChannelList = () => {
             <ul className="listofchannels">
 
 
-                {serverid &&
+                {serverid!=="@me" &&
                 <div className="textchanneldropdown" onClick={e=>hidechannels(e)}>
                     <span className="angle"><i className="fa-solid fa-angle-down fa-xs" ></i></span>
                     <span className="textchannelstitle">TEXT CHANNELS</span>
@@ -154,7 +154,7 @@ const ChannelList = () => {
             </ul>
 
             <ul className="listofchannels">
-                {serverid &&
+                {serverid!=="@me" &&
                 <div className="voicechanneldropdown" onClick={e=>voice(e)}>
                     <span className="angle"><i className="v fa-solid fa-angle-down fa-xs" ></i></span>
                     <span className="textchannelstitle">VOICE CHANNELS</span>

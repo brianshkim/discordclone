@@ -5,6 +5,7 @@ from .message import seed_messages, undo_messages
 from .serverlists import seed_serverlists, undo_serverlists
 from .servers import seed_servers, undo_servers
 
+
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
 seed_commands = AppGroup('seed')
@@ -29,4 +30,5 @@ def undo():
     undo_serverlists()
     undo_channels()
     undo_messages()
+    
     # Add other undo functions here
