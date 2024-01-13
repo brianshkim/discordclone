@@ -24,8 +24,7 @@ def email_validation(email):
 def user_exists(form, field):
     # Checking if user exists
     email = field.data
-    user = User.query.filter(User.email == email).first()
-    if user:
+    if user := User.query.filter(User.email == email).first():
         raise ValidationError('Email address is already registered')
     if not email_validation(email):
         raise ValidationError("Not a Valid Email")
@@ -35,8 +34,7 @@ def user_exists(form, field):
 def username_exists(form, field):
     # Checking if username is already in use
     username = field.data
-    user = User.query.filter(User.username == username).first()
-    if user:
+    if user := User.query.filter(User.username == username).first():
         raise ValidationError('Username is already in use.')
 
 def age_check(form, field):
