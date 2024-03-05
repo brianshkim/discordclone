@@ -59,17 +59,14 @@ def user_disconnection(data):
 
 @socketio.on('changeprofile')
 def change_profile():
-    print ("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
     emit ('changeprofile')
 
 
 @socketio.on('join-voice')
 def joinroom(data):
-    print(data, "LASDJFKSADFJKAJFKSJDAFJFKSJKFJLKFJFJAKSFJASKFJKFJASKFJ")
 
     userId = data['userId']
     room = int(data['channelid'])
-    print(type(room), "LADSJFKLJKJAFJAKFJKSADFJKLSADJFLKSAFLKSADJFLKSADJFLKSDAJFLSKAJFLSKADJFLKSADJF")
     peerId = data['peerId']
     join_room(room)
     if room not in rooms.keys():
@@ -93,9 +90,6 @@ def joinroom(data):
     if room in rooms.keys() and not userId in users:
         rooms[room].append({userId:{"userId":userId, "peerId":peerId}})
 
-
-
-    print (rooms, "SLDFJSLDFJKLASJFKLSDAJFLSADJFLSADJFLSADJFKSAJFKLSJAFLKJAKLFJSAKLDFJSAKLFJASLDF")
 
     emit("members", {"room":peerids, "peerId":peerId, "users":users}, room=room)
 
